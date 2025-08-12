@@ -1,0 +1,199 @@
+[2025-08-05 16:25:42] [INFO] main: testadmin login
+[2025-08-05 16:25:53] [INFO] main: testadmin create the add for testadmin3
+[2025-08-05 16:26:08] [INFO] main: testadmin change state of vm postman-clone to start
+[2025-08-05 16:26:20] [INFO] main: testadmin change state of vm postman-clone to shutdown
+[2025-08-05 16:26:45] [INFO] main: testadmin listed all VM
+[2025-08-05 16:26:58] [INFO] main: testadmin created Linux vm named postman-new2
+[2025-08-05 16:27:46] [INFO] main: testadmin cloned Linux vm named postman-clone2
+[2025-08-05 16:30:14] [INFO] main: testadmin listed all VM
+[2025-08-05 16:30:28] [INFO] main: testadmin change state of vm postman-clone to shutdown
+[2025-08-05 16:31:32] [INFO] main: testadmin change state of vm postman-new to destroy
+[2025-08-05 16:31:38] [INFO] main: testadmin change state of vm postman-new2 to destroy
+[2025-08-05 16:31:59] [INFO] main: testadmin change state of vm postman-clone to start
+[2025-08-05 16:51:30] [INFO] main: testadmin login
+[2025-08-05 16:51:33] [INFO] main: testadmin listed all VM
+[2025-08-05 16:51:51] [INFO] main: testadmin listed all VM
+[2025-08-05 16:53:33] [INFO] main: testadmin listed all VM
+[2025-08-05 16:55:46] [INFO] main: testadmin listed all VM
+[2025-08-05 16:56:22] [INFO] main: testadmin listed all VM
+[2025-08-05 16:57:32] [INFO] main: testadmin listed all VM
+[2025-08-05 16:57:48] [INFO] main: testadmin listed all VM
+[2025-08-05 16:58:02] [INFO] main: testadmin listed all VM
+[2025-08-05 17:01:33] [INFO] main: testadmin login
+[2025-08-05 17:01:44] [INFO] main: testadmin change state of vm postman-clone to start
+[2025-08-05 17:01:52] [INFO] main: testadmin change state of vm postman-clone to shutdown
+[2025-08-05 17:02:00] [INFO] main: testadmin listed all VM
+[2025-08-05 17:02:08] [INFO] main: testadmin created Linux vm named postman-new2
+[2025-08-05 17:03:28] [INFO] main: testadmin cloned Linux vm named postman-clone2
+[2025-08-05 17:24:11] [INFO] main: testadmin login
+[2025-08-05 17:24:17] [INFO] main: testadmin listed all VM
+[2025-08-05 17:24:53] [INFO] main: testuser login
+[2025-08-05 17:25:06] [INFO] main: testuser listed all VM
+[2025-08-05 17:38:53] [INFO] main: testuser login
+[2025-08-05 17:39:42] [INFO] main: testuser listed all VM
+[2025-08-05 17:39:48] [ERROR] main: testuser got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-05 17:40:20] [ERROR] main: testuser got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-05 17:40:38] [ERROR] main: testuser got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-05 17:40:57] [INFO] main: testuser login
+[2025-08-05 17:41:01] [ERROR] main: testuser got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-05 17:41:22] [INFO] main: testadmin login
+[2025-08-05 17:41:29] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone2.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone2.qcow2' when cloning Linux vm named postman-clone2
+[2025-08-05 17:41:46] [ERROR] main: testadmin got ERROR    Disk /home/postman-new2.qcow2 is already in use by other guests ['postman-new2']. (Use --check path_in_use=off or --check all=off to override) when creating Linux vm named postman-new2
+[2025-08-05 17:41:52] [INFO] main: testadmin listed all VM
+[2025-08-05 17:41:57] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-05 17:42:03] [ERROR] main: testadmin got 1062 (23000): Duplicate entry 'testadmin3' for key 'users.PRIMARY' when creating creating for testadmin3
+[2025-08-05 17:42:15] [INFO] main: testadmin login
+[2025-08-06 10:37:26] [INFO] main: testadmin login
+[2025-08-06 10:38:18] [INFO] main: testadmin login
+[2025-08-06 10:38:25] [INFO] main: testadmin listed all VM
+[2025-08-06 10:38:30] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-06 10:38:36] [ERROR] main: testadmin got 1062 (23000): Duplicate entry 'testadmin3' for key 'users.PRIMARY' when creating creating for testadmin3
+[2025-08-06 10:38:42] [ERROR] main: testadmin got ERROR    Disk /home/postman-new2.qcow2 is already in use by other guests ['postman-new2']. (Use --check path_in_use=off or --check all=off to override) when creating Linux vm named postman-new2
+[2025-08-06 10:38:48] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone2.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone2.qcow2' when cloning Linux vm named postman-clone2
+[2025-08-06 10:39:10] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone.qcow2' when cloning Linux vm named postman-clone
+[2025-08-06 10:39:57] [INFO] main: testadmin cloned Linux vm named postman-clone3
+[2025-08-06 10:41:02] [INFO] main: testadmin change state of vm postman-clone3 to start
+[2025-08-06 10:41:10] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone3.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone3.qcow2' when cloning Linux vm named postman-clone3
+[2025-08-06 11:32:22] [INFO] main: testadmin login
+[2025-08-06 11:32:26] [INFO] main: testadmin listed all VM
+[2025-08-06 12:01:04] [INFO] main: testadmin login
+[2025-08-06 12:01:09] [INFO] main: testadmin listed all VM
+[2025-08-06 12:02:19] [INFO] main: testadmin listed all VM
+[2025-08-06 12:02:55] [INFO] main: testadmin listed all VM
+[2025-08-06 12:03:23] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone3.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone3.qcow2' when cloning Linux vm named postman-clone3
+[2025-08-06 12:15:36] [INFO] main: testadmin cloned Linux vm named postman-clone3
+[2025-08-06 12:16:48] [INFO] main: testadmin login
+[2025-08-06 12:18:10] [INFO] main: testadmin cloned Windows vm named postman-clone
+[2025-08-06 12:18:55] [INFO] main: testadmin change state of vm postman-clone3 to start
+[2025-08-06 12:19:11] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone3 to start
+[2025-08-06 12:19:30] [INFO] main: testadmin change state of vm postman-clone to start
+[2025-08-06 12:19:39] [ERROR] main: testadmin got error: failed to get domain 'postman-clone5' when changing state of vm postman-clone5 to start
+[2025-08-06 12:19:46] [ERROR] main: Entered the state of VM
+[2025-08-06 12:20:10] [ERROR] main: Entered the state of VM
+[2025-08-06 12:20:22] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-06 13:40:09] [INFO] main: testadmin login
+[2025-08-06 13:40:17] [INFO] main: testadmin listed all VM
+[2025-08-06 15:14:41] [INFO] main: testadmin login
+[2025-08-06 15:14:46] [INFO] main: testadmin listed all VM
+[2025-08-06 15:14:53] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone.qcow2' when cloning Windows vm named postman-clone
+[2025-08-06 15:16:14] [INFO] main: testadmin cloned Windows vm named postman-clone1
+[2025-08-06 15:16:22] [INFO] main: testadmin listed all VM
+[2025-08-06 15:17:31] [INFO] main: testadmin cloned Windows vm named postman-clone2
+[2025-08-06 17:08:30] [INFO] main: testadmin login
+[2025-08-06 17:09:27] [INFO] main: testadmin listed all VM
+[2025-08-06 17:11:29] [INFO] main: testadmin login
+[2025-08-07 16:02:56] [INFO] main: testadmin login
+[2025-08-07 16:06:14] [INFO] main: testadmin login
+[2025-08-07 16:10:36] [INFO] main: testadmin login
+[2025-08-07 16:10:43] [INFO] main: testadmin login
+[2025-08-07 16:11:04] [INFO] main: testadmin listed all VM
+[2025-08-07 16:11:12] [INFO] main: testadmin listed all VM
+[2025-08-07 16:11:27] [INFO] main: testadmin listed all VM
+[2025-08-07 16:12:10] [INFO] main: testadmin listed all VM
+[2025-08-07 16:14:47] [INFO] main: testadmin listed all VM
+[2025-08-07 16:14:55] [INFO] main: testadmin listed all VM
+[2025-08-07 16:15:21] [INFO] main: testadmin listed all VM
+[2025-08-07 16:15:29] [INFO] main: testadmin listed all VM
+[2025-08-07 16:16:03] [INFO] main: testadmin listed all VM
+[2025-08-07 16:16:04] [INFO] main: testadmin listed all VM
+[2025-08-07 16:16:07] [INFO] main: testadmin listed all VM
+[2025-08-07 16:19:42] [INFO] main: testadmin listed all VM
+[2025-08-07 16:20:22] [INFO] main: testadmin listed all VM
+[2025-08-07 16:21:40] [INFO] main: testadmin listed all VM
+[2025-08-07 16:21:40] [INFO] main: testadmin listed all VM
+[2025-08-07 16:23:22] [INFO] main: testadmin listed all VM
+[2025-08-07 16:23:30] [INFO] main: testadmin listed all VM
+[2025-08-07 16:24:09] [INFO] main: testadmin listed all VM
+[2025-08-07 16:24:15] [INFO] main: testadmin listed all VM
+[2025-08-07 16:24:17] [INFO] main: testadmin listed all VM
+[2025-08-07 16:28:11] [INFO] main: testadmin login
+[2025-08-07 16:28:59] [INFO] main: testadmin listed all VM
+[2025-08-07 16:28:59] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:03] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:29] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:45] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:48] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:49] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:52] [INFO] main: testadmin listed all VM
+[2025-08-07 16:29:56] [INFO] main: testadmin listed all VM
+[2025-08-07 16:30:30] [INFO] main: testadmin listed all VM
+[2025-08-07 16:30:41] [INFO] main: testadmin listed all VM
+[2025-08-07 16:30:58] [INFO] main: testadmin listed all VM
+[2025-08-07 16:31:02] [INFO] main: testadmin listed all VM
+[2025-08-07 16:31:50] [INFO] main: testadmin listed all VM
+[2025-08-07 16:31:53] [INFO] main: testadmin listed all VM
+[2025-08-07 16:37:57] [INFO] main: testadmin login
+[2025-08-07 16:38:01] [INFO] main: testadmin listed all VM
+[2025-08-07 16:39:30] [INFO] main: testadmin listed all VM
+[2025-08-07 16:39:32] [INFO] main: testadmin listed all VM
+[2025-08-07 16:39:36] [INFO] main: testadmin listed all VM
+[2025-08-07 16:39:39] [INFO] main: testadmin listed all VM
+[2025-08-07 16:40:18] [INFO] main: testadmin listed all VM
+[2025-08-07 16:43:03] [INFO] main: testadmin listed all VM
+[2025-08-07 16:43:49] [INFO] main: testadmin listed all VM
+[2025-08-07 16:44:24] [INFO] main: testadmin listed all VM
+[2025-08-07 16:44:46] [INFO] main: testadmin listed all VM
+[2025-08-07 16:45:31] [INFO] main: testadmin listed all VM
+[2025-08-11 13:26:33] [INFO] main: testadmin login
+[2025-08-11 13:26:43] [ERROR] main: testadmin got 1062 (23000): Duplicate entry 'testadmin3' for key 'users.PRIMARY' when creating creating for testadmin3
+[2025-08-11 13:26:50] [INFO] main: testadmin created Account for testadmin4
+[2025-08-11 13:27:24] [INFO] main: testadmin listed all VM
+[2025-08-11 13:27:32] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-11 13:27:47] [INFO] main: testadmin created Linux vm named postman-new2
+[2025-08-11 13:27:54] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone2.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone2.qcow2' when cloning Windows vm named postman-clone2
+[2025-08-11 13:28:16] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone3.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone3.qcow2' when cloning Windows vm named postman-clone3
+[2025-08-11 13:30:00] [INFO] main: testadmin cloned Windows vm named postman-clone4
+[2025-08-11 13:31:17] [INFO] main: testadmin listed all VM
+[2025-08-11 13:31:39] [INFO] main: testadmin change state of vm postman-clone1 to start
+[2025-08-11 13:36:42] [INFO] main: testadmin login
+[2025-08-11 13:36:46] [ERROR] main: testadmin got 1062 (23000): Duplicate entry 'testadmin4' for key 'users.PRIMARY' when creating creating for testadmin4
+[2025-08-11 13:36:51] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone1 to start
+[2025-08-11 13:36:58] [INFO] main: testadmin listed all VM
+[2025-08-11 13:37:08] [ERROR] main: testadmin got ERROR    Disk /home/postman-new2.qcow2 is already in use by other guests ['postman-new2']. (Use --check path_in_use=off or --check all=off to override) when creating Linux vm named postman-new2
+[2025-08-11 13:37:12] [ERROR] main: testadmin got ERROR    Could not use path '/home/postman-clone4.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/postman-clone4.qcow2' when cloning Windows vm named postman-clone4
+[2025-08-12 11:25:10] [INFO] main: testadmin login
+[2025-08-12 11:25:52] [INFO] main: testadmin listed all VM
+[2025-08-12 11:31:34] [INFO] main: testadmin listed all VM
+[2025-08-12 11:31:38] [INFO] main: testadmin listed all VM
+[2025-08-12 11:32:28] [INFO] main: testadmin listed all VM
+[2025-08-12 11:32:37] [INFO] main: testadmin listed all VM
+[2025-08-12 11:33:11] [INFO] main: testadmin listed all VM
+[2025-08-12 11:33:29] [INFO] main: testadmin listed all VM
+[2025-08-12 11:34:17] [INFO] main: testadmin listed all VM
+[2025-08-12 11:34:55] [INFO] main: testadmin listed all VM
+[2025-08-12 11:36:13] [INFO] main: testadmin listed all VM
+[2025-08-12 11:37:02] [INFO] main: testadmin listed all VM
+[2025-08-12 11:37:09] [INFO] main: testadmin listed all VM
+[2025-08-12 11:38:33] [INFO] main: testadmin listed all VM
+[2025-08-12 11:48:07] [INFO] main: testadmin login
+[2025-08-12 11:48:38] [INFO] main: testadmin login
+[2025-08-12 11:48:54] [INFO] main: testadmin listed all VM
+[2025-08-12 11:49:09] [INFO] main: testadmin listed all VM
+[2025-08-12 11:49:29] [INFO] main: testadmin listed all VM
+[2025-08-12 11:50:53] [INFO] main: testadmin listed all VM
+[2025-08-12 12:03:09] [INFO] main: testadmin listed all VM
+[2025-08-12 12:03:36] [INFO] main: testadmin listed all VM
+[2025-08-12 16:21:27] [INFO] main: testadmin login
+[2025-08-12 16:23:09] [INFO] main: testadmin listed all VM
+[2025-08-12 16:23:10] [INFO] main: testadmin listed all VM
+[2025-08-12 16:27:33] [INFO] main: testadmin listed all VM
+[2025-08-12 16:27:44] [INFO] main: testadmin listed all VM
+[2025-08-12 16:27:48] [INFO] main: testadmin listed all VM
+[2025-08-12 16:29:44] [INFO] main: testadmin listed all VM
+[2025-08-12 16:30:51] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:03] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:14] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:20] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:25] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:32] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:38] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:48] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:53] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:55] [INFO] main: testadmin listed all VM
+[2025-08-12 16:31:56] [INFO] main: testadmin listed all VM
+[2025-08-12 16:32:05] [INFO] main: testadmin listed all VM
+[2025-08-12 16:32:18] [INFO] main: testadmin listed all VM
+[2025-08-12 16:32:26] [INFO] main: testadmin listed all VM
+[2025-08-12 16:32:31] [INFO] main: testadmin listed all VM
+[2025-08-12 16:32:36] [INFO] main: testadmin listed all VM
+[2025-08-12 16:32:39] [INFO] main: testadmin listed all VM
