@@ -5,6 +5,7 @@ from backend.src.utils.hash_password import hash_password
 from backend.src.utils.db_connection import OpenDb
 from backend.config.logging_setting import setup_logger
 from backend.config import JWT_auth_setting
+from datetime import timedelta
     
 router = APIRouter()
 
@@ -25,6 +26,7 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
     # JWT Payload (sub = subject is usually the username or email)
     access_token = Authorize.create_access_token(
         subject=result[1],  # username
+        expires_time=timedelta(days=7),
         user_claims={"id": result[0], "role": result[3]}  # custom claims
     )
 

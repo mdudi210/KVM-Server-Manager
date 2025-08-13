@@ -11,22 +11,12 @@
       <button value="shut down">Shut Down</button>
       <button value="reboot">Reboot</button>
     </div>
-
-    <!-- <div class="controls">
-      <select v-model="selectedAction">
-        <option value="">Select Action</option>
-        <option value="start">Start</option>
-        <option value="shut down">Shut Down</option>
-        <option value="reboot">Reboot</option>
-      </select>
-      <button @click="emitAction">Go</button>
-    </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'VMItem',
+  name: 'VmItem',
   props: {
     name: String,
     state: String

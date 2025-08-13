@@ -197,3 +197,102 @@
 [2025-08-12 16:32:31] [INFO] main: testadmin listed all VM
 [2025-08-12 16:32:36] [INFO] main: testadmin listed all VM
 [2025-08-12 16:32:39] [INFO] main: testadmin listed all VM
+[2025-08-13 10:51:51] [INFO] main: testadmin login
+[2025-08-13 10:52:27] [INFO] main: testadmin login
+[2025-08-13 10:53:05] [INFO] main: testadmin login
+[2025-08-13 10:53:06] [INFO] main: testadmin listed all VM
+[2025-08-13 10:54:36] [ERROR] main: testadmin entered wrong password
+[2025-08-13 10:55:09] [INFO] main: testadmin login
+[2025-08-13 10:55:09] [INFO] main: testadmin listed all VM
+[2025-08-13 10:55:26] [INFO] main: testadmin login
+[2025-08-13 10:55:27] [INFO] main: testadmin listed all VM
+[2025-08-13 10:56:16] [INFO] main: testadmin login
+[2025-08-13 10:56:16] [INFO] main: testadmin listed all VM
+[2025-08-13 11:18:30] [INFO] main: testadmin login
+[2025-08-13 11:19:26] [INFO] main: testadmin login
+[2025-08-13 11:19:26] [INFO] main: testadmin listed all VM
+[2025-08-13 11:23:54] [INFO] main: testadmin login
+[2025-08-13 11:23:54] [INFO] main: testadmin listed all VM
+[2025-08-13 11:26:34] [INFO] main: testadmin login
+[2025-08-13 11:26:34] [INFO] main: testadmin listed all VM
+[2025-08-13 11:27:00] [INFO] main: testadmin login
+[2025-08-13 11:27:01] [INFO] main: testadmin listed all VM
+[2025-08-13 13:01:28] [INFO] main: testadmin login
+[2025-08-13 13:01:44] [INFO] main: testadmin listed all VM
+[2025-08-13 13:01:55] [INFO] main: testadmin listed all VM
+[2025-08-13 13:01:56] [INFO] main: testadmin listed all VM
+[2025-08-13 13:02:04] [INFO] main: testadmin listed all VM
+[2025-08-13 13:02:09] [INFO] main: testadmin listed all VM
+[2025-08-13 13:02:21] [INFO] main: testadmin listed all VM
+[2025-08-13 13:02:30] [INFO] main: testadmin listed all VM
+[2025-08-13 13:02:41] [INFO] main: testadmin listed all VM
+[2025-08-13 13:02:46] [INFO] main: testadmin listed all VM
+[2025-08-13 13:03:42] [INFO] main: testadmin listed all VM
+[2025-08-13 13:03:54] [INFO] main: testadmin listed all VM
+[2025-08-13 13:07:40] [INFO] main: testadmin login
+[2025-08-13 13:07:40] [INFO] main: testadmin listed all VM
+[2025-08-13 13:07:41] [INFO] main: testadmin listed all VM
+[2025-08-13 13:08:11] [INFO] main: testadmin listed all VM
+[2025-08-13 13:08:35] [INFO] main: testadmin login
+[2025-08-13 13:08:35] [INFO] main: testadmin listed all VM
+[2025-08-13 13:55:17] [ERROR] main: testadmin entered wrong password
+[2025-08-13 13:55:24] [INFO] main: testadmin login
+[2025-08-13 13:58:10] [INFO] main: testadmin login
+[2025-08-13 13:59:19] [INFO] main: testadmin login
+[2025-08-13 14:00:01] [INFO] main: testadmin login
+[2025-08-13 14:00:39] [INFO] main: testadmin login
+[2025-08-13 14:00:56] [INFO] main: testadmin listed all VM
+[2025-08-13 14:01:12] [INFO] main: testadmin login
+[2025-08-13 14:01:12] [INFO] main: testadmin listed all VM
+[2025-08-13 14:01:24] [INFO] main: testadmin listed all VM
+[2025-08-13 14:01:25] [INFO] main: testadmin listed all VM
+[2025-08-13 14:10:55] [INFO] main: testadmin listed all VM
+[2025-08-13 14:11:28] [INFO] main: testadmin listed all VM
+[2025-08-13 14:11:51] [ERROR] main: testadmin entered wrong password
+[2025-08-13 14:11:53] [ERROR] main: testadmin entered wrong password
+[2025-08-13 14:12:01] [INFO] main: testadmin login
+[2025-08-13 14:12:01] [INFO] main: testadmin listed all VM
+[2025-08-13 14:12:22] [INFO] main: testuser login
+[2025-08-13 14:12:22] [INFO] main: testuser listed all VM
+[2025-08-13 14:13:00] [INFO] main: testadmin login
+[2025-08-13 14:13:01] [INFO] main: testadmin listed all VM
+[2025-08-13 14:13:52] [INFO] main: testadmin listed all VM
+[2025-08-13 14:14:18] [INFO] main: testadmin login
+[2025-08-13 14:14:18] [INFO] main: testadmin listed all VM
+[2025-08-13 14:16:27] [INFO] main: testadmin listed all VM
+[2025-08-13 14:17:29] [INFO] main: testadmin listed all VM
+[2025-08-13 14:23:13] [INFO] main: testadmin listed all VM
+[2025-08-13 16:25:00] [INFO] main: testadmin login
+[2025-08-13 16:25:03] [INFO] main: testadmin listed all VM
+[2025-08-13 16:25:48] [INFO] main: testadmin listed all VM
+[2025-08-13 16:26:07] [INFO] main: testadmin listed all VM
+[2025-08-13 16:27:02] [INFO] main: testadmin login
+[2025-08-13 16:27:02] [INFO] main: testadmin listed all VM
+[2025-08-13 16:27:09] [INFO] main: testadmin listed all VM
+[2025-08-13 16:27:20] [INFO] main: testadmin listed all VM
+[2025-08-13 16:29:39] [INFO] main: testadmin listed all VM
+[2025-08-13 16:30:49] [INFO] main: testadmin listed all VM
+[2025-08-13 16:31:33] [INFO] main: testadmin listed all VM
+[2025-08-13 16:32:12] [INFO] main: testadmin login
+[2025-08-13 16:32:12] [INFO] main: testadmin listed all VM
+[2025-08-13 16:32:16] [INFO] main: testadmin listed all VM
+[2025-08-13 16:32:54] [INFO] main: testadmin login
+[2025-08-13 16:32:55] [INFO] main: testadmin listed all VM
+[2025-08-13 16:32:58] [INFO] main: testadmin listed all VM
+[2025-08-13 16:33:02] [INFO] main: testadmin listed all VM
+[2025-08-13 17:20:46] [INFO] main: testadmin login
+[2025-08-13 17:20:47] [INFO] main: testadmin listed all VM
+[2025-08-13 17:20:57] [INFO] main: testadmin listed all VM
+[2025-08-13 17:28:42] [INFO] main: testadmin listed all VM
+[2025-08-13 17:28:47] [INFO] main: testadmin listed all VM
+[2025-08-13 18:08:21] [INFO] main: testadmin login
+[2025-08-13 18:08:21] [INFO] main: testadmin login
+[2025-08-13 18:08:21] [INFO] main: testadmin login
+[2025-08-13 18:08:21] [INFO] main: testadmin login
+[2025-08-13 18:08:21] [INFO] main: testadmin listed all VM
+[2025-08-13 18:08:21] [INFO] main: testadmin listed all VM
+[2025-08-13 18:08:26] [INFO] main: testadmin listed all VM
+[2025-08-13 18:08:26] [INFO] main: testadmin listed all VM
+[2025-08-13 18:09:53] [INFO] main: testadmin listed all VM
+[2025-08-13 18:10:01] [INFO] main: testadmin listed all VM
+[2025-08-13 18:10:51] [INFO] main: testadmin login

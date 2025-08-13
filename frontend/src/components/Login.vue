@@ -4,12 +4,14 @@
       <h2 class="title">Login</h2>
       <input type="text" placeholder="Enter your Username" v-model="username" required>
       <input type="password" placeholder="Enter your Password" v-model="password" required>
-      <button>Login</button>
+      <button @click="login">Login</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'LogIn',
   data () {
@@ -17,6 +19,31 @@ export default {
       token: '',
       username: '',
       password: '' 
+    }
+  },
+  methods: {
+    async login() {
+    try {
+      let response = await axios.post("http://127.0.0.1:8000/login",{
+        username: this.username,
+        password: this.password
+      })
+      if(response.status==200){
+        sessionStorage.setItem('user-info',JSON.stringify(response.data))
+        this.token = response.data.access_token; 
+        this.username = JSON.parse(atob(this.token.split('.')[1])).sub;
+        console.log("Login successful:", this.username);
+        this.$router.push({name:'VmHome'})
+      }
+    } catch (error) {
+        console.error("Login failed:", error.response?.data || error.message);
+    }
+    },
+  },
+  mounted(){
+    let user = sessionStorage.getItem('user-info')
+    if(user){
+      this.$router.push({name:'VmHome'})
     }
   }
 }
@@ -31,7 +58,6 @@ export default {
   background: linear-gradient(120deg, #f6f9fc, #e3f2fd);
 }
 
-/* Card styling */
 .login-card {
   background: white;
   padding: 2rem;
@@ -41,14 +67,12 @@ export default {
   text-align: center;
 }
 
-/* Title */
 .title {
   margin-bottom: 1.5rem;
   font-family: Arial, sans-serif;
   color: #333;
 }
 
-/* Inputs */
 input {
   width: 100%;
   padding: 10px;
@@ -64,7 +88,6 @@ input:focus {
   border-color: #1976d2;
 }
 
-/* Button */
 button {
   width: 100%;
   padding: 10px;
