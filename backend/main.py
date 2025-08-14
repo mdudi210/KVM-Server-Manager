@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from backend.src.services import list_vms, login, register, vm_cloner, vm_creator, vm_state_manager 
+from backend.src.services import list_vms, login, register, vm_cloner, vm_creator, vm_state_manager
+from backend.src.auth import check_token
 from fastapi.middleware.cors import CORSMiddleware
 
 # Allow frontend origin
@@ -29,6 +30,7 @@ app.include_router(vm_state_manager.router, tags=["vm"])
 app.include_router(list_vms.router, tags=["vm"])
 app.include_router(login.router, tags=["vm"])
 app.include_router(register.router, tags=["vm"])
+app.include_router(check_token.router, tags=["vm"])
 
 # Optionally: Add root health check
 @app.get("/")

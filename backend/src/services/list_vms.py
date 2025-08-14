@@ -10,6 +10,13 @@ router = APIRouter()
 def list_all_vm(claims = Depends(verify_user)):
     logger = setup_logger("main")
     client = ssh_client()
+    if isinstance(client, str):
+        return {
+            "Message" : "",
+            "Body" : {
+                "output" : client
+            }
+        }
     command_to_execute = "virsh list --all"
 
     stdin, stdout, stderr = client.exec_command(command_to_execute)

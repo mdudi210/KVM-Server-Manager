@@ -14,7 +14,10 @@ def ssh_client():
         return client
     except paramiko.AuthenticationException:
         print("Authentication failed. Please check your username and password.")
+        return "Authentication failed. Please check your username and password."
     except paramiko.SSHException as e:
         print(f"SSH connection error: {e}")
+        return f"SSH connection error: {e}"
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+        return f"An unexpected error occurred: {e}"
