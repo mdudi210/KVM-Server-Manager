@@ -4,8 +4,8 @@
     <div class="body">
       <VmItem v-for="vm in vmlist"
       :key="vm.Id"
-      :name="vm.Name"
-      :state="vm.State"
+      :vm_name="vm.Name"
+      :current_state="vm.State"
       @action="handleAction"/>
     </div>
   </div>
@@ -34,20 +34,37 @@ export default {
       this.$router.push({name:'Login'})
     }
     else {
-        const token = JSON.parse(sessionStorage.getItem('user-info')).access_token
-        this.username = JSON.parse(atob(token.split('.')[1])).sub
-        await axios.get("http://127.0.0.1:8000/vms",{
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            this.vmlist = response.data.Body.output
-            console.log(this.vmlist)
-        })
-        .catch(error => {
-            console.log('API call failed',error)
-        })
+      const token = JSON.parse(sessionStorage.getItem('user-info')).access_token
+      await axios.get("http://127.0.0.1:8000/check-token",{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        console.log(response.data)
+        if(response.data.valid === false){
+          console.log(response)
+          sessionStorage.removeItem('user-info')
+          this.$router.push({name:'Login'})
+        }
+      })
+      .catch(error => {
+        console.log('API call failed',error)
+      })
+
+      this.username = JSON.parse(atob(token.split('.')[1])).sub
+      await axios.get("http://127.0.0.1:8000/vms",{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        this.vmlist = response.data.Body.output
+        console.log(this.vmlist)
+      })
+      .catch(error => {
+        console.log('API call failed',error)
+      })
     }
   },
   methods: {

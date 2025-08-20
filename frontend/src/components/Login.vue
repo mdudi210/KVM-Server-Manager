@@ -40,10 +40,25 @@ export default {
     }
     },
   },
-  mounted(){
+  async mounted(){
     let user = sessionStorage.getItem('user-info')
     if(user){
-      this.$router.push({name:'VmHome'})
+      const token = JSON.parse(sessionStorage.getItem('user-info')).access_token
+      await axios.get("http://127.0.0.1:8000/check-token",{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        if(response.data.valid === true){
+          this.$router.push({name:'VmHome'})
+        } else {
+          this.$router.push({name:'Login'})
+        }
+      })
+      .catch(error => {
+        console.log('API call failed',error)
+      })
     }
   }
 }

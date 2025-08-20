@@ -1,25 +1,27 @@
 <template>
-   <div class="item" :class="{ colorr: state === 'shut off', colorg : state === 'running' }" >
+   <div class="item" :class="{ colorr: current_state === 'shut off', colorg : current_state === 'running' }" >
     <div class="info">
-      <p><strong>{{ name }}</strong></p>
+      <p><strong>{{ vm_name }}</strong></p>
       <div>
-        <p id="status" >Status: {{ state }}</p>
+        <p id="status" >Status: {{ current_state }}</p>
       </div>
     </div>
     <div>
-      <button value="start">Start</button>
-      <button value="shut down">Shut Down</button>
-      <button value="reboot">Reboot</button>
+      <button @click="changestate(`start`)">Start</button>
+      <button @click="changestate(`shutdown`)">Shut Down</button>
+      <button @click="changestate(`reboot`)">Reboot</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'VmItem',
   props: {
-    name: String,
-    state: String
+    vm_name: String,
+    current_state: String
   },
   data() {
     return {
@@ -32,6 +34,29 @@ export default {
         name: this.name,
         action: this.selectedAction
       });
+    },
+    async changestate(state) {
+      // console.log(this.vm_name)
+      // console.log(state)
+      const token = JSON.parse(sessionStorage.getItem('user-info')).access_token
+      this.username = JSON.parse(atob(token.split('.')[1])).sub
+      await axios.post("http://127.0.0.1:8000/vm/state",{
+        state: state,
+        name: this.vm_name
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        console.log(response.data.Body.output)
+        this.$router.go(0)
+        // this.vmlist = response.data.Body.output
+        // console.log(this.vmlist)
+      })
+      .catch(error => {
+        console.log('API call failed',error)
+      })
     }
   }
 };
