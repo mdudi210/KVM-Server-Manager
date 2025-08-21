@@ -633,3 +633,82 @@ error: Requested operation is not valid: domain is not running when changing sta
 [2025-08-21 17:44:58] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone to start
 [2025-08-21 17:45:11] [INFO] main: testadmin login
 [2025-08-21 17:45:15] [INFO] main: testadmin listed all VM
+[2025-08-21 17:47:05] [INFO] main: apiuser login
+[2025-08-21 17:47:06] [INFO] main: apiuser listed all VM
+[2025-08-21 17:47:15] [INFO] main: apiuser change state of vm postman-clone to shutdown
+[2025-08-21 17:47:15] [INFO] main: apiuser listed all VM
+[2025-08-21 17:47:19] [INFO] main: apiuser listed all VM
+[2025-08-21 17:47:22] [INFO] main: apiuser change state of vm postman-new3 to shutdown
+[2025-08-21 17:47:23] [INFO] main: apiuser listed all VM
+[2025-08-21 17:47:25] [INFO] main: apiuser change state of vm postman-new2 to shutdown
+[2025-08-21 17:47:25] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:17] [ERROR] main: apiuser got error: Failed to reboot domain 'postman-new2'
+error: Requested operation is not valid: domain is not running when changing state of vm postman-new2 to reboot
+[2025-08-21 17:49:17] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:24] [INFO] main: apiuser change state of vm postman-new3 to shutdown
+[2025-08-21 17:49:25] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:28] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:30] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:31] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:34] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:35] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:36] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:37] [INFO] main: apiuser listed all VM
+[2025-08-21 17:49:38] [INFO] main: apiuser listed all VM
+[2025-08-21 17:53:34] [INFO] main: testadmin created Windows vm named postman-new4
+[2025-08-21 17:56:51] [INFO] main: testadmin created Windows vm named postman-new4
+[2025-08-21 17:57:33] [INFO] main: testadmin created Linux vm named postman-new5
+[2025-08-21 17:59:28] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:35] [INFO] main: apiuser change state of vm linux-template to start
+[2025-08-21 17:59:36] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:38] [INFO] main: apiuser change state of vm postman-clone to start
+[2025-08-21 17:59:38] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:41] [INFO] main: apiuser change state of vm postman-clone2 to start
+[2025-08-21 17:59:41] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:43] [INFO] main: apiuser change state of vm postman-clone3 to start
+[2025-08-21 17:59:43] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:47] [INFO] main: apiuser change state of vm postman-new2 to start
+[2025-08-21 17:59:47] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:50] [INFO] main: apiuser change state of vm postman-new3 to start
+[2025-08-21 17:59:51] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:54] [INFO] main: apiuser change state of vm postman-new4 to start
+[2025-08-21 17:59:54] [INFO] main: apiuser listed all VM
+[2025-08-21 17:59:57] [INFO] main: apiuser change state of vm postman-new5 to start
+[2025-08-21 17:59:58] [INFO] main: apiuser listed all VM
+[2025-08-21 18:00:00] [INFO] main: apiuser change state of vm win-template to start
+[2025-08-21 18:00:01] [INFO] main: apiuser listed all VM
+[2025-08-21 18:00:04] [INFO] main: apiuser change state of vm win-template-test to start
+[2025-08-21 18:00:04] [INFO] main: apiuser listed all VM
+[2025-08-21 18:00:08] [INFO] main: apiuser change state of vm linux-template to shutdown
+[2025-08-21 18:00:08] [INFO] main: apiuser listed all VM
+[2025-08-21 18:00:13] [INFO] main: apiuser change state of vm postman-clone to shutdown
+[2025-08-21 18:00:13] [INFO] main: apiuser listed all VM
+[2025-08-21 18:00:19] [INFO] main: apiuser listed all VM
+[2025-08-21 18:00:56] [INFO] main: apiadmin login
+[2025-08-21 18:00:57] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:13] [INFO] main: apiadmin change state of vm win-template-test to shutdown
+[2025-08-21 18:01:14] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:21] [INFO] main: apiadmin change state of vm win-template to shutdown
+[2025-08-21 18:01:22] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:26] [INFO] main: apiadmin change state of vm postman-new5 to shutdown
+[2025-08-21 18:01:27] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:28] [INFO] main: apiadmin change state of vm postman-new3 to shutdown
+[2025-08-21 18:01:29] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:30] [INFO] main: apiadmin change state of vm postman-new2 to shutdown
+[2025-08-21 18:01:31] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:32] [INFO] main: apiadmin change state of vm postman-clone3 to shutdown
+[2025-08-21 18:01:33] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:01:35] [INFO] main: apiadmin change state of vm postman-clone2 to shutdown
+[2025-08-21 18:01:35] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:02:27] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:02:44] [INFO] main: apiadmin change state of vm win-template-test to shutdown
+[2025-08-21 18:02:45] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:02:46] [INFO] main: apiadmin change state of vm postman-new5 to shutdown
+[2025-08-21 18:02:46] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:02:47] [INFO] main: apiadmin change state of vm postman-new4 to shutdown
+[2025-08-21 18:02:48] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:02:49] [INFO] main: apiadmin change state of vm postman-new3 to shutdown
+[2025-08-21 18:02:50] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:02:51] [INFO] main: apiadmin change state of vm postman-new2 to shutdown
+[2025-08-21 18:02:52] [INFO] main: apiadmin listed all VM
+[2025-08-21 18:05:15] [INFO] main: apiadmin listed all VM
