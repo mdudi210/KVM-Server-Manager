@@ -15,7 +15,7 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
     hashed_password = hash_password(data.password)
     with OpenDb() as cursor:
         cursor.execute(
-            "SELECT id,username, password,role FROM users WHERE username=%s",(data.username,),
+            "SELECT id,username, password,role_id FROM users WHERE username=%s",(data.username,),
             )
         result = cursor.fetchone()
 

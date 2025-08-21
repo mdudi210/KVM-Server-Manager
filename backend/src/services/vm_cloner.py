@@ -16,7 +16,7 @@ def create_clone(data : CloneRequest, claims = Depends(verify_admin)):
     if data.vmtoinstall == "Linux":
         command_to_execute = f"sudo virt-clone --original linux-template --name {data.name} --file /home/{data.name}.qcow2"
     elif data.vmtoinstall == "Windows":
-        command_to_execute = f"sudo virt-clone --original windows-template --name {data.name} --file /home/{data.name}.qcow2"
+        command_to_execute = f"sudo virt-clone --original win-template --name {data.name} --file /home/{data.name}.qcow2"
     else:
         logger.error(f"Entered invalid vm type")
         raise HTTPException(status_code=400, detail="Invalid VM Type")

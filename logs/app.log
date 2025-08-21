@@ -604,3 +604,32 @@ error: Requested operation is not valid: domain is not running when changing sta
 [2025-08-20 16:24:49] [INFO] main: testuser listed all VM
 [2025-08-20 16:24:55] [INFO] main: testuser listed all VM
 [2025-08-20 16:35:09] [INFO] main: testuser listed all VM
+[2025-08-20 17:43:43] [INFO] main: testuser listed all VM
+[2025-08-21 15:01:17] [ERROR] main: testadmin entered wrong password
+[2025-08-21 15:01:29] [INFO] main: testadmin login
+[2025-08-21 15:19:02] [INFO] main: testadmin login
+[2025-08-21 15:20:10] [INFO] main: testadmin listed all VM
+[2025-08-21 17:14:06] [ERROR] main: testadmin got Could not process parameters: str(admin), it must be of type list, tuple or dict when creating creating for apiuser
+[2025-08-21 17:16:11] [ERROR] main: testadmin got Unread result found when creating creating for apiuser
+[2025-08-21 17:17:22] [ERROR] main: testadmin got Unread result found when creating creating for apiuser
+[2025-08-21 17:20:00] [ERROR] main: testadmin got 'NoneType' object is not subscriptable when creating creating for apiuser
+[2025-08-21 17:21:23] [ERROR] main: testadmin got 'NoneType' object is not subscriptable when creating creating for apiuser
+[2025-08-21 17:22:10] [ERROR] main: testadmin got 'NoneType' object is not subscriptable when creating creating for apiuser
+[2025-08-21 17:26:32] [INFO] main: testadmin login
+[2025-08-21 17:26:35] [ERROR] main: testadmin got 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`kvmserver`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)) when creating for apiuser
+[2025-08-21 17:27:35] [INFO] main: testadmin created Account for apiuser
+[2025-08-21 17:27:42] [ERROR] main: testadmin got 1062 (23000): Duplicate entry 'apiuser' for key 'users.username' when creating for apiuser
+[2025-08-21 17:28:41] [INFO] main: testadmin created Account for apiadmin
+[2025-08-21 17:28:49] [ERROR] main: testadmin got 1062 (23000): Duplicate entry 'apiadmin' for key 'users.username' when creating for apiadmin
+[2025-08-21 17:31:33] [INFO] main: testadmin created Account for apiadmin
+[2025-08-21 17:39:08] [ERROR] main: testadmin got ERROR    Validating install media '/var/lib/libvirt/iso/iso-share/CentOS-Stream-9-latest-x86_64-dvd1.iso' failed: Could not start storage pool: cannot open directory '/var/lib/libvirt/iso/iso-share': No such file or directory when creating Linux vm named postman-new2
+[2025-08-21 17:39:52] [INFO] main: testadmin created Linux vm named postman-new2
+[2025-08-21 17:40:03] [ERROR] main: testadmin got ERROR    Disk /home/postman-new2.qcow2 is already in use by other guests ['postman-new2']. (Use --check path_in_use=off or --check all=off to override) when creating Windows vm named postman-new2
+[2025-08-21 17:40:14] [INFO] main: testadmin created Windows vm named postman-new3
+[2025-08-21 17:41:17] [INFO] main: testadmin cloned Linux vm named postman-clone2
+[2025-08-21 17:44:03] [INFO] main: testadmin cloned Windows vm named postman-clone3
+[2025-08-21 17:44:31] [INFO] main: testadmin listed all VM
+[2025-08-21 17:44:53] [INFO] main: testadmin change state of vm postman-clone to start
+[2025-08-21 17:44:58] [ERROR] main: testadmin got error: Domain is already active when changing state of vm postman-clone to start
+[2025-08-21 17:45:11] [INFO] main: testadmin login
+[2025-08-21 17:45:15] [INFO] main: testadmin listed all VM
