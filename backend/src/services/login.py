@@ -20,7 +20,7 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
         result = cursor.fetchone()
 
     if not result or result[2] != hashed_password:
-        logger.error(f"{result[1]} entered wrong password")
+        logger.error(f"Entered wrong password")
         raise HTTPException(status_code=401, detail="Invalid username or password")
     
     # JWT Payload (sub = subject is usually the username or email)

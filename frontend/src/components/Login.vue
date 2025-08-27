@@ -3,7 +3,7 @@
     <div class="login-card">
       <h2 class="title">Login</h2>
       <input type="text" placeholder="Enter your Username" v-model="username" required>
-      <input type="password" placeholder="Enter your Password" v-model="password" required>
+      <input type="password" placeholder="Enter your Password" @keyup.enter="login" v-model="password" required>
       <button @click="login">Login</button>
     </div>
   </div>
@@ -28,6 +28,7 @@ export default {
         username: this.username,
         password: this.password
       })
+      console.log("hello")
       if(response.status==200){
         sessionStorage.setItem('user-info',JSON.stringify(response.data))
         this.token = response.data.access_token; 
@@ -35,8 +36,12 @@ export default {
         console.log("Login successful:", this.username);
         this.$router.push({name:'VmHome'})
       }
+      else if(response.status==401){
+        alert('Entered worng username or password')
+      }
     } catch (error) {
-        console.error("Login failed:", error.response?.data || error.message);
+      alert('Entered worng username or password')
+      console.error("Login failed:", error.response?.data || error.message);
     }
     },
   },

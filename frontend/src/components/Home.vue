@@ -1,12 +1,11 @@
 <template>
   <div>
-    <TopBar :username="username"/>
+    <TopBar :username="username" :role="role"/>
     <div class="body">
       <VmItem v-for="vm in vmlist"
       :key="vm.Id"
       :vm_name="vm.Name"
-      :current_state="vm.State"
-      @action="handleAction"/>
+      :current_state="vm.State"/>
     </div>
   </div>
 </template>
@@ -24,7 +23,8 @@ export default {
   },
   data() {
     return {
-      username: '',
+      username: 'User',
+      role: 'user',
       vmlist: []
     }
   },
@@ -52,7 +52,8 @@ export default {
         console.log('API call failed',error)
       })
 
-      this.username = JSON.parse(atob(token.split('.')[1])).sub
+      this.username = JSON.parse(sessionStorage.getItem('user-info')).username
+      this.role = JSON.parse(sessionStorage.getItem('user-info')).role
       await axios.get("http://127.0.0.1:8000/vms",{
         headers: {
           Authorization: `Bearer ${token}`
@@ -67,12 +68,6 @@ export default {
       })
     }
   },
-  methods: {
-    handleAction({ name, action }) {
-      console.log(`Action "${action}" triggered for ${name}`);
-    }
-  },
-
 }
 </script>
 

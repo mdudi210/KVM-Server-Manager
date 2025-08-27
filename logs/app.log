@@ -712,3 +712,187 @@ error: Requested operation is not valid: domain is not running when changing sta
 [2025-08-21 18:02:51] [INFO] main: apiadmin change state of vm postman-new2 to shutdown
 [2025-08-21 18:02:52] [INFO] main: apiadmin listed all VM
 [2025-08-21 18:05:15] [INFO] main: apiadmin listed all VM
+[2025-08-22 14:14:18] [ERROR] main: testadmin entered wrong password
+[2025-08-22 14:14:24] [ERROR] main: testadmin entered wrong password
+[2025-08-22 14:15:00] [INFO] main: testadmin login
+[2025-08-22 14:15:01] [INFO] main: testadmin listed all VM
+[2025-08-22 14:20:32] [ERROR] main: testadmin entered wrong password
+[2025-08-22 14:20:35] [ERROR] main: testadmin entered wrong password
+[2025-08-22 14:33:58] [ERROR] main: Entered wrong password
+[2025-08-22 14:35:16] [ERROR] main: Entered wrong password
+[2025-08-22 14:36:38] [ERROR] main: Entered wrong password
+[2025-08-22 14:36:51] [ERROR] main: Entered wrong password
+[2025-08-22 14:38:04] [ERROR] main: Entered wrong password
+[2025-08-22 14:43:17] [ERROR] main: Entered wrong password
+[2025-08-22 14:45:20] [ERROR] main: Entered wrong password
+[2025-08-25 09:47:57] [INFO] main: testadmin login
+[2025-08-25 09:47:58] [INFO] main: testadmin listed all VM
+[2025-08-25 09:48:22] [ERROR] main: Entered wrong password
+[2025-08-25 09:48:24] [ERROR] main: Entered wrong password
+[2025-08-25 09:48:26] [INFO] main: testuser login
+[2025-08-25 09:48:26] [INFO] main: testuser listed all VM
+[2025-08-25 09:48:42] [INFO] main: apiuser login
+[2025-08-25 09:48:42] [INFO] main: apiuser listed all VM
+[2025-08-25 09:49:07] [INFO] main: apiadmin login
+[2025-08-25 09:49:07] [INFO] main: apiadmin listed all VM
+[2025-08-25 15:07:59] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:31] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:33] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:35] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:40] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:42] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:47] [ERROR] main: Entered wrong password
+[2025-08-25 15:08:56] [ERROR] main: Entered wrong password
+[2025-08-25 15:09:17] [INFO] main: testadmin login
+[2025-08-25 15:09:17] [INFO] main: testadmin listed all VM
+[2025-08-26 10:32:28] [INFO] main: testadmin login
+[2025-08-26 10:32:29] [INFO] main: testadmin listed all VM
+[2025-08-26 10:33:39] [INFO] main: testadmin listed all VM
+[2025-08-26 10:37:40] [INFO] main: testadmin listed all VM
+[2025-08-26 10:38:04] [ERROR] main: Entered wrong password
+[2025-08-26 10:38:39] [INFO] main: testadmin login
+[2025-08-26 10:38:39] [INFO] main: testadmin listed all VM
+[2025-08-26 11:31:20] [ERROR] main: Entered wrong password
+[2025-08-26 11:31:34] [INFO] main: testadmin login
+[2025-08-26 11:31:34] [INFO] main: testadmin listed all VM
+[2025-08-26 11:41:22] [INFO] main: testadmin login
+[2025-08-26 11:41:22] [INFO] main: testadmin listed all VM
+[2025-08-26 11:58:46] [INFO] main: testadmin login
+[2025-08-26 11:58:46] [INFO] main: testadmin listed all VM
+[2025-08-26 12:04:37] [INFO] main: testadmin login
+[2025-08-26 12:04:37] [INFO] main: testadmin listed all VM
+[2025-08-26 12:19:15] [INFO] main: testadmin login
+[2025-08-26 12:20:25] [ERROR] main: Entered wrong password
+[2025-08-26 12:20:40] [INFO] main: testadmin login
+[2025-08-26 12:21:13] [INFO] main: testadmin listed all VM
+[2025-08-26 12:22:32] [INFO] main: testadmin listed all VM
+[2025-08-26 12:22:38] [INFO] main: testadmin listed all VM
+[2025-08-26 12:22:42] [INFO] main: testadmin listed all VM
+[2025-08-26 12:22:45] [INFO] main: testadmin listed all VM
+[2025-08-26 12:35:24] [INFO] main: testadmin listed all VM
+[2025-08-26 12:36:08] [INFO] main: testadmin listed all VM
+[2025-08-26 12:40:33] [INFO] main: testadmin change state of vm linux-template to start
+[2025-08-26 12:40:34] [INFO] main: testadmin listed all VM
+[2025-08-26 12:46:51] [INFO] main: testadmin change state of vm linux-template to shutdown
+[2025-08-26 12:46:52] [INFO] main: testadmin listed all VM
+[2025-08-26 12:46:56] [INFO] main: testadmin listed all VM
+[2025-08-26 12:48:31] [INFO] main: testadmin listed all VM
+[2025-08-26 12:48:34] [INFO] main: testadmin change state of vm linux-template to start
+[2025-08-26 12:48:35] [INFO] main: testadmin listed all VM
+[2025-08-26 12:48:36] [INFO] main: testadmin change state of vm linux-template to shutdown
+[2025-08-26 12:48:37] [INFO] main: testadmin listed all VM
+[2025-08-26 12:48:43] [INFO] main: testadmin listed all VM
+[2025-08-26 12:49:45] [INFO] main: testadmin listed all VM
+[2025-08-26 12:49:51] [INFO] main: testadmin change state of vm linux-template to shutdown
+[2025-08-26 12:49:52] [INFO] main: testadmin listed all VM
+[2025-08-26 12:49:58] [INFO] main: testadmin listed all VM
+[2025-08-26 12:51:18] [INFO] main: testadmin listed all VM
+[2025-08-26 12:51:52] [INFO] main: testadmin listed all VM
+[2025-08-26 12:53:20] [INFO] main: testadmin listed all VM
+[2025-08-26 12:53:46] [INFO] main: testadmin listed all VM
+[2025-08-26 12:54:14] [INFO] main: testadmin listed all VM
+[2025-08-26 12:54:33] [INFO] main: testadmin listed all VM
+[2025-08-26 12:54:35] [ERROR] main: testadmin got error: Failed to reboot domain 'linux-template'
+error: Requested operation is not valid: domain is not running when changing state of vm linux-template to reboot
+[2025-08-26 12:54:36] [INFO] main: testadmin listed all VM
+[2025-08-26 12:59:20] [INFO] main: testadmin listed all VM
+[2025-08-26 13:04:52] [INFO] main: testadmin listed all VM
+[2025-08-26 13:05:57] [INFO] main: testadmin listed all VM
+[2025-08-26 13:06:01] [INFO] main: testadmin change state of vm linux-template to start
+[2025-08-26 13:06:02] [INFO] main: testadmin listed all VM
+[2025-08-26 13:06:18] [INFO] main: testadmin change state of vm linux-template to shutdown
+[2025-08-26 13:06:18] [INFO] main: testadmin listed all VM
+[2025-08-26 13:06:21] [INFO] main: testadmin listed all VM
+[2025-08-26 13:10:08] [INFO] main: testadmin listed all VM
+[2025-08-26 13:10:14] [INFO] main: testadmin listed all VM
+[2025-08-26 13:10:19] [INFO] main: testadmin listed all VM
+[2025-08-26 13:21:14] [INFO] main: testadmin listed all VM
+[2025-08-26 13:22:44] [INFO] main: testadmin login
+[2025-08-26 13:22:45] [INFO] main: testadmin listed all VM
+[2025-08-26 13:23:16] [INFO] main: testadmin listed all VM
+[2025-08-26 13:28:04] [INFO] main: testadmin listed all VM
+[2025-08-26 13:29:28] [INFO] main: testadmin listed all VM
+[2025-08-26 13:32:42] [INFO] main: testadmin listed all VM
+[2025-08-26 13:32:45] [INFO] main: testadmin listed all VM
+[2025-08-26 13:32:50] [INFO] main: testadmin listed all VM
+[2025-08-26 13:34:59] [INFO] main: testadmin listed all VM
+[2025-08-26 13:35:03] [INFO] main: testadmin listed all VM
+[2025-08-26 14:36:44] [ERROR] main: Entered wrong password
+[2025-08-26 16:04:38] [INFO] main: testuser login
+[2025-08-26 16:04:38] [INFO] main: testuser listed all VM
+[2025-08-26 16:06:50] [INFO] main: testuser listed all VM
+[2025-08-26 16:06:51] [INFO] main: testuser listed all VM
+[2025-08-26 16:09:36] [INFO] main: testuser listed all VM
+[2025-08-26 16:09:59] [INFO] main: testuser listed all VM
+[2025-08-26 16:10:41] [INFO] main: testuser listed all VM
+[2025-08-26 16:11:06] [INFO] main: testuser listed all VM
+[2025-08-26 16:11:28] [INFO] main: testuser listed all VM
+[2025-08-26 16:11:30] [INFO] main: testuser listed all VM
+[2025-08-26 16:14:29] [INFO] main: testuser listed all VM
+[2025-08-26 16:15:16] [INFO] main: testuser listed all VM
+[2025-08-26 16:16:04] [ERROR] main: Entered wrong password
+[2025-08-26 16:16:10] [INFO] main: testadmin login
+[2025-08-26 16:16:10] [INFO] main: testadmin listed all VM
+[2025-08-26 16:16:26] [INFO] main: testuser login
+[2025-08-26 16:16:27] [INFO] main: testuser listed all VM
+[2025-08-26 16:44:11] [INFO] main: testuser change state of vm linux-template to start
+[2025-08-26 16:44:12] [INFO] main: testuser listed all VM
+[2025-08-26 16:44:17] [INFO] main: testuser change state of vm linux-template to shutdown
+[2025-08-26 16:44:18] [INFO] main: testuser listed all VM
+[2025-08-26 16:44:23] [INFO] main: testuser listed all VM
+[2025-08-26 16:44:45] [INFO] main: testuser listed all VM
+[2025-08-26 16:45:23] [INFO] main: testuser listed all VM
+[2025-08-26 16:45:58] [INFO] main: testuser change state of vm linux-template to shutdown
+[2025-08-26 16:45:58] [INFO] main: testuser listed all VM
+[2025-08-26 16:46:08] [INFO] main: testuser listed all VM
+[2025-08-26 16:46:17] [INFO] main: testuser change state of vm linux-template to start
+[2025-08-26 16:46:17] [INFO] main: testuser listed all VM
+[2025-08-26 16:46:25] [INFO] main: testuser change state of vm linux-template to shutdown
+[2025-08-26 16:46:25] [INFO] main: testuser listed all VM
+[2025-08-26 16:46:43] [INFO] main: testuser change state of vm linux-template to shutdown
+[2025-08-26 16:46:43] [INFO] main: testuser listed all VM
+[2025-08-26 16:46:52] [INFO] main: testuser listed all VM
+[2025-08-26 16:46:54] [INFO] main: testuser change state of vm linux-template to start
+[2025-08-26 16:46:55] [INFO] main: testuser listed all VM
+[2025-08-26 16:47:25] [INFO] main: testuser change state of vm linux-template to shutdown
+[2025-08-26 16:47:26] [INFO] main: testuser listed all VM
+[2025-08-26 16:47:31] [INFO] main: testuser listed all VM
+[2025-08-26 16:52:43] [INFO] main: testadmin login
+[2025-08-26 16:54:17] [INFO] main: testadmin listed all VM
+[2025-08-26 16:54:48] [INFO] main: testadmin login
+[2025-08-26 16:54:48] [INFO] main: testadmin listed all VM
+[2025-08-26 16:56:32] [INFO] main: testadmin login
+[2025-08-26 16:56:33] [INFO] main: testadmin listed all VM
+[2025-08-26 16:56:59] [INFO] main: testadmin login
+[2025-08-26 16:56:59] [INFO] main: testadmin listed all VM
+[2025-08-26 16:58:05] [INFO] main: testuser login
+[2025-08-26 16:58:05] [INFO] main: testuser listed all VM
+[2025-08-26 16:58:37] [INFO] main: testuser listed all VM
+[2025-08-26 17:01:01] [INFO] main: testuser login
+[2025-08-26 17:01:02] [INFO] main: testuser listed all VM
+[2025-08-26 17:03:22] [INFO] main: testadmin login
+[2025-08-26 17:03:22] [INFO] main: testadmin listed all VM
+[2025-08-26 17:03:52] [INFO] main: testadmin listed all VM
+[2025-08-26 18:13:10] [INFO] main: testadmin login
+[2025-08-26 18:13:10] [INFO] main: testadmin listed all VM
+[2025-08-27 09:33:07] [INFO] main: testadmin login
+[2025-08-27 09:33:07] [INFO] main: testadmin listed all VM
+[2025-08-27 09:33:30] [INFO] main: testadmin listed all VM
+[2025-08-27 09:51:15] [INFO] main: testadmin login
+[2025-08-27 09:51:16] [INFO] main: testadmin listed all VM
+[2025-08-27 09:57:04] [INFO] main: testadmin listed all VM
+[2025-08-27 09:57:29] [INFO] main: testadmin listed all VM
+[2025-08-27 09:58:59] [INFO] main: testadmin listed all VM
+[2025-08-27 10:03:03] [INFO] main: testadmin listed all VM
+[2025-08-27 10:03:19] [INFO] main: testadmin listed all VM
+[2025-08-27 10:03:31] [INFO] main: testadmin listed all VM
+[2025-08-27 10:05:19] [INFO] main: testadmin listed all VM
+[2025-08-27 10:05:28] [INFO] main: testadmin change state of vm linux-template to start
+[2025-08-27 10:05:29] [INFO] main: testadmin listed all VM
+[2025-08-27 10:05:44] [INFO] main: testadmin change state of vm linux-template to shutdown
+[2025-08-27 10:05:45] [INFO] main: testadmin listed all VM
+[2025-08-27 10:05:56] [INFO] main: testadmin listed all VM
+[2025-08-27 10:05:58] [INFO] main: testadmin listed all VM
+[2025-08-27 10:24:38] [INFO] main: testadmin login
+[2025-08-27 10:24:38] [INFO] main: testadmin listed all VM
+[2025-08-27 10:24:49] [INFO] main: testadmin listed all VM

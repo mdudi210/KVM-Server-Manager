@@ -4,18 +4,39 @@
       <h2>⚙ VM Manager</h2>
     </div>
     <div class="user-section">
-      <button title="User Profile">{{ username }}</button>
+      <button @click="togglePanel" title="User Profile">{{ username[0].toUpperCase() }}</button>
+      <ProfileMenu :role="role" :username="username" :isVisible="isPanelVisible" @close="closeSidePanel"/>
     </div>
   </div>
 </template>
 
 <script>
+import ProfileMenu from './Menu.vue'
+
 export default {
   name: 'TopBar',
+  components: {
+    ProfileMenu
+  },
   props: {
     username: {
       type: String,
-      default: 'User'
+    },
+    role: {
+      type: String,
+    }
+  },
+  data() {
+    return {
+      isPanelVisible: false
+    };
+  },
+  methods: {
+    togglePanel() {
+      this.isPanelVisible = !this.isPanelVisible;
+    },
+    closeSidePanel() {
+      this.isPanelVisible = false;
     }
   }
 }
@@ -48,7 +69,7 @@ export default {
   height: 50px;
   border-radius: 50%;
   background: white;
-  color: rgb(221, 27, 27);
+  color: #d21919;
   border: none;
   font-weight: bold;
   font-size: 1.1rem;
