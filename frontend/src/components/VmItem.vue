@@ -1,25 +1,33 @@
 <template>
-  <div class="item" :class="{ colorr: current_state === 'shut off', colorg : current_state === 'running' }">
-    <div class="info">
-      <p><strong>{{ vm_name }}</strong></p>
-      <div>
-        <p id="status">Status: {{ current_state }}</p>
-      </div>
+  <div class="vm-card" :class="statusClass">
+    <!-- VM Info -->
+    <div class="vm-info">
+      <p class="vm-name"><strong>{{ vm_name }}</strong></p>
+      <p class="vm-status">Status: <span :class="statusTextClass">{{ current_state }}</span></p>
     </div>
-    <div>
+
+    <!-- Action Buttons (Only 2 max) -->
+    <div class="vm-actions">
+      <!-- Show Start if VM is stopped -->
       <button 
-        @click="changestate('start')" 
-        :disabled="current_state !== 'shut off'">
+        v-if="current_state === 'shut off'"
+        class="action-btn start-btn"
+        @click="changestate('start')">
         Start
       </button>
+
+      <!-- Show Shut Down & Reboot if VM is running -->
       <button 
-        @click="changestate('shutdown')" 
-        :disabled="current_state !== 'running'">
+        v-if="current_state === 'running'"
+        class="action-btn shutdown-btn"
+        @click="changestate('shutdown')">
         Shut Down
       </button>
+
       <button 
-        @click="changestate('reboot')" 
-        :disabled="current_state !== 'running'">
+        v-if="current_state === 'running'"
+        class="action-btn reboot-btn"
+        @click="changestate('reboot')">
         Reboot
       </button>
     </div>
@@ -35,20 +43,24 @@ export default {
     vm_name: String,
     current_state: String
   },
+  computed: {
+    statusClass() {
+      return this.current_state === 'running' ? 'status-running' : 'status-stopped';
+    },
+    statusTextClass() {
+      return this.current_state === 'running' ? 'text-green' : 'text-red';
+    }
+  },
   methods: {
     async changestate(state) {
       try {
         const token = JSON.parse(sessionStorage.getItem('user-info')).access_token;
         this.username = JSON.parse(atob(token.split('.')[1])).sub;
 
-        const response = await axios.post("http://127.0.0.1:8000/vm/state", {
-          state: state,
-          name: this.vm_name
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const response = await axios.post("http://127.0.0.1:8000/vm/state", 
+          { state: state, name: this.vm_name },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
         console.log(response.data.Body.output);
         this.$router.go(0);
@@ -61,52 +73,111 @@ export default {
 </script>
 
 <style scoped>
-.item {
-  width: 100%;
-  min-height: 60px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 12px;
+/* Card Layout */
+.vm-card {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  border-left: 6px solid transparent;
 }
 
-.info {
+/* Status-based colors */
+.status-running {
+  border-left-color: #28a745;
+}
+
+.status-stopped {
+  border-left-color: #dc3545;
+}
+
+/* VM Info Section */
+.vm-info {
+  margin-bottom: 12px;
+}
+
+.vm-name {
+  font-size: 1.1rem;
+  color: #1976d2;
+  margin: 0 0 4px 0;
+}
+
+.vm-status {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.text-green {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.text-red {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* Actions Section */
+.vm-actions {
   display: flex;
+  gap: 8px;
 }
 
-.info p {
-  margin: 2px 0;
-}
-
-button {
-  margin: 12px;
-  padding: 4px 12px;
-  cursor: pointer;
-  background-color: #007bff;
+.action-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-btn {
+  background: #28a745;
   color: white;
 }
 
-button:hover:enabled {
-  background-color: #0056b3;
+.shutdown-btn {
+  background: #dc3545;
+  color: white;
 }
 
-button:disabled {
-  background-color: #cccccc;
+.reboot-btn {
+  background: #ffc107;
+  color: #333;
+}
+
+.action-btn:hover:enabled {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.action-btn:disabled {
+  background: #ccc;
   cursor: not-allowed;
 }
 
-.item.colorr {
-  background-color: rgba(255, 72, 0, 0.767);
-}
+/* Responsive Design */
+@media (max-width: 600px) {
+  .vm-card {
+    padding: 12px;
+  }
 
-.item.colorg {
-  background-color: rgba(0, 128, 53, 0.623);
+  .vm-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
 }
 </style>

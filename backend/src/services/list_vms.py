@@ -6,8 +6,8 @@ from backend.src.utils.parse_vm_status import parse_vm_status
 
 router = APIRouter()
 
-@router.get("/vms")
-def list_all_vm(claims = Depends(verify_user)):
+@router.get("/vm")
+def list_all_vm(claims = Depends(verify_user),vm_name = None):
     logger = setup_logger("main")
     client = ssh_client()
     if isinstance(client, str):
@@ -17,17 +17,27 @@ def list_all_vm(claims = Depends(verify_user)):
                 "output" : client
             }
         }
-    command_to_execute = "virsh list --all"
+    if vm_name:
+        command_to_execute = f"virsh domstate {vm_name}"
+        stdin, stdout, stderr = client.exec_command(command_to_execute)
+        output = stdout.read().decode().strip()
+        error = stderr.read().decode().strip()
+    else:
+        command_to_execute = "virsh list --all"
+        stdin, stdout, stderr = client.exec_command(command_to_execute)
+        output = stdout.read().decode().strip()
+        error = stderr.read().decode().strip()
+        output = parse_vm_status(output)
 
-    stdin, stdout, stderr = client.exec_command(command_to_execute)
-    output = stdout.read().decode().strip()
-    error = stderr.read().decode().strip()
+    # stdin, stdout, stderr = client.exec_command(command_to_execute)
+    # output = stdout.read().decode().strip()
+    # error = stderr.read().decode().strip()
     if output:
         logger.info(f"{claims.get("sub")} listed all VM")
         return {
             "Message" : "",
             "Body" : {
-                "output" : parse_vm_status(output)
+                "output" : output
             }
         }
     if error:

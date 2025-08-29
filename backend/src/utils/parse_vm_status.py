@@ -19,4 +19,6 @@ def parse_vm_status(text):
             }
             vm_list.append(vm)
 
+    vm_list = sorted(vm_list, key=lambda x: x['Name'])
+
     return vm_list

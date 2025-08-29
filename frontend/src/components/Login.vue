@@ -1,9 +1,29 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h2 class="title">Login</h2>
-      <input type="text" placeholder="Enter your Username" v-model="username" required>
-      <input type="password" placeholder="Enter your Password" @keyup.enter="login" v-model="password" required>
+      <h2 class="title">Welcome Back</h2>
+      <p class="subtitle">Please login to continue</p>
+
+      <input 
+        type="text" 
+        placeholder="Enter your Username" 
+        v-model="username" 
+        required
+        ref="usernameInput"
+        @keyup.enter="$refs.passwordInput.focus()" 
+        @keyup.down="$refs.passwordInput.focus()"
+      >
+
+      <input 
+        type="password" 
+        placeholder="Enter your Password" 
+        v-model="password" 
+        ref="passwordInput"
+        @keyup.enter="login"
+        @keyup.up="$refs.usernameInput.focus()"
+        required
+      >
+
       <button @click="login">Login</button>
     </div>
   </div>
@@ -23,46 +43,42 @@ export default {
   },
   methods: {
     async login() {
-    try {
-      let response = await axios.post("http://127.0.0.1:8000/login",{
-        username: this.username,
-        password: this.password
-      })
-      console.log("hello")
-      if(response.status==200){
-        sessionStorage.setItem('user-info',JSON.stringify(response.data))
-        this.token = response.data.access_token; 
-        this.username = JSON.parse(atob(this.token.split('.')[1])).sub;
-        console.log("Login successful:", this.username);
-        this.$router.push({name:'VmHome'})
+      try {
+        let response = await axios.post("http://127.0.0.1:8000/login", {
+          username: this.username,
+          password: this.password
+        })
+        
+        if(response.status === 200){
+          sessionStorage.setItem('user-info', JSON.stringify(response.data))
+          this.token = response.data.access_token; 
+          this.username = JSON.parse(atob(this.token.split('.')[1])).sub;
+          this.$router.push({name:'VmHome'})
+        } else if(response.status === 401){
+          alert('Incorrect username or password')
+        }
+      } catch (error) {
+        alert('Incorrect username or password')
+        console.error("Login failed:", error.response?.data || error.message);
       }
-      else if(response.status==401){
-        alert('Entered worng username or password')
-      }
-    } catch (error) {
-      alert('Entered worng username or password')
-      console.error("Login failed:", error.response?.data || error.message);
-    }
     },
   },
   async mounted(){
     let user = sessionStorage.getItem('user-info')
     if(user){
-      const token = JSON.parse(sessionStorage.getItem('user-info')).access_token
-      await axios.get("http://127.0.0.1:8000/check-token",{
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+      const token = JSON.parse(user).access_token
+      await axios.get("http://127.0.0.1:8000/check-token", {
+        headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        if(response.data.valid === true){
+        if(response.data.valid){
           this.$router.push({name:'VmHome'})
         } else {
           this.$router.push({name:'Login'})
         }
       })
       .catch(error => {
-        console.log('API call failed',error)
+        console.log('API call failed', error)
       })
     }
   }
@@ -75,52 +91,90 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(120deg, #f6f9fc, #e3f2fd);
+  background: linear-gradient(135deg, #e3f2fd, #f6f9fc);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem;
 }
 
 .login-card {
   background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  width: 300px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
   text-align: center;
 }
 
 .title {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
   margin-bottom: 1.5rem;
-  font-family: Arial, sans-serif;
-  color: #333;
 }
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.3s ease;
 }
 
 input:focus {
   border-color: #1976d2;
+  box-shadow: 0 0 6px rgba(25, 118, 210, 0.4);
 }
 
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #1976d2;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background: #125aa1;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  input, button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 </style>

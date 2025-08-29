@@ -1,11 +1,21 @@
 <template>
-  <div>
+  <div class="home-container">
+    <!-- Top Navigation Bar -->
     <TopBar :username="username" :role="role"/>
+
+    <!-- Main Body Section -->
     <div class="body">
-      <VmItem v-for="vm in vmlist"
-      :key="vm.Id"
-      :vm_name="vm.Name"
-      :current_state="vm.State"/>
+      <h2 class="page-title">Your Virtual Machines</h2>
+
+      <!-- VM List -->
+      <div class="vm-grid">
+        <VmItem 
+          v-for="vm in vmlist"
+          :key="vm.Id"
+          :vm_name="vm.Name"
+          :current_state="vm.State"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -30,41 +40,38 @@ export default {
   },
   async mounted() {
     let user = sessionStorage.getItem('user-info')
-    if(!user){
+    if (!user) {
       this.$router.push({name:'Login'})
-    }
-    else {
-      const token = JSON.parse(sessionStorage.getItem('user-info')).access_token
-      await axios.get("http://127.0.0.1:8000/check-token",{
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    } else {
+      const token = JSON.parse(user).access_token
+      
+      // Token Validation
+      await axios.get("http://127.0.0.1:8000/check-token", {
+        headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        console.log(response.data)
-        if(response.data.valid === false){
-          console.log(response)
+        if (response.data.valid === false) {
           sessionStorage.removeItem('user-info')
           this.$router.push({name:'Login'})
         }
       })
       .catch(error => {
-        console.log('API call failed',error)
+        console.log('API call failed', error)
       })
 
-      this.username = JSON.parse(sessionStorage.getItem('user-info')).username
-      this.role = JSON.parse(sessionStorage.getItem('user-info')).role
-      await axios.get("http://127.0.0.1:8000/vms",{
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+      // Set User Info
+      this.username = JSON.parse(user).username
+      this.role = JSON.parse(user).role
+
+      // Fetch VM List
+      await axios.get("http://127.0.0.1:8000/vm", {
+        headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
         this.vmlist = response.data.Body.output
-        console.log(this.vmlist)
       })
       .catch(error => {
-        console.log('API call failed',error)
+        console.log('API call failed', error)
       })
     }
   },
@@ -72,13 +79,43 @@ export default {
 </script>
 
 <style scoped>
-li {
-  list-style: none;
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f9fc, #e3f2fd);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.header {
-  margin: 10px;
-}
+
 .body {
-  margin: 20px;
+  flex: 1;
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.vm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .body {
+    padding: 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
 }
 </style>

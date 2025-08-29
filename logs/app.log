@@ -896,3 +896,193 @@ error: Requested operation is not valid: domain is not running when changing sta
 [2025-08-27 10:24:38] [INFO] main: testadmin login
 [2025-08-27 10:24:38] [INFO] main: testadmin listed all VM
 [2025-08-27 10:24:49] [INFO] main: testadmin listed all VM
+[2025-08-27 15:33:49] [INFO] main: testadmin login
+[2025-08-27 15:33:49] [INFO] main: testadmin listed all VM
+[2025-08-27 15:34:03] [INFO] main: testadmin change state of vm linux-template to start
+[2025-08-27 15:34:04] [INFO] main: testadmin listed all VM
+[2025-08-27 15:34:45] [INFO] main: testadmin change state of vm linux-template to shutdown
+[2025-08-27 15:34:46] [INFO] main: testadmin listed all VM
+[2025-08-27 15:38:01] [INFO] main: testadmin login
+[2025-08-27 15:38:02] [INFO] main: testadmin listed all VM
+[2025-08-27 15:41:38] [INFO] main: testadmin listed all VM
+[2025-08-27 15:43:56] [INFO] main: testadmin listed all VM
+[2025-08-27 15:43:57] [INFO] main: testadmin listed all VM
+[2025-08-27 15:47:49] [INFO] main: testadmin listed all VM
+[2025-08-27 15:48:27] [INFO] main: testadmin change state of vm win-template to start
+[2025-08-27 15:48:27] [INFO] main: testadmin listed all VM
+[2025-08-27 15:50:01] [INFO] main: testadmin login
+[2025-08-27 15:50:23] [ERROR] main: testadmin got ERROR    Domain to clone must be shutoff. when cloning Windows vm named win-clone1
+[2025-08-27 15:50:29] [INFO] main: testadmin change state of vm win-template to shutdown
+[2025-08-27 15:50:30] [INFO] main: testadmin listed all VM
+[2025-08-27 15:50:33] [INFO] main: testadmin listed all VM
+[2025-08-27 15:50:58] [INFO] main: testadmin listed all VM
+[2025-08-27 15:52:12] [INFO] main: testadmin cloned Windows vm named win-clone1
+[2025-08-27 15:54:06] [INFO] main: testadmin listed all VM
+[2025-08-27 15:55:16] [INFO] main: testadmin cloned Windows vm named win-clone2
+[2025-08-27 15:55:53] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:20] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:21] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:22] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:23] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:23] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:23] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:24] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:24] [INFO] main: testadmin listed all VM
+[2025-08-27 15:56:25] [INFO] main: testadmin listed all VM
+[2025-08-27 15:57:08] [INFO] main: testadmin cloned Windows vm named win-clone3
+[2025-08-27 15:57:19] [INFO] main: testadmin listed all VM
+[2025-08-27 15:57:36] [INFO] main: testadmin cloned Linux vm named linux-clone1
+[2025-08-27 16:01:42] [INFO] main: testadmin change state of vm linux-clone1 to start
+[2025-08-27 16:01:43] [INFO] main: testadmin listed all VM
+[2025-08-27 16:02:14] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-27 16:02:14] [INFO] main: testadmin listed all VM
+[2025-08-27 16:02:41] [INFO] main: testadmin listed all VM
+[2025-08-27 16:02:58] [INFO] main: testadmin cloned Linux vm named linux-clone2
+[2025-08-27 16:03:12] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:14] [INFO] main: testadmin change state of vm linux-clone1 to start
+[2025-08-27 16:03:15] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:24] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-27 16:03:24] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:28] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:29] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:30] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:31] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:39] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:41] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-27 16:03:41] [INFO] main: testadmin listed all VM
+[2025-08-27 16:03:49] [INFO] main: testadmin listed all VM
+[2025-08-27 16:04:03] [INFO] main: testadmin listed all VM
+[2025-08-27 16:04:37] [INFO] main: testadmin listed all VM
+[2025-08-27 16:04:40] [INFO] main: testadmin change state of vm linux-clone1 to start
+[2025-08-27 16:04:40] [INFO] main: testadmin listed all VM
+[2025-08-27 16:10:11] [INFO] main: testadmin listed all VM
+[2025-08-27 16:18:21] [INFO] main: testadmin change state of vm linux-clone2 to start
+[2025-08-27 16:18:22] [INFO] main: testadmin listed all VM
+[2025-08-27 16:18:27] [INFO] main: testadmin change state of vm win-clone2 to start
+[2025-08-27 16:18:27] [INFO] main: testadmin listed all VM
+[2025-08-27 17:02:21] [ERROR] main: Entered wrong password
+[2025-08-27 17:02:50] [INFO] main: testadmin login
+[2025-08-27 17:05:04] [INFO] main: testadmin login
+[2025-08-27 17:06:45] [INFO] main: testadmin login
+[2025-08-28 12:30:19] [INFO] main: testadmin login
+[2025-08-28 12:30:24] [INFO] main: testadmin listed all VM
+[2025-08-28 12:30:42] [INFO] main: testadmin login
+[2025-08-28 12:30:43] [INFO] main: testadmin listed all VM
+[2025-08-28 15:57:27] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:39] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:41] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:41] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:42] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:43] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:44] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:44] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:45] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:45] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:46] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:46] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:47] [ERROR] main: Entered wrong password
+[2025-08-28 15:57:48] [ERROR] main: Entered wrong password
+[2025-08-28 15:58:59] [ERROR] main: Entered wrong password
+[2025-08-28 16:00:47] [ERROR] main: testadmin Entered wrong password
+[2025-08-28 16:00:52] [ERROR] main: testadmin Entered wrong password
+[2025-08-28 16:05:46] [ERROR] main:  Entered wrong password
+[2025-08-28 16:06:08] [ERROR] main: ahfgkg Entered wrong password
+[2025-08-28 16:32:11] [INFO] main: testadmin login
+[2025-08-28 16:32:12] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:15] [INFO] main: testadmin change state of vm win-clone2 to shutdown
+[2025-08-28 16:33:16] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:20] [INFO] main: testadmin change state of vm linux-clone2 to shutdown
+[2025-08-28 16:33:21] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:36] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:43] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:44] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:45] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:45] [INFO] main: testadmin listed all VM
+[2025-08-28 16:33:46] [INFO] main: testadmin listed all VM
+[2025-08-28 16:35:03] [INFO] main: testadmin listed all VM
+[2025-08-28 16:38:47] [INFO] main: testadmin listed all VM
+[2025-08-28 16:38:53] [INFO] main: testadmin change state of vm win-clone2 to shutdown
+[2025-08-28 16:38:53] [INFO] main: testadmin change state of vm win-clone2 to shutdown
+[2025-08-28 16:38:53] [INFO] main: testadmin change state of vm win-clone2 to shutdown
+[2025-08-28 16:38:53] [INFO] main: testadmin change state of vm win-clone2 to shutdown
+[2025-08-28 16:38:53] [INFO] main: testadmin change state of vm win-clone2 to shutdown
+[2025-08-28 16:38:54] [INFO] main: testadmin listed all VM
+[2025-08-28 16:38:56] [INFO] main: testadmin listed all VM
+[2025-08-28 16:38:58] [INFO] main: testadmin listed all VM
+[2025-08-28 16:39:38] [INFO] main: testadmin listed all VM
+[2025-08-28 16:39:48] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-28 16:39:49] [INFO] main: testadmin listed all VM
+[2025-08-28 16:40:18] [INFO] main: testadmin listed all VM
+[2025-08-28 16:41:38] [INFO] main: testadmin change state of vm linux-clone1 to start
+[2025-08-28 16:41:39] [INFO] main: testadmin listed all VM
+[2025-08-28 16:42:20] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-28 16:42:20] [INFO] main: testadmin listed all VM
+[2025-08-28 16:44:44] [INFO] main: testadmin listed all VM
+[2025-08-28 16:44:51] [INFO] main: testadmin change state of vm linux-clone1 to start
+[2025-08-28 16:44:52] [INFO] main: testadmin listed all VM
+[2025-08-28 16:44:55] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-28 16:44:56] [INFO] main: testadmin listed all VM
+[2025-08-28 16:45:49] [INFO] main: testadmin listed all VM
+[2025-08-28 16:45:51] [INFO] main: testadmin change state of vm linux-clone1 to shutdown
+[2025-08-28 16:45:52] [INFO] main: testadmin listed all VM
+[2025-08-28 16:45:55] [INFO] main: testadmin listed all VM
+[2025-08-28 16:46:22] [INFO] main: testadmin change state of vm linux-clone2 to start
+[2025-08-28 16:46:23] [INFO] main: testadmin listed all VM
+[2025-08-28 16:47:45] [INFO] main: testadmin change state of vm linux-clone2 to shutdown
+[2025-08-28 16:47:46] [INFO] main: testadmin listed all VM
+[2025-08-28 16:48:06] [INFO] main: testadmin listed all VM
+[2025-08-28 16:55:02] [INFO] main: testadmin listed all VM
+[2025-08-28 16:55:27] [INFO] main: testadmin change state of vm win-clone1 to start
+[2025-08-28 16:55:36] [INFO] main: testadmin listed all VM
+[2025-08-28 16:55:52] [INFO] main: testadmin change state of vm win-clone1 to shutdown
+[2025-08-28 17:00:10] [INFO] main: testuser login
+[2025-08-28 17:00:11] [INFO] main: testuser listed all VM
+[2025-08-28 17:11:11] [INFO] main: testadmin cloned Linux vm named linux-clone3
+[2025-08-28 17:50:33] [INFO] main: testadmin login
+[2025-08-28 17:50:33] [INFO] main: testadmin listed all VM
+[2025-08-29 12:25:39] [INFO] main: testadmin listed all VM
+[2025-08-29 12:31:48] [INFO] main: testadmin listed all VM
+[2025-08-29 12:32:50] [INFO] main: testadmin listed all VM
+[2025-08-29 12:38:15] [INFO] main: testadmin listed all VM
+[2025-08-29 12:45:14] [INFO] main: testadmin login
+[2025-08-29 12:45:37] [INFO] main: testadmin listed all VM
+[2025-08-29 12:45:42] [INFO] main: testadmin change state of vm linux-clone3 to start
+[2025-08-29 12:45:43] [INFO] main: testadmin listed all VM
+[2025-08-29 12:45:45] [INFO] main: testadmin change state of vm win-clone3 to shutdown
+[2025-08-29 12:45:46] [INFO] main: testadmin listed all VM
+[2025-08-29 12:45:48] [INFO] main: testadmin change state of vm linux-clone3 to shutdown
+[2025-08-29 12:45:48] [INFO] main: testadmin listed all VM
+[2025-08-29 12:46:41] [INFO] main: testadmin listed all VM
+[2025-08-29 12:46:45] [INFO] main: testadmin change state of vm win-clone3 to shutdown
+[2025-08-29 12:46:45] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:05] [ERROR] main: testadmin got error: Failed to shutdown domain 'win-clone3'
+error: Requested operation is not valid: domain is not running when changing state of vm win-clone3 to shutdown
+[2025-08-29 12:47:06] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:11] [INFO] main: testadmin change state of vm linux-clone3 to shutdown
+[2025-08-29 12:47:11] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:17] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:22] [INFO] main: testadmin change state of vm win-clone3 to start
+[2025-08-29 12:47:23] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:24] [INFO] main: testadmin change state of vm linux-clone3 to start
+[2025-08-29 12:47:24] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:27] [INFO] main: testadmin change state of vm win-clone1 to start
+[2025-08-29 12:47:27] [INFO] main: testadmin listed all VM
+[2025-08-29 12:47:58] [INFO] main: testadmin change state of vm win-clone3 to shutdown
+[2025-08-29 12:47:59] [INFO] main: testadmin listed all VM
+[2025-08-29 12:48:06] [INFO] main: testadmin change state of vm win-clone1 to shutdown
+[2025-08-29 12:48:07] [INFO] main: testadmin listed all VM
+[2025-08-29 12:48:10] [INFO] main: testadmin change state of vm linux-clone3 to shutdown
+[2025-08-29 12:48:10] [INFO] main: testadmin listed all VM
+[2025-08-29 12:48:20] [INFO] main: testadmin listed all VM
+[2025-08-29 15:05:23] [INFO] main: testadmin listed all VM
+[2025-08-29 15:05:51] [INFO] main: testadmin listed all VM
+[2025-08-29 15:09:46] [INFO] main: testadmin listed all VM
+[2025-08-29 15:09:53] [INFO] main: testadmin listed all VM
+[2025-08-29 15:10:36] [INFO] main: testadmin listed all VM
+[2025-08-29 15:20:54] [INFO] main: testadmin listed all VM
+[2025-08-29 15:21:03] [INFO] main: testadmin listed all VM
+[2025-08-29 15:21:07] [INFO] main: testadmin listed all VM
+[2025-08-29 15:21:13] [INFO] main: testadmin listed all VM
+[2025-08-29 15:23:12] [INFO] main: testadmin listed all VM
+[2025-08-29 15:25:53] [INFO] main: testadmin listed all VM
+[2025-08-29 15:25:56] [INFO] main: testadmin listed all VM
