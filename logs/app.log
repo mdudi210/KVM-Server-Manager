@@ -1280,3 +1280,106 @@ error: Requested operation is not valid: domain is not running when changing sta
 [2025-09-08 14:19:57] [INFO] main: testadmin listed all VM
 [2025-09-08 14:20:34] [INFO] main: testadmin listed all VM
 [2025-09-08 14:54:11] [INFO] main: testadmin listed all VM
+[2025-09-08 20:19:35] [INFO] main: testadmin login
+[2025-09-08 20:20:23] [INFO] main: testadmin listed all VM
+[2025-09-08 20:20:30] [INFO] main: testadmin listed all VM
+[2025-09-08 21:35:12] [ERROR] vm router: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-08 21:35:12] [ERROR] vm router: Failed to execute SSH command: virsh list --all
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+[2025-09-08 21:35:12] [ERROR] vm router: Unexpected error occurred while retrieving VM info
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 49, in list_all_vm
+    output, error = execute_ssh_command(client, command)
+                    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 19, in execute_ssh_command
+    raise HTTPException(status_code=500, details="SSH command execution failed")
+          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: HTTPException.__init__() got an unexpected keyword argument 'details'. Did you mean 'detail'?
+[2025-09-08 21:35:22] [INFO] main: testadmin login
+[2025-09-08 21:37:33] [ERROR] vm router: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-08 21:37:33] [ERROR] vm router: Failed to execute SSH command: virsh list --all
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+[2025-09-08 21:37:33] [ERROR] vm router: Unexpected error occurred while retrieving VM info
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 49, in list_all_vm
+    output, error = execute_ssh_command(client, command)
+                    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 19, in execute_ssh_command
+    raise HTTPException(status_code=500, details="SSH command execution failed")
+          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: HTTPException.__init__() got an unexpected keyword argument 'details'. Did you mean 'detail'?
+[2025-09-08 21:38:25] [ERROR] vm router: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-08 21:38:25] [ERROR] vm router: Failed to execute SSH command: virsh list --all
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+[2025-09-08 21:38:25] [ERROR] vm router: Unexpected error occurred while retrieving VM info
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 49, in list_all_vm
+    output, error = execute_ssh_command(client, command)
+                    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 19, in execute_ssh_command
+    raise HTTPException(status_code=500, details="SSH command execution failed")
+          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: HTTPException.__init__() got an unexpected keyword argument 'details'. Did you mean 'detail'?
+[2025-09-08 21:39:19] [ERROR] vm router: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-08 21:39:19] [ERROR] vm router: Failed to execute SSH command: virsh list --all
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'exec_command'
+[2025-09-08 21:40:00] [ERROR] vm router: Failed to execute SSH command: virsh list --all
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                                                ^^^^^^^^^^^^^^^^^^
+NameError: name 'command_to_execute' is not defined
+[2025-09-08 21:40:06] [ERROR] vm router: Failed to execute SSH command: virsh list --all
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\list_vms.py", line 13, in execute_ssh_command
+    stdin, stdout, stderr = client.exec_command(command_to_execute)
+                                                ^^^^^^^^^^^^^^^^^^
+NameError: name 'command_to_execute' is not defined
+[2025-09-08 21:40:36] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:41:39] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:42:03] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:42:18] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:45:15] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:45:52] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:45:57] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 21:46:05] [INFO] vm router: testadmin retrieved VM info successfully
