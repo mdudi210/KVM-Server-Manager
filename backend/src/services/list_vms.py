@@ -1,50 +1,62 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Query
 from backend.src.utils.ssh import ssh_client
 from backend.src.auth.user_auth import verify_user
 from backend.config.logging_setting import setup_logger
 from backend.src.utils.parse_vm_status import parse_vm_status
+import paramiko
 
 router = APIRouter()
+logger = setup_logger("vm endpoint")
+
+
+def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
+    try:
+        stdin, stdout, stderr = client.exec_command(command)
+        output = stdout.read().decode().strip()
+        error = stderr.read().decode().strip()
+        return output, error
+    except Exception as e:
+        logger.exception(f"Failed to execute SSH command: {command}")
+        raise HTTPException(status_code=500, detail="SSH command execution failed")
+
 
 @router.get("/vm")
-def list_all_vm(claims = Depends(verify_user),vm_name = None):
-    logger = setup_logger("main")
-    client = ssh_client()
-    if isinstance(client, str):
-        return {
-            "Message" : "",
-            "Body" : {
-                "output" : client
-            }
-        }
-    if vm_name:
-        command_to_execute = f"virsh domstate {vm_name}"
-        stdin, stdout, stderr = client.exec_command(command_to_execute)
-        output = stdout.read().decode().strip()
-        error = stderr.read().decode().strip()
-    else:
-        command_to_execute = "virsh list --all"
-        stdin, stdout, stderr = client.exec_command(command_to_execute)
-        output = stdout.read().decode().strip()
-        error = stderr.read().decode().strip()
-        output = parse_vm_status(output)
+def list_all_vm(
+    claims: dict = Depends(verify_user),
+    vm_name: str | None = Query(default=None)
+    ):
 
-    # stdin, stdout, stderr = client.exec_command(command_to_execute)
-    # output = stdout.read().decode().strip()
-    # error = stderr.read().decode().strip()
-    if output:
-        logger.info(f"{claims.get("sub")} listed all VM")
+    client = ssh_client()
+    if isinstance(client, str):  
+        logger.error(f"SSH connection failed: {client}")
+        raise HTTPException(status_code=500, detail="SSH connection failed")
+
+    try:
+        if vm_name:
+            command = f"virsh domstate {vm_name}"
+            output, error = execute_ssh_command(client, command)
+        else:
+            command = "virsh list --all"
+            output, error = execute_ssh_command(client, command)
+            if output:
+                output = parse_vm_status(output)
+
+        if error:
+            logger.error(f"{claims.get('sub')} encountered error: {error}")
+            raise HTTPException(status_code=500, detail=error)
+
+        logger.info(f"{claims.get('sub')} retrieved VM info successfully")
         return {
-            "Message" : "",
-            "Body" : {
-                "output" : output
+            "Message": "VM info retrieved successfully",
+            "Body": {
+                "output": output
             }
         }
-    if error:
-        logger.error(f"{claims.get("sub")} got {error} when listing all VM")
-        return {
-            "Message" : "",
-            "Body" : {
-                "output" : error
-            }
-        }
+
+    except HTTPException:
+        raise  # Re-raise HTTP exceptions to FastAPI
+    except Exception as e:
+        logger.exception("Unexpected error occurred while retrieving VM info")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        client.close()

@@ -6,34 +6,54 @@ from backend.src.utils.db_connection import OpenDb
 from backend.config.logging_setting import setup_logger
 from backend.config import JWT_auth_setting
 from datetime import timedelta
-    
+import psycopg2  # or mysql.connector depending on your DB
+
 router = APIRouter()
+logger = setup_logger("login endpoint")
+
 
 @router.post("/login")
 def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
-    logger = setup_logger("main")
-    hashed_password = hash_password(data.password)
-    with OpenDb() as cursor:
-        cursor.execute(
-            "SELECT id,username, password,role_id FROM users WHERE username=%s",(data.username,),
+    try:
+        hashed_password = hash_password(data.password)
+
+        with OpenDb() as cursor:
+            cursor.execute(
+                "SELECT id, username, password, role_id FROM users WHERE username = %s",
+                (data.username,)
             )
-        result = cursor.fetchone()
+            result = cursor.fetchone()
 
-    if not result or result[2] != hashed_password:
-        logger.error(f"{data.username} Entered wrong password")
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-    
-    # JWT Payload (sub = subject is usually the username or email)
-    access_token = Authorize.create_access_token(
-        subject=result[1],  # username
-        expires_time=timedelta(days=7),
-        user_claims={"id": result[0], "role": result[3]}  # custom claims
-    )
+        if not result or result[2] != hashed_password:
+            logger.warning(f"Failed login attempt for username: {data.username}")
+            raise HTTPException(status_code=401, detail="Invalid username or password")
 
-    logger.info(f"{result[1]} login")
-    return {
-        "access_token": access_token,
-        "id": result[0],
-        "username": result[1],
-        "role": result[3]
-    }
+        try:
+            access_token = Authorize.create_access_token(
+                subject=result[1],
+                expires_time=timedelta(days=7),
+                user_claims={
+                    "id": result[0],
+                    "role": result[3]
+                }
+            )
+        except Exception as jwt_error:
+            logger.exception("Error while generating JWT token")
+            raise HTTPException(status_code=500, detail="Token generation failed")
+
+        logger.info(f"User '{result[1]}' logged in successfully")
+        return {
+            "access_token": access_token,
+            "id": result[0],
+            "username": result[1],
+            "role": result[3]
+        }
+
+    except psycopg2.Error as db_error:
+        logger.exception("Database error occurred during login")
+        raise HTTPException(status_code=500, detail="Database connection error")
+    except HTTPException:
+        raise  # Re-raise explicit FastAPI HTTP errors
+    except Exception as e:
+        logger.exception("Unexpected error in login API")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
