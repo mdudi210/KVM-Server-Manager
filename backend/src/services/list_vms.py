@@ -19,7 +19,8 @@ def list_all_vm(claims = Depends(verify_user),vm_name = None):
         }
     if vm_name:
         command_to_execute = f"virsh domstate {vm_name}"
-        stdin, stdout, stderr = client.exec_command(command_to_execute)
+        stdin, stdout, stderr = client.exec_com
+        mand(command_to_execute)
         output = stdout.read().decode().strip()
         error = stderr.read().decode().strip()
     else:

@@ -3,45 +3,69 @@ from backend.src.utils.ssh import ssh_client
 from backend.src.schema.schema import CloneRequest
 from backend.src.auth.admin_auth import verify_admin
 from backend.config.logging_setting import setup_logger
-
+import paramiko
+import shlex  # for safe command argument escaping
 
 router = APIRouter()
+logger = setup_logger("vm_clone")
+
+
+def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
+    """
+    Execute command over SSH and return output and error.
+    """
+    try:
+        stdin, stdout, stderr = client.exec_command(command)
+        output = stdout.read().decode().strip()
+        error = stderr.read().decode().strip()
+        return output, error
+    except Exception as e:
+        logger.exception(f"SSH command execution failed: {command}")
+        raise HTTPException(status_code=500, detail="SSH command execution failed")
+
 
 @router.post("/vm/clone")
-def create_clone(data : CloneRequest, claims = Depends(verify_admin)):
-    logger = setup_logger("main")
+def create_clone(data: CloneRequest, claims=Depends(verify_admin)):
+    """
+    Clone a new VM from a base template (Linux or Windows).
+    """
     client = ssh_client()
-    command_to_execute = ""
+    if isinstance(client, str):  # ssh_client returned error message
+        logger.error(f"SSH connection failed: {client}")
+        raise HTTPException(status_code=500, detail="SSH connection failed")
+
+    # Sanitize VM name (to avoid command injection)
+    safe_vm_name = shlex.quote(data.name)
 
     if data.vmtoinstall == "Linux":
-        command_to_execute = f"sudo virt-clone --original linux-template --name {data.name} --file /home/{data.name}.qcow2"
+        command = f"sudo virt-clone --original linux-template --name {safe_vm_name} --file /home/{safe_vm_name}.qcow2"
     elif data.vmtoinstall == "Windows":
-        command_to_execute = f"sudo virt-clone --original win-template --name {data.name} --file /home/{data.name}.qcow2"
+        command = f"sudo virt-clone --original win-template --name {safe_vm_name} --file /home/{safe_vm_name}.qcow2"
     else:
-        logger.error(f"Entered invalid vm type")
+        logger.warning(f"Invalid VM type entered: {data.vmtoinstall}")
         raise HTTPException(status_code=400, detail="Invalid VM Type")
 
-    
-    stdin, stdout, stderr = client.exec_command(command_to_execute)
-    output = stdout.read().decode().strip()
-    error = stderr.read().decode().strip()
-    if output:
-        print("Command Output:")
-        print(output)
-        logger.info(f"{claims.get("sub")} cloned {data.vmtoinstall} vm named {data.name}")
+    try:
+        output, error = execute_ssh_command(client, command)
+
+        if error:
+            logger.error(
+                f"{claims.get('sub')} encountered error while cloning {data.vmtoinstall} VM '{data.name}': {error}"
+            )
+            raise HTTPException(status_code=500, detail=error)
+
+        logger.info(
+            f"{claims.get('sub')} cloned {data.vmtoinstall} VM successfully: {data.name}"
+        )
         return {
-            "Message" : "",
-            "Body" : {
-                "output" : output
-            }
+            "Message": f"{data.vmtoinstall} VM cloned successfully",
+            "Body": {"output": output},
         }
-    if error:
-        print("Command Error:")
-        print(error)
-        logger.error(f"{claims.get("sub")} got {error} when cloning {data.vmtoinstall} vm named {data.name}")
-        return {
-            "Message" : "",
-            "Body" : {
-                "output" : error
-            }
-        }
+
+    except HTTPException:
+        raise
+    except Exception:
+        logger.exception("Unexpected error during VM clone operation")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        client.close()
