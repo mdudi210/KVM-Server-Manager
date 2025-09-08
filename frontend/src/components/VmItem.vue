@@ -1,22 +1,16 @@
 <template>
   <div class="vm-card" :class="statusClass">
-    <!-- VM Info -->
     <div class="vm-info">
       <p class="vm-name"><strong>{{ vm_name }}</strong></p>
       <p class="vm-status">Status: <span :class="statusTextClass">{{ current_state }}</span></p>
     </div>
-
-    <!-- Action Buttons (Only 2 max) -->
     <div class="vm-actions">
-      <!-- Show Start if VM is stopped -->
       <button 
         v-if="current_state === 'shut off'"
         class="action-btn start-btn"
         @click="changestate('start')">
         Start
       </button>
-
-      <!-- Show Shut Down & Reboot if VM is running -->
       <button 
         v-if="current_state === 'running'"
         class="action-btn shutdown-btn"
@@ -61,9 +55,37 @@ export default {
           { state: state, name: this.vm_name },
           { headers: { Authorization: `Bearer ${token}` } }
         );
-
         console.log(response.data.Body.output);
-        this.$router.go(0);
+
+
+        await axios.get("http://127.0.0.1:8000/vm", {
+          params: {
+            vm_name : this.vm_name
+          },
+          headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(response => {
+          console.log("hello")
+          console.log(response.data.Body.output)
+
+        })
+        .catch(error => {
+          console.log('API call failed', error)
+        })
+
+
+        this.$parent.vmlist.forEach(element => {
+          if(element.Name === this.vm_name){
+            if(state === "shutdown"){
+              state = "shut off"
+            }else if(state === "start"){
+              state = "running"
+            }else if(state == 'reboot'){
+              state = 'running'
+            }
+            element.State = state
+          } 
+        });
       } catch (error) {
         console.error('API call failed', error);
       }
@@ -73,7 +95,6 @@ export default {
 </script>
 
 <style scoped>
-/* Card Layout */
 .vm-card {
   display: flex;
   flex-direction: column;
@@ -87,7 +108,6 @@ export default {
   border-left: 6px solid transparent;
 }
 
-/* Status-based colors */
 .status-running {
   border-left-color: #28a745;
 }
@@ -96,7 +116,6 @@ export default {
   border-left-color: #dc3545;
 }
 
-/* VM Info Section */
 .vm-info {
   margin-bottom: 12px;
 }
@@ -123,7 +142,6 @@ export default {
   font-weight: 600;
 }
 
-/* Actions Section */
 .vm-actions {
   display: flex;
   gap: 8px;
@@ -166,7 +184,6 @@ export default {
   cursor: not-allowed;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
   .vm-card {
     padding: 12px;

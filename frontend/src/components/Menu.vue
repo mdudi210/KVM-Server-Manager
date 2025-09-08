@@ -13,6 +13,9 @@
       <!-- Body -->
       <div class="side-panel-body">
         <h4>{{ isAdmin ? 'Admin Dashboard' : 'User Dashboard' }}</h4>
+        <div v-if="isAdmin" class="admin-menu">
+          <h5>Create VM</h5>
+        </div>
         <slot></slot>
       </div>
 
@@ -156,6 +159,12 @@ export default {
 
 .logout-btn:hover {
   background: #0d6efd;
+}
+
+.admin-menu {
+  color: black;
+  padding-left: 0px;
+  margin-left: 0px;
 }
 
 /* Animations */

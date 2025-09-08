@@ -12,7 +12,7 @@ const routes = [
         name: 'VmHome',
         component: VmHome,
         path: '/'
-    },
+    }
 ]
 const router = createRouter({
     history:createWebHistory(),

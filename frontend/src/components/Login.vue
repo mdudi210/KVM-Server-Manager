@@ -10,7 +10,7 @@
         v-model="username" 
         required
         ref="usernameInput"
-        @keyup.enter="$refs.passwordInput.focus()" 
+        @keyup.enter="$refs.passwordInput.focus()"
         @keyup.down="$refs.passwordInput.focus()"
       >
 
@@ -23,6 +23,7 @@
         @keyup.up="$refs.usernameInput.focus()"
         required
       >
+      <p v-if="login_failed" >Incorrect username or password</p>
 
       <button @click="login">Login</button>
     </div>
@@ -38,7 +39,8 @@ export default {
     return {
       token: '',
       username: '',
-      password: '' 
+      password: '',
+      login_failed: false,
     }
   },
   methods: {
@@ -55,10 +57,16 @@ export default {
           this.username = JSON.parse(atob(this.token.split('.')[1])).sub;
           this.$router.push({name:'VmHome'})
         } else if(response.status === 401){
-          alert('Incorrect username or password')
+          this.username = ''
+          this.password = ''
+          this.login_failed = true
+          // alert('Incorrect username or password')
         }
       } catch (error) {
-        alert('Incorrect username or password')
+        this.username = ''
+        this.password = ''
+        this.login_failed = true
+        // alert('Incorrect username or password')
         console.error("Login failed:", error.response?.data || error.message);
       }
     },
@@ -155,6 +163,12 @@ button:hover {
 
 button:active {
   transform: scale(0.98);
+}
+
+p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: red;
 }
 
 /* --- Mobile Responsiveness --- */

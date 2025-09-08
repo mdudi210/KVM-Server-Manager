@@ -1,13 +1,8 @@
 <template>
   <div class="home-container">
-    <!-- Top Navigation Bar -->
     <TopBar :username="username" :role="role"/>
-
-    <!-- Main Body Section -->
     <div class="body">
       <h2 class="page-title">Your Virtual Machines</h2>
-
-      <!-- VM List -->
       <div class="vm-grid">
         <VmItem 
           v-for="vm in vmlist"
@@ -45,7 +40,6 @@ export default {
     } else {
       const token = JSON.parse(user).access_token
       
-      // Token Validation
       await axios.get("http://127.0.0.1:8000/check-token", {
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -59,11 +53,9 @@ export default {
         console.log('API call failed', error)
       })
 
-      // Set User Info
       this.username = JSON.parse(user).username
       this.role = JSON.parse(user).role
 
-      // Fetch VM List
       await axios.get("http://127.0.0.1:8000/vm", {
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -108,7 +100,6 @@ export default {
   align-items: flex-start;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .body {
     padding: 1rem;

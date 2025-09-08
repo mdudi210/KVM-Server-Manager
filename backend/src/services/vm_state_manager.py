@@ -31,12 +31,12 @@ def change_state(data: ChangeState, claims = Depends(verify_user)):
     error = stderr.read().decode().strip()
     if output:
         print("Command Output:")
-        print(output)
+        print(output.strip().split()[-1])
         logger.info(f"{claims.get("sub")} change state of vm {data.name} to {data.state}")
         return {
             "Message" : "",
             "Body" : {
-                "output" : output
+                "output" : output.strip().split()[-1]
             }
         }
     if error:
