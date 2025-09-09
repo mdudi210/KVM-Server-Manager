@@ -6,17 +6,30 @@ const routes = [
     {
         name: 'Login',
         component: Login,
-        path: '/login'
+        path: '/login',
+        meta: { auth: false}
     },
     {
         name: 'VmHome',
         component: VmHome,
-        path: '/'
+        path: '/',
+        meta: { auth: true}
     }
 ]
 const router = createRouter({
     history:createWebHistory(),
-    routes
+    routes: routes,
 })
+
+// router.beforeEach((to, from, next) =>{
+//     // console.log(to)
+//     if (!to.meta.auth && !sessionStorage.getItem('user-info')){
+//         next('/login')
+//     } else if (to.meta.auth && sessionStorage.getItem('user-info')){
+//         next('/')
+//     } else {
+
+//     }
+// })
 
 export default router

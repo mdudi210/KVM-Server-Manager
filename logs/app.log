@@ -1615,3 +1615,86 @@ mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin3'
 [2025-09-08 23:38:21] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-09-08 23:38:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-09-08 23:38:51] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 11:15:23] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-09 11:15:24] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 11:15:59] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone1 to start
+[2025-09-09 11:16:03] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone1 to start
+[2025-09-09 11:16:20] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 11:16:32] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone2 to start
+[2025-09-09 11:16:40] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 11:24:19] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-09 11:24:19] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 11:25:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:33:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:33:52] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to shutdown
+[2025-09-09 12:33:52] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:33:53] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-09 12:33:54] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:33:55] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-09 12:33:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:34:02] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone2 to start
+[2025-09-09 12:34:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:40:19] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone3 to start
+[2025-09-09 12:41:15] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:41:28] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-09 12:41:28] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:42:18] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:42:24] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone2 to start
+[2025-09-09 12:42:34] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:42:40] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone4 to start
+[2025-09-09 12:47:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:46] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-09 12:47:46] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:47] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to shutdown
+[2025-09-09 12:47:47] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:48] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-09 12:47:48] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:52] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:53] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:54] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:54] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:56] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:56] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:47:56] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:48:41] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:48:44] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone2 to start
+[2025-09-09 12:49:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:49:53] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone3 to start
+[2025-09-09 12:51:01] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm linux-clone3 to start
+[2025-09-09 12:51:30] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:51:37] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to start
+[2025-09-09 12:51:38] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:51:45] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:51:50] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-09 12:51:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:51:54] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to shutdown
+[2025-09-09 12:51:54] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:52:04] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-09 12:52:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:52:11] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-09 12:52:12] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:52:16] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to start
+[2025-09-09 12:52:16] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:52:19] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to start
+[2025-09-09 12:52:19] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:52:44] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-09 12:52:45] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:52:55] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to shutdown
+[2025-09-09 12:52:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:53:00] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to shutdown
+[2025-09-09 12:53:00] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 12:53:09] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 13:10:42] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:04] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-09 14:32:04] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:19] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to start
+[2025-09-09 14:32:19] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:35] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-09 14:32:35] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:43] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:52] [INFO] vm endpoint: testadmin retrieved VM info successfully
