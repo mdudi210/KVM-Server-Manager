@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, Query
-from backend.src.utils.ssh import ssh_client
+from backend.src.utils.ssh import ssh_client, execute_ssh_command
 from backend.src.auth.user_auth import verify_user
 from backend.config.logging_setting import setup_logger
 from backend.src.utils.parse_vm_status import parse_vm_status
@@ -7,17 +7,6 @@ import paramiko
 
 router = APIRouter()
 logger = setup_logger("vm endpoint")
-
-
-def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
-    try:
-        stdin, stdout, stderr = client.exec_command(command)
-        output = stdout.read().decode().strip()
-        error = stderr.read().decode().strip()
-        return output, error
-    except Exception as e:
-        logger.exception(f"Failed to execute SSH command: {command}")
-        raise HTTPException(status_code=500, detail="SSH command execution failed")
 
 
 @router.get("/vm")
@@ -54,7 +43,7 @@ def list_all_vm(
         }
 
     except HTTPException:
-        raise  # Re-raise HTTP exceptions to FastAPI
+        raise HTTPException(status_code=520, detail="Unknown Error")
     except Exception as e:
         logger.exception("Unexpected error occurred while retrieving VM info")
         raise HTTPException(status_code=500, detail="Internal Server Error")

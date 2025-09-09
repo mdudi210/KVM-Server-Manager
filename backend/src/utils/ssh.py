@@ -1,10 +1,17 @@
+from fastapi import HTTPException
+from backend.config.logging_setting import setup_logger
 import paramiko
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Server details
-hostname = "10.168.12.142"
-username = "root"
-password = "Adm1n0n7y"
-command_to_execute = "ls -l"
+hostname = os.getenv("SSH_HOSTNAME")
+username = os.getenv("SSH_USERNAME")
+password = os.getenv("SSH_PASSWORD")
+
+logger = setup_logger("ssh command")
 
 def ssh_client():
     try:
@@ -21,3 +28,14 @@ def ssh_client():
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return f"An unexpected error occurred: {e}"
+
+
+def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
+    try:
+        stdin, stdout, stderr = client.exec_command(command)
+        output = stdout.read().decode().strip()
+        error = stderr.read().decode().strip()
+        return output, error
+    except Exception as e:
+        logger.exception(f"SSH command execution failed: {command}")
+        raise HTTPException(status_code=500, detail="SSH command execution failed")

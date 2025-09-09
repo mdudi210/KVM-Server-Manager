@@ -21,6 +21,12 @@ class Roles(StrEnum):
     user = auto()
     admin = auto()
 
+class State(StrEnum):
+    start = auto()
+    shutdown = auto()
+    destroy = auto()
+    reboot = auto()
+
 class NewUser(BaseModel):
     username: str
     password: str

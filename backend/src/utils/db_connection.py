@@ -1,13 +1,21 @@
 import mysql.connector
 from mysql.connector.errors import get_exception , get_mysql_exception , DatabaseError
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_DATABASE = os.getenv("DB_DATABASE")
 
 class OpenDb:
-    # ,query,query_argument,fetch_type=''
     def __init__(self):
-        self.host = "localhost"
-        self.user = "root"
-        self.password = "Watchguard@01"
-        self.database = "kvmserver"
+        self.host = DB_HOST
+        self.user = DB_USER
+        self.password = DB_PASSWORD
+        self.database = DB_DATABASE
 
     def __enter__(self):
         try:

@@ -18,14 +18,17 @@ def register(data: NewUser, claims=Depends(verify_admin)):
     username = data.username
     role = data.role
 
-    # Validate role type
-    if role not in Roles.__members__:  # safer check if Roles is Enum
+    if role not in Roles.__members__:  
         logger.warning(f"Invalid role '{role}' provided by {claims.get('sub')}")
         raise HTTPException(status_code=400, detail="Invalid role type")
 
     try:
-        with OpenDb(commit=True) as cursor:  # auto-commit transaction
-            # Fetch role ID
+        with OpenDb() as cursor:
+            cursor.execute("SELECT id FROM users WHERE username=%s", (data.username,))
+            if cursor.fetchone():
+                logger.warning(f"user with username '{data.username}' found in DB")
+                raise HTTPException(status_code=400, detail="User Already exist")
+
             cursor.execute("SELECT id FROM roles WHERE role = %s", (role,))
             role_record = cursor.fetchone()
             if not role_record:
@@ -33,7 +36,6 @@ def register(data: NewUser, claims=Depends(verify_admin)):
                 raise HTTPException(status_code=400, detail="Role does not exist")
             role_id = role_record[0]
 
-            # Insert new user
             cursor.execute(
                 """
                 INSERT INTO users (id, username, password, role_id) 
@@ -45,11 +47,11 @@ def register(data: NewUser, claims=Depends(verify_admin)):
         logger.info(f"Admin {claims.get('sub')} created account for user '{username}'")
         return {"Message": f"Account created for {username}"}
 
-    except psycopg2.errors.UniqueViolation:  # or mysql.connector.errors.IntegrityError
+    except psycopg2.errors.UniqueViolation: 
         logger.warning(f"Duplicate username attempt: {username}")
         raise HTTPException(status_code=400, detail="User with this name already exists")
     except HTTPException:
-        raise
+        raise HTTPException(status_code=520, detail="Unknown Error")
     except Exception as e:
         logger.exception(f"Unexpected error while creating user '{username}'")
         raise HTTPException(status_code=500, detail="Internal Server Error")

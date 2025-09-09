@@ -6,7 +6,7 @@ from backend.src.utils.db_connection import OpenDb
 from backend.config.logging_setting import setup_logger
 from backend.config import JWT_auth_setting
 from datetime import timedelta
-import psycopg2  # or mysql.connector depending on your DB
+import psycopg2
 
 router = APIRouter()
 logger = setup_logger("login endpoint")
@@ -53,7 +53,7 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
         logger.exception("Database error occurred during login")
         raise HTTPException(status_code=500, detail="Database connection error")
     except HTTPException:
-        raise  # Re-raise explicit FastAPI HTTP errors
+        raise  HTTPException(status_code=520, detail="Unknown Error")
     except Exception as e:
         logger.exception("Unexpected error in login API")
         raise HTTPException(status_code=500, detail="Internal Server Error")

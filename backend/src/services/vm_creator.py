@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends
-from backend.src.utils.ssh import ssh_client
+from backend.src.utils.ssh import ssh_client, execute_ssh_command
 from backend.src.schema.schema import NewVmRequest
 from backend.src.auth.admin_auth import verify_admin
 from backend.config.logging_setting import setup_logger
@@ -17,29 +17,13 @@ LINUX_ISO = os.getenv("LINUX_ISO")
 WIN_ISO = os.getenv("WIN_ISO")
 
 
-def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
-    """Execute a command on SSH client and return output, error."""
-    try:
-        stdin, stdout, stderr = client.exec_command(command)
-        output = stdout.read().decode().strip()
-        error = stderr.read().decode().strip()
-        return output, error
-    except Exception:
-        logger.exception(f"SSH command failed: {command}")
-        raise HTTPException(status_code=500, detail="SSH command execution failed")
-
-
 @router.post("/vm/new")
 def create_new_vm(data: NewVmRequest, claims=Depends(verify_admin)):
-    """
-    Create a new VM (Linux or Windows) using virt-install.
-    """
     client = ssh_client()
-    if isinstance(client, str):  # ssh_client returned error string
+    if isinstance(client, str):
         logger.error(f"SSH connection failed: {client}")
         raise HTTPException(status_code=500, detail="SSH connection failed")
 
-    # Sanitize VM name to avoid command injection
     safe_vm_name = shlex.quote(data.name)
 
     if data.vmtoinstall == "Linux":
@@ -85,7 +69,7 @@ def create_new_vm(data: NewVmRequest, claims=Depends(verify_admin)):
         }
 
     except HTTPException:
-        raise
+        raise HTTPException(status_code=520, detail="Unknown Error")
     except Exception:
         logger.exception("Unexpected error during VM creation")
         raise HTTPException(status_code=500, detail="Internal Server Error")

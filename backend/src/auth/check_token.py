@@ -2,12 +2,15 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import jwt
 from jwt import ExpiredSignatureError, InvalidTokenError
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 router = APIRouter()
 
-# Config
-SECRET_KEY = "super-secret-key"  # same as used to create token
-ALGORITHM = "HS256"
+AUTHJWT_SECRET_KEY = os.getenv("AUTHJWT_SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 security = HTTPBearer()
 
@@ -15,7 +18,7 @@ security = HTTPBearer()
 def check_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     token = credentials.credentials
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, AUTHJWT_SECRET_KEY, algorithms=[ALGORITHM])
         return {
             "valid": True,
             "expired": False,

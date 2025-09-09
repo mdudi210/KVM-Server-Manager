@@ -1383,3 +1383,235 @@ NameError: name 'command_to_execute' is not defined
 [2025-09-08 21:45:52] [INFO] vm router: testadmin retrieved VM info successfully
 [2025-09-08 21:45:57] [INFO] vm router: testadmin retrieved VM info successfully
 [2025-09-08 21:46:05] [INFO] vm router: testadmin retrieved VM info successfully
+[2025-09-08 22:29:35] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-08 22:30:01] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-08 22:31:37] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:31:48] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:31:54] [ERROR] register endpoint: Unexpected error while creating user 'apiadmin'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 27, in register
+    with OpenDb(commit=True) as cursor:  # auto-commit transaction
+         ~~~~~~^^^^^^^^^^^^^
+TypeError: OpenDb.__init__() got an unexpected keyword argument 'commit'
+[2025-09-08 22:32:07] [ERROR] register endpoint: Unexpected error while creating user 'apiadmin2'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 27, in register
+    with OpenDb(commit=True) as cursor:  # auto-commit transaction
+         ~~~~~~^^^^^^^^^^^^^
+TypeError: OpenDb.__init__() got an unexpected keyword argument 'commit'
+[2025-09-08 22:34:21] [INFO] register endpoint: Admin testadmin created account for user 'apiadmin2'
+[2025-09-08 22:34:24] [ERROR] register endpoint: Unexpected error while creating user 'apiadmin2'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Duplicate entry 'apiadmin2' for key 'users.username'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 37, in register
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        """
+        ^^^
+    ...<3 lines>...
+        (user_id, username, hashed_password, role_id),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin2' for key 'users.username'
+[2025-09-08 22:35:09] [ERROR] register endpoint: Unexpected error while creating user 'apiadmin2'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Duplicate entry 'apiadmin2' for key 'users.username'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 37, in register
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        """
+        ^^^
+    ...<3 lines>...
+        (user_id, username, hashed_password, role_id),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin2' for key 'users.username'
+[2025-09-08 22:36:04] [ERROR] main: testadmin got error: Failed to shutdown domain 'win-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm win-clone1 to shutdown
+[2025-09-08 22:36:21] [INFO] main: testadmin change state of vm win-clone1 to start
+[2025-09-08 22:37:12] [ERROR] vm_clone: testadmin encountered error while cloning Linux VM 'linux-clone3': ERROR    Could not use path '/home/linux-clone3.qcow2' for cloning: Clone onto existing storage volume is not currently supported: '/home/linux-clone3.qcow2'
+[2025-09-08 22:37:46] [INFO] vm_clone: testadmin cloned Linux VM successfully: linux-clone4
+[2025-09-08 22:38:06] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:38:13] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:38:41] [INFO] main: testadmin change state of vm win-clone1 to shutdown
+[2025-09-08 22:38:59] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:39:08] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:39:13] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 22:56:01] [ERROR] main: Entered the state of VM
+[2025-09-08 22:57:16] [ERROR] main: Entered the state of VM
+[2025-09-08 22:58:28] [ERROR] main: Entered the state of VM
+[2025-09-08 22:59:37] [INFO] register endpoint: Admin testadmin created account for user 'apiadmin1'
+[2025-09-08 22:59:47] [WARNING] register endpoint: Invalid role 'admin1' provided by testadmin
+[2025-09-08 22:59:56] [INFO] register endpoint: Admin testadmin created account for user 'apiadmin3'
+[2025-09-08 23:00:00] [ERROR] register endpoint: Unexpected error while creating user 'apiadmin3'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Duplicate entry 'apiadmin3' for key 'users.username'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 37, in register
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        """
+        ^^^
+    ...<3 lines>...
+        (user_id, username, hashed_password, role_id),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin3' for key 'users.username'
+[2025-09-08 23:04:29] [ERROR] main: testadmin got error: Domain is already active when changing state of vm win-clone1 to start
+[2025-09-08 23:04:45] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:05:01] [INFO] main: testadmin change state of vm win-clone1 to shutdown
+[2025-09-08 23:07:02] [ERROR] vm state endpoint: testadmin got error: Failed to shutdown domain 'win-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm win-clone1 to shutdown
+[2025-09-08 23:26:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:27:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:27:07] [ERROR] vm state endpoint: testadmin got error: Failed to shutdown domain 'win-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm win-clone1 to shutdown
+[2025-09-08 23:27:16] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:27:34] [ERROR] register endpoint: Unexpected error while creating user 'apiadmin3'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Duplicate entry 'apiadmin3' for key 'users.username'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 37, in register
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        """
+        ^^^
+    ...<3 lines>...
+        (user_id, username, hashed_password, role_id),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin3' for key 'users.username'
+[2025-09-08 23:33:34] [WARNING] register endpoint: user with username 'apiadmin3' found in DB
+[2025-09-08 23:33:37] [WARNING] register endpoint: user with username 'apiadmin3' found in DB
+[2025-09-08 23:33:54] [WARNING] register endpoint: Invalid role 'admin1' provided by testadmin
+[2025-09-08 23:34:01] [WARNING] register endpoint: user with username 'apiadmin3' found in DB
+[2025-09-08 23:36:55] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-08 23:36:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:37:06] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-08 23:37:06] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:38:20] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-08 23:38:21] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:38:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-08 23:38:51] [INFO] vm endpoint: testadmin retrieved VM info successfully
