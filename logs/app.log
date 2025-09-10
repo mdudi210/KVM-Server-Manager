@@ -1698,3 +1698,10 @@ mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin3'
 [2025-09-09 14:32:43] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-09-09 14:32:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-09-09 14:32:52] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 14:32:58] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 16:49:34] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-09 16:49:35] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 16:49:37] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-09 16:49:37] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-09 16:49:43] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-09 16:49:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
