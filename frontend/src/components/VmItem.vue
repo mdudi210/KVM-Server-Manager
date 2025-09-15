@@ -1,5 +1,5 @@
 <template>
-  <div class="vm-card" :class="statusClass">
+  <div class="vm-card" :class="[statusClass,statusChangeClass]">
     <div class="vm-info">
       <p class="vm-name"><strong>{{ vm_name }}</strong></p>
       <p class="vm-status">Status: <span :class="statusTextClass">{{ current_state }}</span></p>
@@ -8,21 +8,27 @@
       <button 
         v-if="current_state === 'shut off'"
         class="action-btn start-btn"
+        :disabled="changing_state"
         @click="changestate('start')">
-        Start
+        <span v-if="!changing_state">Start</span>
+        <span v-else>⏳ Changing...</span>
       </button>
       <button 
         v-if="current_state === 'running'"
         class="action-btn shutdown-btn"
+        :disabled="changing_state"
         @click="changestate('shutdown')">
-        Shut Down
+        <span v-if="!changing_state">Shut Down</span>
+        <span v-else>⏳ Changing...</span>
       </button>
 
       <button 
         v-if="current_state === 'running'"
         class="action-btn reboot-btn"
+        :disabled="changing_state"
         @click="changestate('reboot')">
-        Reboot
+        <span v-if="!changing_state">Reboot</span>
+        <span v-else>⏳ Changing...</span>
       </button>
     </div>
   </div>
@@ -37,17 +43,26 @@ export default {
     vm_name: String,
     current_state: String
   },
+  data() {
+    return {
+      changing_state: false
+    }
+  },
   computed: {
     statusClass() {
       return this.current_state === 'running' ? 'status-running' : 'status-stopped';
     },
     statusTextClass() {
       return this.current_state === 'running' ? 'text-green' : 'text-red';
+    },
+    statusChangeClass() {
+      return this.changing_state === true ? 'disable-status' : 'enable-status';
     }
   },
   methods: {
     async changestate(state) {
       try {
+        this.changing_state = true
         const token = JSON.parse(sessionStorage.getItem('user-info')).access_token;
         this.username = JSON.parse(atob(token.split('.')[1])).sub;
 
@@ -56,25 +71,25 @@ export default {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         console.log(response.data.Body.output);
+        
+        await setTimeout(() => {
+          console.log("One minute has passed!");
 
+          axios.get("http://127.0.0.1:8000/vm", {
+            params: {
+              vm_name : this.vm_name
+            },
+            headers: { Authorization: `Bearer ${token}` }
+          })
+          .then(response => {
+            console.log("hello")
+            console.log(response.data.Body.output)
+          })
+          .catch(error => {
+            console.log('API call failed', error)
+          })
 
-        await axios.get("http://127.0.0.1:8000/vm", {
-          params: {
-            vm_name : this.vm_name
-          },
-          headers: { Authorization: `Bearer ${token}` }
-        })
-        .then(response => {
-          console.log("hello")
-          console.log(response.data.Body.output)
-
-        })
-        .catch(error => {
-          console.log('API call failed', error)
-        })
-
-
-        this.$parent.vmlist.forEach(element => {
+          this.$parent.vmlist.forEach(element => {
           if(element.Name === this.vm_name){
             if(state === "shutdown"){
               state = "shut off"
@@ -86,6 +101,11 @@ export default {
             element.State = state
           } 
         });
+
+        this.changing_state = false
+
+        }, 60000);
+        
       } catch (error) {
         console.error('API call failed', error);
       }
@@ -114,6 +134,18 @@ export default {
 
 .status-stopped {
   border-left-color: #dc3545;
+}
+
+.disable-status {
+  background: #aca7a7;
+}
+
+.enable-status {
+  background: white;
+}
+
+.changing-status {
+   display: flex;
 }
 
 .vm-info {

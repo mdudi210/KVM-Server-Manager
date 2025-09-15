@@ -1705,3 +1705,406 @@ mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry 'apiadmin3'
 [2025-09-09 16:49:37] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-09-09 16:49:43] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
 [2025-09-09 16:49:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-12 11:32:13] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-12 11:32:13] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-12 11:32:21] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-12 11:33:51] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-12 11:35:34] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-12 11:35:43] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-12 11:36:04] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-12 11:36:04] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 11:37:52] [WARNING] login endpoint: Failed login attempt for username: testuser
+[2025-09-12 11:58:30] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-12 11:58:31] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 11:59:29] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:31] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:32] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:33] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:37] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:38] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:40] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:48] [WARNING] login endpoint: Failed login attempt for username: testuser
+[2025-09-12 11:59:48] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:48] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:49] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:49] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:49] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:49] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:50] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 11:59:55] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:10] [WARNING] login endpoint: Failed login attempt for username: testuser
+[2025-09-12 12:00:15] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:15] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:16] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:16] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:16] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:16] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:16] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:16] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:17] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:17] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:17] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:00:52] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-12 12:00:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:00:59] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:01:12] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-12 12:01:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:02:29] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:02:42] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-12 12:21:47] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-12 12:21:47] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:21:51] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 12:21:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:21:55] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:21:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:21:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:21:58] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:22:26] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:22:37] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:22] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 12:24:22] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:34] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 12:24:35] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:37] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:41] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:46] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 12:24:46] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:48] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 12:24:48] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:53] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:54] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:55] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:56] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 12:24:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:24:58] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:00] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:01] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:02] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:02] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:04] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:05] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:06] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:07] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:09] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 12:25:09] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:11] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:14] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:25:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:27:23] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:27:39] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:28:47] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:29:02] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:34:07] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:34:11] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:34:11] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:34:11] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:34:24] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:34:25] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:51:42] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:51:42] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:53:31] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:53:41] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:54:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:54:34] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:54:45] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:54:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:57:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:58:21] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:58:35] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:59:09] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:59:32] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:59:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 12:59:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:00:55] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:00:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:01:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:01:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:02:20] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:02:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:02:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:03:08] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:03:08] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:03:18] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:03:42] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:03:44] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:03:58] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:06:00] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:07:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:07:21] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:07:22] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:07:35] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:07:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:08:22] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:08:45] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:09:25] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:11:22] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:11:41] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:11:50] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:12:47] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:13:33] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:13:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:14:26] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:14:35] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:14:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:15:08] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:15:40] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:16:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:14] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:16] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:16] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:26] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:17:43] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:18:06] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:18:09] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:19:20] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:19:34] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:19:36] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:19:45] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:19:47] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:20:01] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:20:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:21:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:23:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:25:24] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:30:44] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:37:28] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:37:31] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 14:37:31] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:38:02] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:39:53] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 14:39:53] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:42:37] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:44:08] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:44:17] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 14:45:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:46:34] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:46:54] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:46:57] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 14:47:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:48:10] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:48:13] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 14:49:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:50:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:50:51] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 14:51:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:52:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:52:52] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 14:53:53] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:54:30] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:55:42] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 14:56:42] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:56:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:56:54] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 14:56:55] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 14:56:56] [INFO] vm state endpoint: testuser change state of vm linux-clone4 to start
+[2025-09-12 14:56:59] [INFO] vm state endpoint: testuser change state of vm linux-template to start
+[2025-09-12 14:57:55] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:57:55] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:57:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:57:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:58:11] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 14:58:13] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 14:58:14] [INFO] vm state endpoint: testuser change state of vm linux-template to shutdown
+[2025-09-12 14:58:15] [INFO] vm state endpoint: testuser change state of vm linux-clone4 to shutdown
+[2025-09-12 14:59:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:59:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:59:14] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 14:59:15] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:05:12] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 15:05:13] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 15:05:14] [INFO] vm state endpoint: testuser change state of vm win-clone2 to start
+[2025-09-12 15:06:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:06:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:06:15] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:07:24] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 15:07:25] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 15:07:26] [INFO] vm state endpoint: testuser change state of vm win-clone2 to shutdown
+[2025-09-12 15:08:24] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:08:25] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:08:27] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:14:47] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:14:49] [INFO] vm state endpoint: testuser change state of vm linux-clone4 to start
+[2025-09-12 15:14:50] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 15:14:52] [INFO] vm state endpoint: testuser change state of vm win-clone3 to start
+[2025-09-12 15:15:48] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:15:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:15:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:15:53] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:16:46] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:17:06] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:17:17] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:17:19] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 15:17:20] [INFO] vm state endpoint: testuser change state of vm linux-clone4 to shutdown
+[2025-09-12 15:17:21] [INFO] vm state endpoint: testuser change state of vm win-clone3 to shutdown
+[2025-09-12 15:17:24] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 15:17:28] [INFO] vm state endpoint: testuser change state of vm win-template to start
+[2025-09-12 15:18:03] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:18:07] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 15:18:12] [INFO] vm state endpoint: testuser change state of vm win-template to shutdown
+[2025-09-12 15:19:07] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:19:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:20:54] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:21:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:23:05] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:23:07] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 15:24:05] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:24:08] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:24:33] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:24:35] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 15:24:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:25:00] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:25:30] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:25:32] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:25:33] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 15:25:47] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:25:48] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:25:49] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 15:25:57] [ERROR] vm state endpoint: testuser got error: Failed to shutdown domain 'linux-clone2'
+error: Requested operation is not valid: domain is not running when changing state of vm linux-clone2 to shutdown
+[2025-09-12 15:25:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:26:01] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:26:14] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:26:16] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:26:18] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:26:24] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:26:26] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:27:16] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:27:19] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:28:19] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:28:51] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:29:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:30:22] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:30:24] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:30:25] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 15:30:29] [INFO] vm state endpoint: testuser change state of vm linux-template to start
+[2025-09-12 15:30:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:30:54] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:31:05] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:31:06] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 15:31:09] [INFO] vm state endpoint: testuser change state of vm linux-template to shutdown
+[2025-09-12 15:31:28] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:31:30] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:31:44] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:31:45] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:31:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:31:58] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:31:59] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 15:32:01] [INFO] vm state endpoint: testuser change state of vm linux-template to start
+[2025-09-12 15:32:08] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 15:32:11] [INFO] vm state endpoint: testuser change state of vm win-clone3 to start
+[2025-09-12 15:32:39] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:32:41] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 15:32:43] [INFO] vm state endpoint: testuser change state of vm linux-template to shutdown
+[2025-09-12 15:32:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:32:59] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:33:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:33:15] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 15:34:15] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:34:21] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 15:34:23] [INFO] vm state endpoint: testuser change state of vm win-clone3 to shutdown
+[2025-09-12 15:35:21] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:35:24] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:35:27] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 15:35:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:35:55] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:35:57] [ERROR] vm state endpoint: testuser got error: Domain is already active when changing state of vm linux-clone2 to start
+[2025-09-12 15:36:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:44:40] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 15:44:53] [ERROR] vm state endpoint: testuser got error: Failed to shutdown domain 'linux-clone2'
+error: Requested operation is not valid: domain is not running when changing state of vm linux-clone2 to shutdown
+[2025-09-12 15:44:58] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:45:02] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 15:45:03] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 15:45:05] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 15:46:03] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:46:04] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 15:46:06] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 16:52:09] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 16:52:11] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 16:53:10] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 16:53:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 16:53:53] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 16:53:54] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 16:53:56] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 16:54:06] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:01:15] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:01:17] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 17:01:18] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 17:01:21] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 17:02:18] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:02:19] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:02:21] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:03:47] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:03:49] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 17:03:54] [ERROR] vm state endpoint: testuser got error: Failed to reboot domain 'linux-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm linux-clone1 to reboot
+[2025-09-12 17:03:55] [ERROR] vm state endpoint: testuser got error: Failed to shutdown domain 'linux-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm linux-clone1 to shutdown
+[2025-09-12 17:03:57] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 17:03:58] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 17:04:40] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:04:42] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to start
+[2025-09-12 17:04:57] [INFO] vm state endpoint: testuser change state of vm linux-template to start
+[2025-09-12 17:04:59] [INFO] vm state endpoint: testuser change state of vm linux-clone4 to start
+[2025-09-12 17:05:01] [INFO] vm state endpoint: testuser change state of vm win-clone3 to start
+[2025-09-12 17:05:03] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to start
+[2025-09-12 17:05:05] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 17:05:42] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:05:49] [INFO] vm state endpoint: testuser change state of vm linux-clone1 to shutdown
+[2025-09-12 17:05:57] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:05:59] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:06:01] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:06:03] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:06:06] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:06:09] [INFO] vm state endpoint: testuser change state of vm linux-template to shutdown
+[2025-09-12 17:06:12] [INFO] vm state endpoint: testuser change state of vm win-clone3 to shutdown
+[2025-09-12 17:06:14] [INFO] vm state endpoint: testuser change state of vm linux-clone4 to shutdown
+[2025-09-12 17:06:16] [INFO] vm state endpoint: testuser change state of vm linux-clone3 to shutdown
+[2025-09-12 17:06:17] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 17:06:19] [INFO] vm state endpoint: testuser change state of vm win-clone1 to start
+[2025-09-12 17:06:19] [INFO] vm state endpoint: testuser change state of vm win-template to start
+[2025-09-12 17:06:21] [INFO] vm state endpoint: testuser change state of vm win-clone2 to start
+[2025-09-12 17:06:49] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:09] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:12] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:14] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:17] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:19] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:20] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:07:21] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:08:50] [INFO] vm state endpoint: testuser change state of vm win-clone1 to shutdown
+[2025-09-12 17:08:51] [INFO] vm state endpoint: testuser change state of vm win-template to shutdown
+[2025-09-12 17:08:53] [INFO] vm state endpoint: testuser change state of vm win-clone2 to shutdown
+[2025-09-12 17:09:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:09:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:09:54] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:11:27] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:12:52] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:18:42] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to start
+[2025-09-12 17:19:42] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:20:56] [INFO] vm state endpoint: testuser change state of vm linux-clone2 to shutdown
+[2025-09-12 17:28:07] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-12 17:28:36] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-15 14:38:28] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-15 14:38:28] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 14:38:33] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 14:38:37] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 14:51:06] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 14:52:10] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 15:01:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 15:01:59] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 15:02:29] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-15 15:02:29] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 15:03:50] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-15 15:03:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 15:04:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-15 15:47:33] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-15 15:47:33] [INFO] vm endpoint: testuser retrieved VM info successfully

@@ -1,19 +1,28 @@
 import Login from "./components/Login.vue";
 import VmHome from "./components/Home.vue";
+import NotFound from "./components/NotFound.vue";
 import {createRouter, createWebHistory} from 'vue-router'
+import { isAuthenticated } from "../auth/auth";
+
 
 const routes = [
     {
+        path: '/login',
         name: 'Login',
         component: Login,
-        path: '/login',
-        meta: { auth: false}
+        meta: { requiresAuth: false } 
     },
     {
+        path: '/',
         name: 'VmHome',
         component: VmHome,
-        path: '/',
-        meta: { auth: true}
+        meta: { requiresAuth: true } 
+    },
+    {
+        path: '/:catchAll(.*)',
+        name: 'NotFound',
+        component: NotFound,
+        meta: { requiresAuth: true }
     }
 ]
 const router = createRouter({
@@ -21,15 +30,17 @@ const router = createRouter({
     routes: routes,
 })
 
-// router.beforeEach((to, from, next) =>{
-//     // console.log(to)
-//     if (!to.meta.auth && !sessionStorage.getItem('user-info')){
-//         next('/login')
-//     } else if (to.meta.auth && sessionStorage.getItem('user-info')){
-//         next('/')
-//     } else {
 
-//     }
-// })
+router.beforeEach((to, from, next) => {
+
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    next({ name: 'Login' })
+  } else if (!to.meta.requiresAuth && isAuthenticated() && to.name === 'Login') {
+    next({ name: 'VmHome' })
+  } else {
+    next()
+  }
+})
+
 
 export default router

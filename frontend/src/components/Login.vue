@@ -25,7 +25,7 @@
       >
       <p v-if="login_failed" >Incorrect username or password</p>
 
-      <button @click="login">Login</button>
+      <button @click="login" ref="login-btn">Login</button>
     </div>
   </div>
 </template>
@@ -71,25 +71,25 @@ export default {
       }
     },
   },
-  async mounted(){
-    let user = sessionStorage.getItem('user-info')
-    if(user){
-      const token = JSON.parse(user).access_token
-      await axios.get("http://127.0.0.1:8000/check-token", {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(response => {
-        if(response.data.valid){
-          this.$router.push({name:'VmHome'})
-        } else {
-          this.$router.push({name:'Login'})
-        }
-      })
-      .catch(error => {
-        console.log('API call failed', error)
-      })
-    }
-  }
+  // async mounted(){
+  //   let user = sessionStorage.getItem('user-info')
+  //   if(user){
+  //     const token = JSON.parse(user).access_token
+  //     await axios.get("http://127.0.0.1:8000/check-token", {
+  //       headers: { Authorization: `Bearer ${token}` }
+  //     })
+  //     .then(response => {
+  //       if(response.data.valid){
+  //         this.$router.push({name:'VmHome'})
+  //       } else {
+  //         this.$router.push({name:'Login'})
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log('API call failed', error)
+  //     })
+  //   }
+  // }
 }
 </script>
 

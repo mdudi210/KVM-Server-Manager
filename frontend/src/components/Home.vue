@@ -35,26 +35,28 @@ export default {
   },
   async mounted() {
     let user = sessionStorage.getItem('user-info')
-    if (!user) {
-      this.$router.push({name:'Login'})
-    } else {
-      const token = JSON.parse(user).access_token
+    const token = JSON.parse(user).access_token
+    // let user = sessionStorage.getItem('user-info')
+    // if (!user) {
+    //   this.$router.push({name:'Login'})
+    // } else {
+    //   const token = JSON.parse(user).access_token
       
-      await axios.get("http://127.0.0.1:8000/check-token", {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(response => {
-        if (response.data.valid === false) {
-          sessionStorage.removeItem('user-info')
-          this.$router.push({name:'Login'})
-        }
-      })
-      .catch(error => {
-        console.log('API call failed', error)
-      })
+    //   await axios.get("http://127.0.0.1:8000/check-token", {
+    //     headers: { Authorization: `Bearer ${token}` }
+    //   })
+    //   .then(response => {
+    //     if (response.data.valid === false) {
+    //       sessionStorage.removeItem('user-info')
+    //       this.$router.push({name:'Login'})
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log('API call failed', error)
+    //   })
 
-      this.username = JSON.parse(user).username
-      this.role = JSON.parse(user).role
+    //   this.username = JSON.parse(user).username
+    //   this.role = JSON.parse(user).role
 
       await axios.get("http://127.0.0.1:8000/vm", {
         headers: { Authorization: `Bearer ${token}` }
@@ -66,7 +68,7 @@ export default {
         console.log('API call failed', error)
       })
     }
-  },
+  // },
 }
 </script>
 
