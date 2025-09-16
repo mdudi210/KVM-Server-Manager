@@ -32,10 +32,10 @@ def change_state(data: ChangeState, claims = Depends(verify_user)):
             }
         }
 
-    except HTTPException:
-        raise HTTPException(status_code=520, detail="Unknown Error")
-    except Exception:
+    except HTTPException as e:
+        raise HTTPException(status_code=520, detail=f"{e}")
+    except Exception as e:
         logger.exception("Unexpected error during VM creation")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=f"{e}")
     finally:
         client.close()

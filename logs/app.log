@@ -2108,3 +2108,336 @@ error: Requested operation is not valid: domain is not running when changing sta
 [2025-09-15 15:04:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-09-15 15:47:33] [INFO] login endpoint: User 'testuser' logged in successfully
 [2025-09-15 15:47:33] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-15 15:55:45] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-15 15:55:46] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-15 15:56:13] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-15 15:56:13] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-15 15:58:35] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-15 15:58:36] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-16 10:03:13] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 10:03:14] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:08:55] [ERROR] login endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Unknown column 'role_id' in 'where clause'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\login.py", line 32, in login
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT role FROM roles WHERE role_id = %s",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (result[3],)
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'role_id' in 'where clause'
+[2025-09-16 10:09:07] [ERROR] login endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Unknown column 'role_id' in 'where clause'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\login.py", line 32, in login
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT role FROM roles WHERE role_id = %s",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (result[3],)
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'role_id' in 'where clause'
+[2025-09-16 10:09:09] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 10:10:33] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 10:10:34] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:11:12] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 10:11:14] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:11:54] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 10:26:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:28:14] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 10:28:23] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 10:28:23] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:33:48] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 10:33:48] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:34:13] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:37:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 10:38:21] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-16 10:38:21] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-16 10:38:51] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-16 10:39:24] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-16 10:39:56] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-16 11:04:55] [WARNING] login endpoint: Failed login attempt for username: testuser
+[2025-09-16 11:05:05] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-16 11:05:05] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-16 13:13:59] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:02] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:02] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:03] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:03] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:03] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:09] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 13:14:10] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:10] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:10] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:10] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:10] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:11] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:11] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:11] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 13:14:23] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 13:14:23] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:14:32] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-16 13:14:42] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to start
+[2025-09-16 13:14:52] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to start
+[2025-09-16 13:15:32] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:15:42] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:15:52] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:21:57] [INFO] vm state endpoint: testadmin change state of vm win-template to start
+[2025-09-16 13:22:58] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:25:27] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:25:32] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-16 13:25:38] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to shutdown
+[2025-09-16 13:25:39] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to shutdown
+[2025-09-16 13:25:40] [INFO] vm state endpoint: testadmin change state of vm win-template to shutdown
+[2025-09-16 13:25:43] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to start
+[2025-09-16 13:26:32] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:26:38] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:26:40] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:26:40] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:26:43] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:26:50] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-16 13:27:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:29:57] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:30:04] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to shutdown
+[2025-09-16 13:30:07] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to shutdown
+[2025-09-16 13:31:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:31:08] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:37:39] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:38:00] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:38:04] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:38:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:38:13] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 13:38:18] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:27:01] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to start
+[2025-09-16 16:28:02] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:28:57] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:31:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:31:02] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-16 16:31:11] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-16 16:31:29] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to start
+[2025-09-16 16:31:34] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to start
+[2025-09-16 16:31:48] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to start
+[2025-09-16 16:31:50] [INFO] vm state endpoint: testadmin change state of vm linux-template to start
+[2025-09-16 16:31:54] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to start
+[2025-09-16 16:32:01] [INFO] vm state endpoint: testadmin change state of vm win-clone3 to start
+[2025-09-16 16:32:03] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:32:06] [INFO] vm state endpoint: testadmin change state of vm win-template to start
+[2025-09-16 16:32:14] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:32:33] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:32:38] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:32:50] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:32:52] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:33:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:33:01] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-16 16:33:03] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:33:04] [ERROR] vm state endpoint: testadmin got error: Failed to shutdown domain 'win-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm win-clone1 to shutdown
+[2025-09-16 16:33:06] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-16 16:33:06] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to shutdown
+[2025-09-16 16:33:07] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:33:07] [INFO] vm state endpoint: testadmin change state of vm linux-template to shutdown
+[2025-09-16 16:33:08] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to shutdown
+[2025-09-16 16:33:09] [INFO] vm state endpoint: testadmin change state of vm win-clone3 to shutdown
+[2025-09-16 16:33:09] [INFO] vm state endpoint: testadmin change state of vm win-template to shutdown
+[2025-09-16 16:33:45] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:33:53] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:35:10] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:35:12] [INFO] vm state endpoint: testadmin change state of vm win-clone3 to shutdown
+[2025-09-16 16:35:13] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to shutdown
+[2025-09-16 16:35:14] [INFO] vm state endpoint: testadmin change state of vm win-template to shutdown
+[2025-09-16 16:36:12] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:36:14] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:36:15] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:36:19] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:36:55] [INFO] vm state endpoint: testadmin change state of vm win-template to start
+[2025-09-16 16:36:59] [ERROR] vm state endpoint: testadmin got error: Domain is already active when changing state of vm win-template to start
+[2025-09-16 16:37:56] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:38:11] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:38:15] [INFO] vm state endpoint: testadmin change state of vm win-template to shutdown
+[2025-09-16 16:39:15] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:43:59] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:44:01] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-16 16:44:04] [INFO] vm state endpoint: testadmin change state of vm win-clone3 to start
+[2025-09-16 16:45:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:45:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:45:08] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to reboot
+[2025-09-16 16:45:26] [INFO] vm state endpoint: testadmin change state of vm win-clone3 to shutdown
+[2025-09-16 16:46:08] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:46:12] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-16 16:46:27] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 16:47:13] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 17:01:52] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:02:09] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 17:02:56] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 17:03:05] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:04:33] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:04:54] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:05:01] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 17:05:02] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 17:05:12] [WARNING] login endpoint: Failed login attempt for username: 
+[2025-09-16 17:05:21] [ERROR] login endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Unknown column 'igd' in 'where clause'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\login.py", line 32, in login
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT role FROM roles WHERE igd = %s",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (result[3],)
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'igd' in 'where clause'
+[2025-09-16 17:05:25] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:05:29] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:05:34] [ERROR] login endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Unknown column 'igd' in 'where clause'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\login.py", line 32, in login
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT role FROM roles WHERE igd = %s",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (result[3],)
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'igd' in 'where clause'
+[2025-09-16 17:05:43] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:05:48] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 17:05:48] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-16 17:07:22] [WARNING] login endpoint: Failed login attempt for username:   cDxvBSdv 
+[2025-09-16 17:07:32] [WARNING] login endpoint: Failed login attempt for username: cDxvBSdv 
+[2025-09-16 17:08:26] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:09:34] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-16 17:11:09] [ERROR] login endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\login.py", line 20, in login
+    raise Exception()
+Exception
+[2025-09-16 17:15:32] [INFO] login endpoint: User 'testadmin' logged in successfully

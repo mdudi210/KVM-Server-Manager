@@ -4,6 +4,7 @@
       <p class="vm-name"><strong>{{ vm_name }}</strong></p>
       <p class="vm-status">Status: <span :class="statusTextClass">{{ current_state }}</span></p>
     </div>
+    <AlertMsg ref="alertRef"></AlertMsg>
     <div class="vm-actions">
       <button 
         v-if="current_state === 'shut off'"
@@ -36,9 +37,13 @@
 
 <script>
 import axios from 'axios'
+import AlertMsg from './Alert.vue'
 
 export default {
   name: 'VmItem',
+  components : {
+    AlertMsg
+  },
   props: {
     vm_name: String,
     current_state: String
@@ -63,17 +68,19 @@ export default {
     async changestate(state) {
       try {
         this.changing_state = true
+        this.$refs.alertRef.show(`${this.vm_name} will ${state} in sometime`)
         const token = JSON.parse(sessionStorage.getItem('user-info')).access_token;
         this.username = JSON.parse(atob(token.split('.')[1])).sub;
 
-        const response = await axios.post("http://127.0.0.1:8000/vm/state", 
+        // const response = 
+        await axios.post("http://127.0.0.1:8000/vm/state", 
           { state: state, name: this.vm_name },
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        console.log(response.data.Body.output);
+        // console.log(response.data.Body.output);
         
         await setTimeout(() => {
-          console.log("One minute has passed!");
+          // console.log("One minute has passed!");
 
           axios.get("http://127.0.0.1:8000/vm", {
             params: {
@@ -82,32 +89,32 @@ export default {
             headers: { Authorization: `Bearer ${token}` }
           })
           .then(response => {
-            console.log("hello")
+            // console.log("hello")
             console.log(response.data.Body.output)
+            this.$parent.vmlist.forEach(element => {
+            if(element.Name === this.vm_name){
+              if(state === "shutdown"){
+                state = "shut off"
+              }else if(state === "start"){
+                state = "running"
+              }else if(state == 'reboot'){
+                state = 'running'
+              }
+              element.State = state
+            } 
+          });
           })
           .catch(error => {
             console.log('API call failed', error)
           })
 
-          this.$parent.vmlist.forEach(element => {
-          if(element.Name === this.vm_name){
-            if(state === "shutdown"){
-              state = "shut off"
-            }else if(state === "start"){
-              state = "running"
-            }else if(state == 'reboot'){
-              state = 'running'
-            }
-            element.State = state
-          } 
-        });
-
         this.changing_state = false
+        this.$refs.alertRef.show(`${this.vm_name} ${state}ed`)
 
         }, 60000);
         
       } catch (error) {
-        console.error('API call failed', error);
+        // console.error('API call failed', error);
       }
     }
   }

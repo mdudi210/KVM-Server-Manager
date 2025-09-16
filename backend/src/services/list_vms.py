@@ -42,10 +42,10 @@ def list_all_vm(
             }
         }
 
-    except HTTPException:
-        raise HTTPException(status_code=520, detail="Unknown Error")
+    except HTTPException as e:
+        raise HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception("Unexpected error occurred while retrieving VM info")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=f"{e}")
     finally:
         client.close()

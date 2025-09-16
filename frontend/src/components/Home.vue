@@ -3,6 +3,7 @@
     <TopBar :username="username" :role="role"/>
     <div class="body">
       <h2 class="page-title">Your Virtual Machines</h2>
+      <AlertMsg ref="alertRef"></AlertMsg>
       <div class="vm-grid">
         <VmItem 
           v-for="vm in vmlist"
@@ -19,12 +20,14 @@
 import axios from 'axios'
 import VmItem from './VmItem.vue'
 import TopBar from './TopBar.vue'
+import AlertMsg from './Alert.vue'
 
 export default {
   name: 'VmHome',
   components: {
     VmItem,
-    TopBar
+    TopBar,
+    AlertMsg
   },
   data() {
     return {
@@ -36,36 +39,19 @@ export default {
   async mounted() {
     let user = sessionStorage.getItem('user-info')
     const token = JSON.parse(user).access_token
-    // let user = sessionStorage.getItem('user-info')
-    // if (!user) {
-    //   this.$router.push({name:'Login'})
-    // } else {
-    //   const token = JSON.parse(user).access_token
-      
-    //   await axios.get("http://127.0.0.1:8000/check-token", {
-    //     headers: { Authorization: `Bearer ${token}` }
-    //   })
-    //   .then(response => {
-    //     if (response.data.valid === false) {
-    //       sessionStorage.removeItem('user-info')
-    //       this.$router.push({name:'Login'})
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log('API call failed', error)
-    //   })
-
-    //   this.username = JSON.parse(user).username
-    //   this.role = JSON.parse(user).role
 
       await axios.get("http://127.0.0.1:8000/vm", {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
         this.vmlist = response.data.Body.output
+        this.username = JSON.parse(user).username
+        this.role = JSON.parse(user).role      
       })
       .catch(error => {
+        const backendMsg = error.response.data?.detail || error.response.data?.message || "Something went wrong"
         console.log('API call failed', error)
+        this.$refs.alertRef.show(backendMsg)
       })
     }
   // },

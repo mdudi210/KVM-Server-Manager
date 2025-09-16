@@ -26,21 +26,13 @@ def verify_user(Authorize: AuthJWT = Depends()):
     except Exception as e:
         raise HTTPException(status_code=401, detail=f"Invalid or missing token: {str(e)}")
 
-    try:
-        role_id = claims.get('role')
-        if not role_id:
-            raise HTTPException(status_code=400, detail="Missing role in token claims")\
-            
-        with OpenDb() as cursor:
-            cursor.execute("SELECT role FROM roles WHERE id=%s", (role_id,))
-            role_name = cursor.fetchone()
-    except DatabaseError as db_err:
-        raise HTTPException(status_code=500, detail=f"Database error: {str(db_err)}")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Unexpected error while verifying role: {str(e)}")
+    # try:
+    role = claims.get('role')
+    if not role:
+        raise HTTPException(status_code=400, detail="Missing role in token claims")
 
     try:
-        if not role_name or role_name[0] not in ["admin", "user"]:
+        if not role or role not in ["admin", "user"]:
             raise HTTPException(status_code=403, detail="User access required")
 
         user_id = claims.get("id")
@@ -51,11 +43,9 @@ def verify_user(Authorize: AuthJWT = Depends()):
 
         return claims
         
-    except HTTPException:
-        print("hello")
+    except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error during user verification: {str(e)}")
         # re-raise HTTP exceptions directly
-        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error during user verification: {str(e)}")
 

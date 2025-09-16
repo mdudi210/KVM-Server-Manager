@@ -47,11 +47,11 @@ def register(data: NewUser, claims=Depends(verify_admin)):
         logger.info(f"Admin {claims.get('sub')} created account for user '{username}'")
         return {"Message": f"Account created for {username}"}
 
-    except psycopg2.errors.UniqueViolation: 
+    except psycopg2.errors.UniqueViolation as e: 
         logger.warning(f"Duplicate username attempt: {username}")
-        raise HTTPException(status_code=400, detail="User with this name already exists")
-    except HTTPException:
-        raise HTTPException(status_code=520, detail="Unknown Error")
+        raise HTTPException(status_code=400, detail=f"{e}")
+    except HTTPException as e:
+        raise HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception(f"Unexpected error while creating user '{username}'")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=f"{e}")

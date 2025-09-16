@@ -1,7 +1,7 @@
 <template>
   <div v-if="isVisible" class="side-panel-overlay" @click.self="closePanel">
     <div class="side-panel-content">
-      <!-- Header -->
+
       <div class="side-panel-header">
         <div class="user-info">
           <img :src="profilePhoto" alt="Profile" class="profile-photo" />
@@ -10,16 +10,16 @@
         <button class="close-btn" @click="closePanel">✕</button>
       </div>
 
-      <!-- Body -->
+
       <div class="side-panel-body">
-        <h4>{{ isAdmin ? 'Admin Dashboard' : 'User Dashboard' }}</h4>
+        <h4>{{ isAdmin ? 'Admin Dashboard' : 'User Dashboard'}}</h4>
         <div v-if="isAdmin" class="admin-menu">
           <h5>Create VM</h5>
         </div>
         <slot></slot>
       </div>
 
-      <!-- Footer -->
+      
       <div class="side-panel-footer">
         <button @click="logout" class="logout-btn">Logout</button>
       </div>
@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     isAdmin() {
-      return this.role === '6f057cf8-93c7-4335-9729-3c92404c95f1';
+      return this.role == 'admin';
     },
     formattedUsername() {
       return this.username.charAt(0).toUpperCase() + this.username.slice(1);
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-/* Background Overlay */
+
 .side-panel-overlay {
   position: fixed;
   top: 0;
@@ -71,7 +71,6 @@ export default {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Side Panel */
 .side-panel-content {
   width: 300px;
   max-width: 90%;
@@ -84,7 +83,6 @@ export default {
   animation: slideIn 0.3s ease-out;
 }
 
-/* Header */
 .side-panel-header {
   display: flex;
   justify-content: space-between;
@@ -112,7 +110,6 @@ export default {
   object-fit: cover;
 }
 
-/* Close Button */
 .close-btn {
   background: none;
   border: none;
@@ -125,7 +122,6 @@ export default {
   color: #d21919;
 }
 
-/* Body */
 .side-panel-body {
   flex: 1;
   padding: 20px;
@@ -138,7 +134,6 @@ export default {
   margin-bottom: 15px;
 }
 
-/* Footer */
 .side-panel-footer {
   padding: 15px;
   border-top: 1px solid #ddd;
@@ -167,7 +162,6 @@ export default {
   margin-left: 0px;
 }
 
-/* Animations */
 @keyframes slideIn {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }

@@ -3,6 +3,7 @@
     <div class="login-card">
       <h2 class="title">Welcome Back</h2>
       <p class="subtitle">Please login to continue</p>
+      <AlertMsg ref="alertRef"></AlertMsg>
 
       <input 
         type="text" 
@@ -32,9 +33,13 @@
 
 <script>
 import axios from 'axios'
+import AlertMsg from './Alert.vue'
 
 export default {
   name: 'LogIn',
+  components : {
+    AlertMsg
+  },
   data () {
     return {
       token: '',
@@ -57,39 +62,21 @@ export default {
           this.username = JSON.parse(atob(this.token.split('.')[1])).sub;
           this.$router.push({name:'VmHome'})
         } else if(response.status === 401){
-          this.username = ''
           this.password = ''
           this.login_failed = true
+          this.$refs.alertRef.show(`Incorrect username or password`)
           // alert('Incorrect username or password')
         }
       } catch (error) {
-        this.username = ''
         this.password = ''
         this.login_failed = true
+        this.$refs.alertRef.show(`Login Failed: ${error.response?.data.detail || error.message}`)
         // alert('Incorrect username or password')
         console.error("Login failed:", error.response?.data || error.message);
       }
     },
   },
-  // async mounted(){
-  //   let user = sessionStorage.getItem('user-info')
-  //   if(user){
-  //     const token = JSON.parse(user).access_token
-  //     await axios.get("http://127.0.0.1:8000/check-token", {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     .then(response => {
-  //       if(response.data.valid){
-  //         this.$router.push({name:'VmHome'})
-  //       } else {
-  //         this.$router.push({name:'Login'})
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.log('API call failed', error)
-  //     })
-  //   }
-  // }
+
 }
 </script>
 

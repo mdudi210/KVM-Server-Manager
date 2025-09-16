@@ -50,10 +50,10 @@ def create_clone(data: CloneRequest, claims=Depends(verify_admin)):
             "Body": {"output": output},
         }
 
-    except HTTPException:
-        raise HTTPException(status_code=520, detail="Unknown Error")
-    except Exception:
+    except HTTPException as e:
+        raise HTTPException(status_code=520, detail=f"{e}")
+    except Exception as e:
         logger.exception("Unexpected error during VM clone operation")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=f"{e}")
     finally:
         client.close()

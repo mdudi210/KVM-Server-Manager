@@ -27,6 +27,15 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
         if not result or result[2] != hashed_password:
             logger.warning(f"Failed login attempt for username: {data.username}")
             raise HTTPException(status_code=401, detail="Invalid username or password")
+        
+        with OpenDb() as cursor:
+            cursor.execute(
+                "SELECT role FROM roles WHERE id = %s",
+                (result[3],)
+            )
+            result2 = cursor.fetchone()
+
+        print(result2)
 
         try:
             access_token = Authorize.create_access_token(
@@ -34,7 +43,7 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
                 expires_time=timedelta(days=7),
                 user_claims={
                     "id": result[0],
-                    "role": result[3]
+                    "role": result2[0]
                 }
             )
         except Exception as jwt_error:
@@ -46,14 +55,14 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
             "access_token": access_token,
             "id": result[0],
             "username": result[1],
-            "role": result[3]
+            "role": result2[0]
         }
 
     except psycopg2.Error as db_error:
         logger.exception("Database error occurred during login")
-        raise HTTPException(status_code=500, detail="Database connection error")
-    except HTTPException:
-        raise  HTTPException(status_code=520, detail="Unknown Error")
+        raise HTTPException(status_code=500, detail=f"{db_error}")
+    except HTTPException as e:
+        raise  HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception("Unexpected error in login API")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=f"{e}")
