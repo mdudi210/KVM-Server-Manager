@@ -2441,3 +2441,74 @@ Traceback (most recent call last):
     raise Exception()
 Exception
 [2025-09-16 17:15:32] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-16 17:15:33] [INFO] vm endpoint: testadmin retrieved VM info successfully
+post[2025-09-17 09:55:53] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 09:55:54] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 09:56:05] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-17 09:56:07] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to start
+[2025-09-17 09:56:11] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to start
+[2025-09-17 09:57:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 09:57:08] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 09:57:11] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 09:57:14] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-17 09:57:18] [INFO] vm state endpoint: testadmin change state of vm linux-clone3 to shutdown
+[2025-09-17 09:57:20] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-17 09:58:14] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 09:58:18] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 09:58:20] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:01:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:01:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:03:03] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to start
+[2025-09-17 10:03:05] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to start
+[2025-09-17 10:03:12] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:03:40] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:03:45] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:03:47] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-17 10:03:51] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-17 10:03:54] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:03:58] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:04:12] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 10:04:12] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:04:23] [WARNING] login endpoint: Failed login attempt for username: testuser
+[2025-09-17 10:04:30] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-17 10:04:30] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-17 10:04:43] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-17 10:04:43] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-17 10:04:56] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 10:04:56] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:34:40] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 10:34:40] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:35:34] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-17 10:35:43] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to start
+[2025-09-17 10:36:35] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:36:43] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:37:16] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-17 10:37:26] [INFO] vm state endpoint: testadmin change state of vm win-clone2 to shutdown
+[2025-09-17 10:37:39] [WARNING] login endpoint: Failed login attempt for username: testadmin
+[2025-09-17 10:37:39] [ERROR] login endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\login.py", line 29, in login
+    raise HTTPException(status_code=401, detail="Invalid username or password")
+fastapi.exceptions.HTTPException: 401: Invalid username or password
+[2025-09-17 10:38:17] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:38:26] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:39:28] [INFO] login endpoint: User 'testuser' logged in successfully
+[2025-09-17 10:39:28] [INFO] vm endpoint: testuser retrieved VM info successfully
+[2025-09-17 10:39:43] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 10:39:44] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:40:08] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 10:40:09] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:48:41] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-09-17 10:48:41] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:48:57] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-17 10:49:03] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to start
+[2025-09-17 10:49:57] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:50:03] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:50:06] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-17 10:50:15] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to shutdown
+[2025-09-17 10:50:42] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to start
+[2025-09-17 10:51:07] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:51:15] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:51:42] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-17 10:51:47] [INFO] vm state endpoint: testadmin change state of vm linux-clone2 to shutdown
+[2025-09-17 10:52:47] [INFO] vm endpoint: testadmin retrieved VM info successfully

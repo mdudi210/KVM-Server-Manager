@@ -65,13 +65,11 @@ export default {
           this.password = ''
           this.login_failed = true
           this.$refs.alertRef.show(`Incorrect username or password`)
-          // alert('Incorrect username or password')
         }
       } catch (error) {
         this.password = ''
         this.login_failed = true
         this.$refs.alertRef.show(`Login Failed: ${error.response?.data.detail || error.message}`)
-        // alert('Incorrect username or password')
         console.error("Login failed:", error.response?.data || error.message);
       }
     },
@@ -158,7 +156,6 @@ p {
   color: red;
 }
 
-/* --- Mobile Responsiveness --- */
 @media (max-width: 480px) {
   .login-card {
     padding: 1.5rem;

@@ -43,6 +43,7 @@ def list_all_vm(
         }
 
     except HTTPException as e:
+        logger.exception("HTTP Unexpected error occurred while retrieving VM info")
         raise HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception("Unexpected error occurred while retrieving VM info")

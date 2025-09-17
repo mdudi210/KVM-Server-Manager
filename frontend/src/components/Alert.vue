@@ -22,12 +22,11 @@ export default {
   data() {
     return {
       visible: false,
-      currentMessage: this.message   // store dynamic message here
+      currentMessage: this.message 
     }
   },
   methods: {
     show(msg) {
-      // if a custom message is passed, use it
       this.currentMessage = msg || this.message
       this.visible = true
       setTimeout(() => {

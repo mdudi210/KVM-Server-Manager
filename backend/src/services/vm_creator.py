@@ -69,6 +69,7 @@ def create_new_vm(data: NewVmRequest, claims=Depends(verify_admin)):
         }
 
     except HTTPException as e:
+        logger.exception("HTTP Unexpected error during VM creation")
         raise HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception("Unexpected error during VM creation")

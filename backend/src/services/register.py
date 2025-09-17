@@ -51,6 +51,7 @@ def register(data: NewUser, claims=Depends(verify_admin)):
         logger.warning(f"Duplicate username attempt: {username}")
         raise HTTPException(status_code=400, detail=f"{e}")
     except HTTPException as e:
+        logger.exception(f"HTTP Unexpected error while creating user '{username}'")
         raise HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception(f"Unexpected error while creating user '{username}'")

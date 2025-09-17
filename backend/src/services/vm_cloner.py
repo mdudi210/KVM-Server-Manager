@@ -51,6 +51,7 @@ def create_clone(data: CloneRequest, claims=Depends(verify_admin)):
         }
 
     except HTTPException as e:
+        logger.exception("HTTP Unexpected error during VM clone operation")
         raise HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception("Unexpected error during VM clone operation")

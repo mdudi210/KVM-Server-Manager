@@ -62,6 +62,7 @@ def login(data: LoginRequest, Authorize: AuthJWT = Depends()):
         logger.exception("Database error occurred during login")
         raise HTTPException(status_code=500, detail=f"{db_error}")
     except HTTPException as e:
+        logger.exception("HTTP Unexpected error in login")
         raise  HTTPException(status_code=520, detail=f"{e}")
     except Exception as e:
         logger.exception("Unexpected error in login API")
