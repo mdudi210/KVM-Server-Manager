@@ -32,6 +32,7 @@
 </template>
 
 <script>
+// import { login } from '../services/login'
 import axios from 'axios'
 import AlertMsg from './Alert.vue'
 
@@ -51,10 +52,12 @@ export default {
   methods: {
     async login() {
       try {
-        let response = await axios.post("http://127.0.0.1:8000/login", {
+        let response = await axios.post("http://127.0.0.1:8000/adlogin", {
           username: this.username,
           password: this.password
         })
+
+        // let response = login(this.username, this.password)
         
         if(response.status === 200){
           sessionStorage.setItem('user-info', JSON.stringify(response.data))

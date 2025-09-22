@@ -67,20 +67,19 @@ export default {
   methods: {
     async changestate(state) {
       try {
-        this.changing_state = true
-        this.$refs.alertRef.show(`${this.vm_name} will ${state} in sometime`)
         const token = JSON.parse(sessionStorage.getItem('user-info')).access_token;
         this.username = JSON.parse(atob(token.split('.')[1])).sub;
 
-        // const response = 
-        await axios.post("http://127.0.0.1:8000/vm/state", 
+        let response = await axios.post("http://127.0.0.1:8000/vm/state",
           { state: state, name: this.vm_name },
           { headers: { Authorization: `Bearer ${token}` } }
-        );
-        // console.log(response.data.Body.output);
+        )
+        console.log(response.data.Body.output);
         
+        this.changing_state = true
+        this.$refs.alertRef.show(`${this.vm_name} will ${state} in sometime`)
+
         await setTimeout(() => {
-          // console.log("One minute has passed!");
 
           axios.get("http://127.0.0.1:8000/vm", {
             params: {
@@ -89,7 +88,6 @@ export default {
             headers: { Authorization: `Bearer ${token}` }
           })
           .then(response => {
-            // console.log("hello")
             console.log(response.data.Body.output)
             this.$parent.vmlist.forEach(element => {
             if(element.Name === this.vm_name){
@@ -114,7 +112,9 @@ export default {
         }, 60000);
         
       } catch (error) {
-        // console.error('API call failed', error);
+        this.$refs.alertRef.show(`${error.response.data.detail}`)
+        console.log(error.response.data.detail)
+        
       }
     }
   }
