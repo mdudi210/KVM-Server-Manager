@@ -4762,3 +4762,296 @@ Traceback (most recent call last):
   File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
     raise HTTPException(status_code=401, detail="Invalid AD credentials")
 fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:37:33] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:37:33] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:40:47] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:40:47] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-22 11:42:47] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:42:48] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-22 11:43:54] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:43:55] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-22 11:45:16] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:45:26] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:45:26] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:45:31] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:46:44] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:47:08] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:50:51] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:50:59] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:50:59] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:51:05] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:51:08] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmi6n
+[2025-09-22 11:51:08] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:51:14] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:55:22] [ERROR] ADlogin endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    if not authenticate_with_ad(data.username, data.password):
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 14, in authenticate_with_ad
+    print(conn.search(attributes=['KVMrole']))
+          ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Connection.search() missing 2 required positional arguments: 'search_base' and 'search_filter'
+[2025-09-22 11:58:19] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:58:19] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:58:36] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 11:58:43] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:58:43] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:58:55] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:58:55] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:59:27] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:59:27] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 11:59:45] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 11:59:45] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 12:22:50] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 12:22:50] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 12:23:08] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 12:23:08] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 12:23:46] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 12:23:46] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 13:01:25] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-22 13:01:25] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-22 13:02:10] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 13:03:27] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 14:49:07] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-22 14:50:16] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:09:01] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:09:01] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:10:49] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:10:49] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:11:27] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:11:36] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:11:36] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:11:42] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:12:27] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:12:27] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:13:07] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:14:29] [ERROR] ADlogin endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    if not authenticate_with_ad(data.username, data.password):
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 47, in authenticate_with_ad
+    conn.search(
+    ~~~~~~~~~~~^
+        search_base=ad_base_dn,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+        search_filter=search_filter,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        attributes=["KVMrole"]
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 838, in search
+    request = search_operation(search_base,
+                               search_filter,
+    ...<9 lines>...
+                               validator=self.server.custom_validator,
+                               check_names=self.check_names)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\operation\search.py", line 346, in search_operation
+    request['baseObject'] = LDAPDN(search_base)
+                            ~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\pyasn1\type\univ.py", line 794, in __init__
+    base.SimpleAsn1Type.__init__(self, value, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\pyasn1\type\base.py", line 266, in __init__
+    value = self.prettyIn(value)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\pyasn1\type\univ.py", line 819, in prettyIn
+    return bytes(value)
+TypeError: cannot convert 'NoneType' object to bytes
+[2025-09-23 11:18:19] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:18:25] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:18:25] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:18:31] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:18:35] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmyin
+[2025-09-23 11:18:35] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:18:40] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:22:24] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:23:21] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:24:04] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:24:04] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:24:08] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:24:08] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:24:40] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmin
+[2025-09-23 11:24:40] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:24:57] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:26:44] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:27:20] [WARNING] ADlogin endpoint: Failed AD login attempt for username: wg/testadmin
+[2025-09-23 11:27:20] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:27:27] [WARNING] ADlogin endpoint: Failed AD login attempt for username: wg	estadmin
+[2025-09-23 11:27:27] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:27:34] [WARNING] ADlogin endpoint: Failed AD login attempt for username: wg.local	estadmin
+[2025-09-23 11:27:34] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 17, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 11:28:10] [WARNING] ADlogin endpoint: User not found in DB: testadmin@wg.local
+[2025-09-23 11:28:10] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 28, in login
+    raise HTTPException(status_code=403, detail="User not authorized in system")
+fastapi.exceptions.HTTPException: 403: User not authorized in system
+[2025-09-23 11:28:56] [WARNING] ADlogin endpoint: User not found in DB: testadmin@wg.local
+[2025-09-23 11:28:56] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 28, in login
+    raise HTTPException(status_code=403, detail="User not authorized in system")
+fastapi.exceptions.HTTPException: 403: User not authorized in system
+[2025-09-23 11:31:32] [WARNING] ADlogin endpoint: User not found in DB: testadmin@wg.local
+[2025-09-23 11:31:32] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 28, in login
+    raise HTTPException(status_code=403, detail="User not authorized in system")
+fastapi.exceptions.HTTPException: 403: User not authorized in system
+[2025-09-23 11:33:21] [WARNING] ADlogin endpoint: User not found in DB: testadmin@wg.local
+[2025-09-23 11:33:21] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 28, in login
+    raise HTTPException(status_code=403, detail="User not authorized in system")
+fastapi.exceptions.HTTPException: 403: User not authorized in system
+[2025-09-23 11:34:18] [INFO] ADlogin endpoint: User 'testadmin@wg.local' logged in successfully via AD
+[2025-09-23 11:40:19] [ERROR] ADlogin endpoint: Error while generating JWT token
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 44, in login
+    "id": user_id,
+          ^^^^^^^
+NameError: name 'user_id' is not defined
+[2025-09-23 11:40:19] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 44, in login
+    "id": user_id,
+          ^^^^^^^
+NameError: name 'user_id' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 50, in login
+    raise HTTPException(status_code=500, detail="Token generation failed")
+fastapi.exceptions.HTTPException: 500: Token generation failed
+[2025-09-23 11:43:58] [ERROR] ADlogin endpoint: Unexpected error in login API
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 16, in login
+    if not result[0]:
+           ~~~~~~^^^
+TypeError: 'set' object is not subscriptable
+[2025-09-23 11:44:46] [ERROR] ADlogin endpoint: Error while generating JWT token
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 45, in login
+    "id": user_id,
+          ^^^^^^^
+NameError: name 'user_id' is not defined
+[2025-09-23 11:44:46] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 45, in login
+    "id": user_id,
+          ^^^^^^^
+NameError: name 'user_id' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 51, in login
+    raise HTTPException(status_code=500, detail="Token generation failed")
+fastapi.exceptions.HTTPException: 500: Token generation failed
+[2025-09-23 11:46:56] [INFO] ADlogin endpoint: User 'testadmin@wg.local' logged in successfully via AD
+[2025-09-23 11:48:10] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:56:11] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 11:57:19] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
