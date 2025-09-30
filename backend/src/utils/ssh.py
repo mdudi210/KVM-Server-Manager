@@ -21,13 +21,13 @@ def ssh_client():
         return client
     except paramiko.AuthenticationException:
         print("Authentication failed. Please check your username and password.")
-        return "Authentication failed. Please check your username and password."
+        raise HTTPException(status_code=500, detail="Authentication failed. Please check your username and password.")
     except paramiko.SSHException as e:
         print(f"SSH connection error: {e}")
-        return f"SSH connection error: {e}"
+        raise HTTPException(status_code=500, detail=f"SSH connection error: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-        return f"An unexpected error occurred: {e}"
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
 
 def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:

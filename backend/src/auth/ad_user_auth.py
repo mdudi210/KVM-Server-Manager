@@ -1,11 +1,9 @@
 from fastapi import Depends, HTTPException
-from backend.src.schema.schema import Roles
 from fastapi_jwt_auth import AuthJWT
-from backend.src.utils.user_exists import user_exists
+from backend.src.schema.schema import Roles
 from backend.src.utils.ad_user_exists import ad_user_exists
 
-
-def verify_user(Authorize: AuthJWT = Depends()):
+def ad_verify_user(Authorize: AuthJWT = Depends()):
     try:
         Authorize.jwt_required()
         claims = Authorize.get_raw_jwt()
@@ -23,9 +21,8 @@ def verify_user(Authorize: AuthJWT = Depends()):
         user_id = claims.get("id")
         if not user_id:
             raise HTTPException(status_code=400, detail="Missing user id in token claims")
-        # if not user_exists(user_id):
-        # if not ad_user_exists(user_id):
-        #     raise HTTPException(status_code=400, detail="User does not exist")
+        if not ad_user_exists(user_id):
+            raise HTTPException(status_code=400, detail="User does not exist")
 
         return claims
         

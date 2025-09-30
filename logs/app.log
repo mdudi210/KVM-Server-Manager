@@ -5055,3 +5055,455 @@ fastapi.exceptions.HTTPException: 500: Token generation failed
 [2025-09-23 11:48:10] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
 [2025-09-23 11:56:11] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
 [2025-09-23 11:57:19] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 13:54:26] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 13:54:31] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmina
+[2025-09-23 13:54:31] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 18, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 16:03:58] [WARNING] ADlogin endpoint: Failed AD login attempt for username: testadmina
+[2025-09-23 16:03:58] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 18, in login
+    raise HTTPException(status_code=401, detail="Invalid AD credentials")
+fastapi.exceptions.HTTPException: 401: Invalid AD credentials
+[2025-09-23 16:04:36] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-23 16:14:06] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-24 14:41:34] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-24 14:43:16] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-26 13:17:26] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 65, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Invalid role type")
+fastapi.exceptions.HTTPException: 400: Invalid role type
+[2025-09-26 13:17:36] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 65, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Invalid role type")
+fastapi.exceptions.HTTPException: 400: Invalid role type
+[2025-09-26 13:18:27] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-26 13:20:30] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:20:41] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:21:44] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:22:24] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:25:34] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:25:47] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:27:31] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:34:07] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:34:52] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:35:25] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:36:39] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:36:54] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:37:33] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:37:44] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:38:07] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:38:39] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:39:01] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:39:49] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:42:39] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:43:52] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:46:13] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:47:55] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-26 13:47:55] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:49:20] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-26 13:49:20] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:57:21] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:57:44] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:58:12] [WARNING] AD Auth: Attribute not found
+[2025-09-26 13:59:17] [WARNING] AD Auth: Attribute not found
+[2025-09-26 14:02:34] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-26 14:02:34] [WARNING] AD Auth: Attribute not found
+[2025-09-26 14:24:02] [WARNING] AD Auth: Attribute not found
+[2025-09-26 16:56:04] [WARNING] AD Auth: Attribute not found
+[2025-09-26 16:56:19] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-26 16:56:19] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:31:39] [INFO] ADlogin endpoint: User 'Testadmin' logged in successfully via AD
+[2025-09-29 11:31:39] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:38:15] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:38:27] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:40:17] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:40:29] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:40:43] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:41:03] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:42:47] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:44:06] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 11:44:06] [WARNING] AD Auth: Attribute not found
+[2025-09-29 11:45:57] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:43:33] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:50:14] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:50:34] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:50:53] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:51:07] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:52:11] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:52:24] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 12:52:24] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:54:12] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:56:51] [WARNING] AD Auth: Attribute not found
+[2025-09-29 12:59:20] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:00:57] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:14:44] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:16:15] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:17:55] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 13:17:55] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:21:39] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:22:19] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:23:39] [WARNING] AD Auth: Attribute not found
+[2025-09-29 13:23:49] [WARNING] AD Auth: Attribute not found
+[2025-09-29 14:22:20] [WARNING] AD Auth: Attribute not found
+[2025-09-29 14:23:30] [WARNING] AD Auth: Attribute not found
+[2025-09-29 14:23:56] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 14:23:56] [WARNING] AD Auth: Attribute not found
+[2025-09-29 15:21:00] [WARNING] AD Auth: Attribute not found
+[2025-09-29 15:21:07] [WARNING] AD Auth: Attribute not found
+[2025-09-29 15:21:12] [WARNING] AD Auth: Attribute not found
+[2025-09-29 15:21:33] [WARNING] AD Auth: Attribute not found
+[2025-09-29 15:23:23] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:27:51] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:30:41] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:31:50] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:34:23] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:34:23] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:34:23] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:34:31] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:35:38] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:35:44] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:36:17] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Invalid role type")
+fastapi.exceptions.HTTPException: 400: Invalid role type
+[2025-09-29 16:36:42] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 16:36:42] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:36:57] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Invalid role type")
+fastapi.exceptions.HTTPException: 400: Invalid role type
+[2025-09-29 16:38:53] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Invalid role type")
+fastapi.exceptions.HTTPException: 400: Invalid role type
+[2025-09-29 16:41:16] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 389, in _do_auto_bind
+    self.bind(read_server_info=True)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 604, in bind
+    request = bind_operation(self.version, self.authentication, self.user, self.password, auto_encode=self.auto_encode)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\operation\bind.py", line 59, in bind_operation
+    raise LDAPPasswordIsMandatoryError('password is mandatory in simple bind')
+ldap3.core.exceptions.LDAPPasswordIsMandatoryError: password is mandatory in simple bind
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-09-29 16:41:26] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-09-29 16:41:32] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 16:41:32] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:41:41] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-09-29 16:47:44] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 16:47:44] [WARNING] AD Auth: Attribute not found
+[2025-09-29 16:48:04] [WARNING] AD Auth: Attribute not found
+[2025-09-29 17:00:09] [WARNING] AD Auth: Attribute not found
+[2025-09-29 17:29:12] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:29:38] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:30:12] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:30:18] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 17:30:23] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:30:44] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:32:19] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 17:32:24] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:32:45] [ERROR] vm endpoint: SSH connection failed: An unexpected error occurred: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2025-09-29 17:38:09] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:39:46] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:41:38] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to start
+[2025-09-29 17:41:42] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to start
+[2025-09-29 17:41:48] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to start
+[2025-09-29 17:41:52] [INFO] vm state endpoint: testadmin change state of vm linux-template to start
+[2025-09-29 17:42:39] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:42:42] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:42:49] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:42:53] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:42:59] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:43:01] [INFO] vm state endpoint: testadmin change state of vm linux-clone1 to shutdown
+[2025-09-29 17:43:03] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to reboot
+[2025-09-29 17:43:04] [INFO] vm state endpoint: testadmin change state of vm win-clone1 to shutdown
+[2025-09-29 17:43:06] [INFO] vm state endpoint: testadmin change state of vm linux-template to shutdown
+[2025-09-29 17:44:01] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:44:03] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:44:05] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:44:07] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:44:33] [INFO] vm state endpoint: testadmin change state of vm linux-clone4 to shutdown
+[2025-09-29 17:45:11] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:45:23] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:50:39] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:50:51] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-09-29 17:51:00] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-09-29 17:51:19] [INFO] ADlogin endpoint: User 'TESTADMIN' logged in successfully via AD
+[2025-09-29 17:51:19] [INFO] vm endpoint: TESTADMIN retrieved VM info successfully
+[2025-09-29 17:51:34] [INFO] vm endpoint: TESTADMIN retrieved VM info successfully
+[2025-09-29 17:52:21] [INFO] vm endpoint: TESTADMIN retrieved VM info successfully
+[2025-09-29 17:52:45] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-09-29 17:52:51] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-09-29 17:54:03] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-09-29 17:54:04] [INFO] vm endpoint: testadmin retrieved VM info successfully
