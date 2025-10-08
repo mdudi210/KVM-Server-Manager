@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Allow frontend origin
 origins = [
+    "http://0.0.0.0:*",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
 ]

@@ -5507,3 +5507,5 @@ Traceback (most recent call last):
 fastapi.exceptions.HTTPException: 400: Incorrect username or password
 [2025-09-29 17:54:03] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
 [2025-09-29 17:54:04] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-10-06 17:05:28] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-10-06 17:05:30] [INFO] vm endpoint: testadmin retrieved VM info successfully
