@@ -5509,3 +5509,65 @@ fastapi.exceptions.HTTPException: 400: Incorrect username or password
 [2025-09-29 17:54:04] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-10-06 17:05:28] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
 [2025-10-06 17:05:30] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-12-11 12:37:12] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 12:40:36] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 12:40:40] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-12-11 12:40:46] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-12-11 12:43:41] [ERROR] vm state endpoint: testadmin got error: Failed to shutdown domain 'win-clone1'
+error: Requested operation is not valid: domain is not running when changing state of vm win-clone1 to shutdown
+[2025-12-11 12:43:41] [ERROR] vm state endpoint: HTTP Unexpected error during VM creation
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\vm_state_manager.py", line 25, in change_state
+    raise HTTPException(status_code=500, detail=error)
+fastapi.exceptions.HTTPException: 500: error: Failed to shutdown domain 'win-clone1'
+error: Requested operation is not valid: domain is not running
+[2025-12-11 12:52:05] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 12:52:10] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 14:15:49] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 14:33:38] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\strategy\sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\strategy\base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-12-11 14:38:56] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-12-11 14:42:11] [WARNING] register endpoint: user with username 'apiadmin3' found in DB
+[2025-12-11 14:42:11] [ERROR] register endpoint: HTTP Unexpected error while creating user 'apiadmin3'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 30, in register
+    raise HTTPException(status_code=400, detail="User Already exist")
+fastapi.exceptions.HTTPException: 400: User Already exist
+[2025-12-11 14:42:41] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 14:44:50] [WARNING] register endpoint: user with username 'apiadmin3' found in DB
+[2025-12-11 14:44:50] [ERROR] register endpoint: HTTP Unexpected error while creating user 'apiadmin3'
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 30, in register
+    raise HTTPException(status_code=400, detail="User Already exist")
+fastapi.exceptions.HTTPException: 400: User Already exist

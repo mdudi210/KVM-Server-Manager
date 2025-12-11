@@ -7,11 +7,15 @@ def verify_admin(Authorize: AuthJWT = Depends()):
     Authorize.jwt_required()
     claims = Authorize.get_raw_jwt()
     role_id = claims.get('role')
+    print(role_id)
+    if role_id == "admin":
+        return
     with OpenDb() as cursor:
         cursor.execute(
             "SELECT role FROM roles WHERE id=%s",(role_id,),
             )
         role_name = cursor.fetchone()
+        print(role_name)
     if role_name[0] != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
     if not user_exists(claims.get("id")):
