@@ -5571,3 +5571,37 @@ Traceback (most recent call last):
   File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\register.py", line 30, in register
     raise HTTPException(status_code=400, detail="User Already exist")
 fastapi.exceptions.HTTPException: 400: User Already exist
+[2025-12-11 15:21:55] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ~~~~~~~~~~~~~~~~^
+        server,
+        ^^^^^^^
+    ...<3 lines>...
+        check_names=True
+        ^^^^^^^^^^^^^^^^
+    ) as conn:
+    ^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 363, in __init__
+    self._do_auto_bind()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\.venv\Lib\site-packages\ldap3\core\connection.py", line 412, in _do_auto_bind
+    raise LDAPBindError(error)
+ldap3.core.exceptions.LDAPBindError: automatic bind not successful - invalidCredentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\services\adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+  File "C:\Users\mdudi\OneDrive - WatchGuard Technologies Inc\Desktop\KVM-Server\backend\src\utils\auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2025-12-11 15:22:02] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-12-11 15:28:46] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2025-12-11 15:38:02] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-12-11 15:38:24] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-12-11 15:38:28] [INFO] vm endpoint: testadmin retrieved VM info successfully
+[2025-12-11 16:43:55] [INFO] login endpoint: User 'testadmin' logged in successfully
+[2025-12-11 16:44:01] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
