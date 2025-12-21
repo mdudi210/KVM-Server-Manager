@@ -21,10 +21,10 @@ def change_state(data: ChangeState, claims = Depends(verify_user)):
         output, error = execute_ssh_command(client, command)
 
         if error:
-            logger.error(f"{claims.get("sub")} got {error} when changing state of vm {data.name} to {data.state}")
+            logger.error(f"{claims.get('sub')} got {error} when changing state of vm {data.name} to {data.state}")
             raise HTTPException(status_code=500, detail=error)
         
-        logger.info(f"{claims.get("sub")} change state of vm {data.name} to {data.state}")
+        logger.info(f"{claims.get('sub')} change state of vm {data.name} to {data.state}")
         return {
             "Message" : "",
             "Body" : {
