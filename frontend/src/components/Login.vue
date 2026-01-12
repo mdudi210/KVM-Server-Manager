@@ -52,7 +52,7 @@ export default {
   methods: {
     async login() {
       try {
-        let response = await axios.post("http://127.0.0.1:8000/adlogin", {
+        let response = await axios.post("http://127.0.0.1:8000/login", {
           username: this.username,
           password: this.password
         })

@@ -23,9 +23,11 @@ try:
         );
         """)
 
-        # insert default roles
-        cursor.execute("INSERT INTO roles (id,role) VALUES (%s,%s)", (str(uuid.uuid4()),'admin'))
-        cursor.execute("INSERT INTO roles (id,role) VALUES (%s,%s)", (str(uuid.uuid4()),'user'))
+        # insert default roles (ignore if already exists)
+        cursor.execute("""
+        INSERT IGNORE INTO roles (id, role) 
+        VALUES (%s, 'admin'), (%s, 'user')
+        """, (str(uuid.uuid4()), str(uuid.uuid4())))
 
         # fetch role IDs
         cursor.execute("SELECT id FROM roles WHERE role='admin'")
@@ -37,16 +39,18 @@ try:
         # hash password with SHA-512
         hashed_password = hash_password("password123")
 
-        # insert default users
+        # insert default users (ignore if already exists based on username)
         cursor.execute("""
-        INSERT INTO users (id, username, password, role_id)
-        VALUES (%s, %s, %s, %s)
-        """, (str(uuid.uuid4()), "admin", hashed_password, admin_role_id))
+        INSERT IGNORE INTO users (id, username, password, role_id)
+        VALUES (%s, 'admin', %s, %s)
+        """, (str(uuid.uuid4()), hashed_password, admin_role_id))
 
         cursor.execute("""
-        INSERT INTO users (id, user, password, role_id)
-        VALUES (%s, %s, %s, %s)
-        """, (str(uuid.uuid4()), "testuser", hashed_password, user_role_id))
+        INSERT IGNORE INTO users (id, username, password, role_id)
+        VALUES (%s, 'testuser', %s, %s)
+        """, (str(uuid.uuid4()), hashed_password, user_role_id))
+
+        print("Database setup completed successfully!")
 
         print(f"Database created with default roles & users: ")
 

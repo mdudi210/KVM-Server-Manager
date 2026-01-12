@@ -5605,3 +5605,304 @@ fastapi.exceptions.HTTPException: 400: Incorrect username or password
 [2025-12-11 15:38:28] [INFO] vm endpoint: testadmin retrieved VM info successfully
 [2025-12-11 16:43:55] [INFO] login endpoint: User 'testadmin' logged in successfully
 [2025-12-11 16:44:01] [INFO] ADlogin endpoint: User 'testadmin' logged in successfully via AD
+[2026-01-12 14:47:40] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:47:42] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:47:46] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:48:35] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:48:37] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:48:37] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:48:55] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:48:57] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:49:01] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:49:51] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:51:59] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:52:03] [ERROR] ADlogin endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/utils/auth_ad.py", line 19, in authenticate_with_ad
+    with ldap3.Connection(
+         ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 363, in __init__
+    self._do_auto_bind()
+  File "/usr/local/lib/python3.11/site-packages/ldap3/core/connection.py", line 387, in _do_auto_bind
+    self.open(read_server_info=False)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/sync.py", line 57, in open
+    BaseStrategy.open(self, reset_usage, read_server_info)
+  File "/usr/local/lib/python3.11/site-packages/ldap3/strategy/base.py", line 146, in open
+    raise exception_history[0][0]
+ldap3.core.exceptions.LDAPSocketOpenError: socket connection error while opening: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/backend/src/services/adlogin.py", line 15, in login
+    result = authenticate_with_ad(data.username, data.password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/src/utils/auth_ad.py", line 50, in authenticate_with_ad
+    raise HTTPException(status_code=400, detail="Incorrect username or password")
+fastapi.exceptions.HTTPException: 400: Incorrect username or password
+[2026-01-12 14:53:00] [WARNING] login endpoint: Failed login attempt for username: admin
+[2026-01-12 14:53:00] [ERROR] login endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/services/login.py", line 29, in login
+    raise HTTPException(status_code=401, detail="Invalid username or password")
+fastapi.exceptions.HTTPException: 401: Invalid username or password
+[2026-01-12 14:53:10] [WARNING] login endpoint: Failed login attempt for username: admin
+[2026-01-12 14:53:10] [ERROR] login endpoint: HTTP Unexpected error in login
+Traceback (most recent call last):
+  File "/app/backend/src/services/login.py", line 29, in login
+    raise HTTPException(status_code=401, detail="Invalid username or password")
+fastapi.exceptions.HTTPException: 401: Invalid username or password
+[2026-01-12 14:56:31] [INFO] login endpoint: User 'admin' logged in successfully

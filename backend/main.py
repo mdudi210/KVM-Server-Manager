@@ -3,12 +3,18 @@ from backend.src.services import list_vms, login, register, vm_cloner, vm_creato
 from backend.src.auth import check_token
 from fastapi.middleware.cors import CORSMiddleware
 
-# Allow frontend origin
-origins = [
-    "http://0.0.0.0:*",
-    "http://localhost:8080",
-    "http://127.0.0.1:8080",
-]
+# Allow frontend origin - configurable via environment variable
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Get allowed origins from environment or use default
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*")
+if ALLOWED_ORIGINS == "*":
+    origins = ["*"]
+else:
+    origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",")]
 
 app = FastAPI(
     title="KVM Server api",
@@ -18,7 +24,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Or ["*"] for all
+    allow_origins=origins,  # Allows all origins when set to ["*"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
