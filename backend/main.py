@@ -1,5 +1,14 @@
 from fastapi import FastAPI
-from backend.src.services import list_vms, login, register, vm_cloner, vm_creator, vm_state_manager, adlogin
+from backend.src.services import (
+    adlogin,
+    list_vms,
+    login,
+    register,
+    vm_cloner,
+    vm_creator,
+    vm_events,
+    vm_state_manager,
+)
 from backend.src.auth import check_token
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -34,6 +43,7 @@ app.add_middleware(
 app.include_router(vm_cloner.router, tags=["vm"])
 app.include_router(vm_creator.router, tags=["vm"])
 app.include_router(vm_state_manager.router, tags=["vm"])
+app.include_router(vm_events.router, tags=["vm"])
 app.include_router(list_vms.router, tags=["vm"])
 app.include_router(login.router, tags=["vm"])
 app.include_router(adlogin.router, tags=["vm"])
@@ -47,5 +57,4 @@ def read_root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
-
+    uvicorn.run("backend.main:app", host="127.0.0.1", port=8000, reload=True)

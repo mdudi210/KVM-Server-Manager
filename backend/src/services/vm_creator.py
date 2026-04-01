@@ -3,6 +3,7 @@ from backend.src.utils.ssh import ssh_client, execute_ssh_command
 from backend.src.schema.schema import NewVmRequest
 from backend.src.auth.admin_auth import verify_admin
 from backend.config.logging_setting import setup_logger
+from backend.src.services.vm_events import publish_event
 import paramiko
 import shlex
 import os
@@ -63,14 +64,21 @@ def create_new_vm(data: NewVmRequest, claims=Depends(verify_admin)):
         logger.info(
             f"{claims.get('sub')} created {data.vmtoinstall} VM successfully: {data.name}"
         )
+        publish_event(
+            {
+                "event": "vm_created",
+                "vm_name": data.name,
+                "vm_type": data.vmtoinstall,
+                "created_by": claims.get("sub"),
+            }
+        )
         return {
             "Message": f"{data.vmtoinstall} VM created successfully",
             "Body": {"output": output},
         }
 
-    except HTTPException as e:
-        logger.exception("HTTP Unexpected error during VM creation")
-        raise HTTPException(status_code=520, detail=f"{e}")
+    except HTTPException:
+        raise
     except Exception as e:
         logger.exception("Unexpected error during VM creation")
         raise HTTPException(status_code=500, detail=f"{e}")

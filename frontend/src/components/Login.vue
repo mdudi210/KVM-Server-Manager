@@ -32,8 +32,7 @@
 </template>
 
 <script>
-// import { login } from '../services/login'
-import axios from 'axios'
+import { apiClient } from '@/config/api'
 import AlertMsg from './Alert.vue'
 
 export default {
@@ -52,7 +51,7 @@ export default {
   methods: {
     async login() {
       try {
-        let response = await axios.post("http://127.0.0.1:8000/login", {
+        let response = await apiClient.post('/login', {
           username: this.username,
           password: this.password
         })

@@ -1,37 +1,41 @@
-// API Configuration
-// This file can be updated to change the API base URL
-// For production, set this to use relative URLs or your server's IP
+import axios from 'axios';
 
-// Get API URL from environment variable or use default
-const getApiUrl = () => {
-  // Check if we're in development mode
+const trimTrailingSlash = (value) => value.replace(/\/+$/, '');
+
+const getApiBaseUrl = () => {
   if (process.env.NODE_ENV === 'development') {
-    return process.env.VUE_APP_API_URL || 'http://127.0.0.1:8000';
+    return trimTrailingSlash(process.env.VUE_APP_API_URL || 'http://127.0.0.1:8000');
   }
-  
-  // For production, use relative URLs (same origin as the frontend)
-  // When served through nginx, this will automatically use the correct origin
-  return window.location.origin;
+
+  if (typeof window !== 'undefined') {
+    return trimTrailingSlash(window.location.origin);
+  }
+
+  return 'http://127.0.0.1:8000';
 };
 
-export const API_BASE_URL = getApiUrl();
+export const API_BASE_URL = getApiBaseUrl();
 
-// Helper function to make API calls
-export const apiCall = async (endpoint, options = {}) => {
-  const url = endpoint.startsWith('http') 
-    ? endpoint 
-    : `${API_BASE_URL}${endpoint.startsWith('/') ? endpoint : '/' + endpoint}`;
-  
-  return fetch(url, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-  });
+export const buildApiUrl = (path) => {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${API_BASE_URL}${normalizedPath}`;
 };
+
+export const buildWsUrl = (path) => {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const wsBase = API_BASE_URL.startsWith('https://')
+    ? API_BASE_URL.replace('https://', 'wss://')
+    : API_BASE_URL.replace('http://', 'ws://');
+  return `${wsBase}${normalizedPath}`;
+};
+
+export const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+});
 
 export default {
   API_BASE_URL,
-  apiCall,
+  buildApiUrl,
+  buildWsUrl,
+  apiClient,
 };

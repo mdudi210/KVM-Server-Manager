@@ -4,6 +4,7 @@ from enum import StrEnum, auto
 class ChangeState(BaseModel):
     state: str
     name: str
+    expected_state: str | None = None
 
 class CloneRequest(BaseModel):
     vmtoinstall: str

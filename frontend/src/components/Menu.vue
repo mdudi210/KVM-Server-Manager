@@ -14,7 +14,7 @@
       <div class="side-panel-body">
         <h4>{{ isAdmin ? 'Admin Dashboard' : 'User Dashboard'}}</h4>
         <div v-if="isAdmin" class="admin-menu">
-          <h5>Create VM</h5>
+          <button class="admin-link" @click="goToAdminVm">Create/Clone VM</button>
         </div>
         <slot></slot>
       </div>
@@ -51,6 +51,10 @@ export default {
     logout() {
       sessionStorage.removeItem('user-info');
       this.$router.push({ name: 'Login' });
+    },
+    goToAdminVm() {
+      this.closePanel();
+      this.$router.push({ name: 'VmAdmin' });
     }
   }
 };
@@ -160,6 +164,22 @@ export default {
   color: black;
   padding-left: 0px;
   margin-left: 0px;
+}
+
+.admin-link {
+  border: none;
+  background: #f3f8ff;
+  color: #0d6efd;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.admin-link:hover {
+  background: #e7f0ff;
 }
 
 @keyframes slideIn {

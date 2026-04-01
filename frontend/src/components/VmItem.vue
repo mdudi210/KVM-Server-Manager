@@ -1,123 +1,138 @@
 <template>
-  <div class="vm-card" :class="[statusClass,statusChangeClass]">
+  <div class="vm-card" :class="[statusClass, statusChangeClass]">
     <div class="vm-info">
-      <p class="vm-name"><strong>{{ vm_name }}</strong></p>
-      <p class="vm-status">Status: <span :class="statusTextClass">{{ current_state }}</span></p>
+      <p class="vm-name"><strong>{{ vm.Name }}</strong></p>
+      <p class="vm-status">
+        Status: <span :class="statusTextClass">{{ vm.State }}</span>
+      </p>
     </div>
-    <AlertMsg ref="alertRef"></AlertMsg>
+
+    <AlertMsg ref="alertRef" />
+
     <div class="vm-actions">
-      <button 
-        v-if="current_state === 'shut off'"
+      <button
+        v-if="vm.State === 'shut off'"
         class="action-btn start-btn"
         :disabled="changing_state"
-        @click="changestate('start')">
+        @click="changeState('start')"
+      >
         <span v-if="!changing_state">Start</span>
-        <span v-else>⏳ Changing...</span>
-      </button>
-      <button 
-        v-if="current_state === 'running'"
-        class="action-btn shutdown-btn"
-        :disabled="changing_state"
-        @click="changestate('shutdown')">
-        <span v-if="!changing_state">Shut Down</span>
-        <span v-else>⏳ Changing...</span>
+        <span v-else>Changing...</span>
       </button>
 
-      <button 
-        v-if="current_state === 'running'"
+      <button
+        v-if="vm.State === 'running'"
+        class="action-btn shutdown-btn"
+        :disabled="changing_state"
+        @click="changeState('shutdown')"
+      >
+        <span v-if="!changing_state">Shut Down</span>
+        <span v-else>Changing...</span>
+      </button>
+
+      <button
+        v-if="vm.State === 'running'"
         class="action-btn reboot-btn"
         :disabled="changing_state"
-        @click="changestate('reboot')">
+        @click="changeState('reboot')"
+      >
         <span v-if="!changing_state">Reboot</span>
-        <span v-else>⏳ Changing...</span>
+        <span v-else>Changing...</span>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import AlertMsg from './Alert.vue'
+import AlertMsg from './Alert.vue';
+import { apiClient } from '@/config/api';
 
 export default {
   name: 'VmItem',
-  components : {
-    AlertMsg
+  components: {
+    AlertMsg,
   },
   props: {
-    vm_name: String,
-    current_state: String
+    vm: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
-      changing_state: false
-    }
+      changing_state: false,
+    };
   },
   computed: {
     statusClass() {
-      return this.current_state === 'running' ? 'status-running' : 'status-stopped';
+      return this.vm.State === 'running' ? 'status-running' : 'status-stopped';
     },
     statusTextClass() {
-      return this.current_state === 'running' ? 'text-green' : 'text-red';
+      return this.vm.State === 'running' ? 'text-green' : 'text-red';
     },
     statusChangeClass() {
-      return this.changing_state === true ? 'disable-status' : 'enable-status';
-    }
+      return this.changing_state ? 'disable-status' : 'enable-status';
+    },
   },
   methods: {
-    async changestate(state) {
+    getToken() {
       try {
-        const token = JSON.parse(sessionStorage.getItem('user-info')).access_token;
-        this.username = JSON.parse(atob(token.split('.')[1])).sub;
-
-        let response = await axios.post("http://127.0.0.1:8000/vm/state",
-          { state: state, name: this.vm_name },
-          { headers: { Authorization: `Bearer ${token}` } }
-        )
-        console.log(response.data.Body.output);
-        
-        this.changing_state = true
-        this.$refs.alertRef.show(`${this.vm_name} will ${state} in sometime`)
-
-        await setTimeout(() => {
-
-          axios.get("http://127.0.0.1:8000/vm", {
-            params: {
-              vm_name : this.vm_name
-            },
-            headers: { Authorization: `Bearer ${token}` }
-          })
-          .then(response => {
-            console.log(response.data.Body.output)
-            this.$parent.vmlist.forEach(element => {
-            if(element.Name === this.vm_name){
-              if(state === "shutdown"){
-                state = "shut off"
-              }else if(state === "start"){
-                state = "running"
-              }else if(state == 'reboot'){
-                state = 'running'
-              }
-              element.State = state
-            } 
-          });
-          })
-          .catch(error => {
-            console.log('API call failed', error)
-          })
-
-        this.changing_state = false
-        this.$refs.alertRef.show(`${this.vm_name} ${state}ed`)
-
-        }, 60000);
-        
-      } catch (error) {
-        this.$refs.alertRef.show(`${error.response.data.detail}`)
-        console.log(error.response.data.detail)
-        
+        return JSON.parse(sessionStorage.getItem('user-info'))?.access_token || '';
+      } catch {
+        return '';
       }
-    }
-  }
+    },
+    async changeState(nextState) {
+      const token = this.getToken();
+      if (!token) {
+        this.$router.push({ name: 'Login' });
+        return;
+      }
+
+      this.changing_state = true;
+
+      try {
+        const response = await apiClient.post(
+          '/vm/state',
+          {
+            state: nextState,
+            name: this.vm.Name,
+            expected_state: this.vm.State,
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        const updated = response.data?.Body;
+        this.$emit('vm-updated', {
+          vm_name: this.vm.Name,
+          current_state: updated?.current_state || this.vm.State,
+        });
+
+        this.$refs.alertRef.show(
+          `${this.vm.Name} state changed to ${updated?.current_state || 'updated'}`
+        );
+      } catch (error) {
+        const status = error.response?.status;
+        const detail = error.response?.data?.detail;
+
+        if (status === 409) {
+          const msg =
+            typeof detail === 'string'
+              ? detail
+              : detail?.message ||
+                `State conflict for ${this.vm.Name}. Current state is ${detail?.current_state || 'unknown'}.`;
+          this.$refs.alertRef.show(msg);
+          this.$emit('refresh-requested');
+        } else {
+          this.$refs.alertRef.show(String(detail || 'Failed to update VM state'));
+        }
+      } finally {
+        this.changing_state = false;
+      }
+    },
+  },
 };
 </script>
 
@@ -128,7 +143,7 @@ export default {
   justify-content: space-between;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 16px;
   margin-bottom: 16px;
   transition: all 0.3s ease;
@@ -144,15 +159,11 @@ export default {
 }
 
 .disable-status {
-  background: #aca7a7;
+  background: #f0f0f0;
 }
 
 .enable-status {
   background: white;
-}
-
-.changing-status {
-   display: flex;
 }
 
 .vm-info {

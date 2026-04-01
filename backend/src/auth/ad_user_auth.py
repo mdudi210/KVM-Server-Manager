@@ -26,8 +26,7 @@ def ad_verify_user(Authorize: AuthJWT = Depends()):
 
         return claims
         
-    except HTTPException as e:
-        raise HTTPException(status_code=500, detail=f"Unexpected error during user verification: {str(e)}")
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error during user verification: {str(e)}")
-
