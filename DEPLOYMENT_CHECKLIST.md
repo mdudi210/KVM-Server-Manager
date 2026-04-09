@@ -6,7 +6,7 @@ Use this checklist before and after deployment.
 
 - [ ] Ubuntu server ready (20.04+)
 - [ ] Docker + Docker Compose installed
-- [ ] Firewall opened for `80/tcp` (and `443/tcp` only if TLS terminates there)
+- [ ] Firewall opened for `80/tcp` and `443/tcp`
 - [ ] `.env` prepared with strong secrets (`AUTHJWT_SECRET_KEY`, DB passwords)
 - [ ] `RETURN_TOKEN_IN_BODY=false` set
 - [ ] `ALLOWED_ORIGINS` explicitly set (not `*`)
@@ -16,7 +16,8 @@ Use this checklist before and after deployment.
 - [ ] Run `docker compose up -d --build`
 - [ ] All containers healthy: `docker compose ps`
 - [ ] Nginx health check works: `curl http://localhost/health`
-- [ ] Frontend loads through nginx: `http://SERVER_IP`
+- [ ] TLS cert files exist: `nginx/ssl/cert.pem` and `nginx/ssl/key.pem`
+- [ ] Frontend loads through nginx HTTPS: `https://SERVER_IP`
 
 ## Network Exposure
 
@@ -27,7 +28,8 @@ Use this checklist before and after deployment.
 ## Security
 
 - [ ] Default app users/passwords changed
-- [ ] Cookie settings reviewed (`AUTHJWT_COOKIE_SECURE`, `AUTHJWT_COOKIE_SAMESITE`)
+- [ ] `AUTHJWT_COOKIE_SECURE=true` for production
+- [ ] Cookie settings reviewed (`AUTHJWT_COOKIE_SAMESITE`)
 - [ ] HTTPS plan in place for production
 - [ ] Backup strategy defined
 

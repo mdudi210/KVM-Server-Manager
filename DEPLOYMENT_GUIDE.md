@@ -5,7 +5,7 @@ Backend and MySQL stay private inside the Docker network.
 
 ## Architecture
 
-- Public: `nginx` on port `80`
+- Public: `nginx` on ports `80` (redirect/health) and `443` (HTTPS)
 - Private internal services: `frontend` (`8080` internal), `backend` (`8000` internal), `mysql` (`3306` internal)
 - Browser auth: HTTP-only cookie set by backend, sent via same-origin requests through nginx
 
@@ -17,15 +17,14 @@ Backend and MySQL stay private inside the Docker network.
 
 ## 1) Firewall
 
-Open only the nginx port:
+Open nginx ports:
 
 ```bash
 sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 sudo ufw enable
 sudo ufw status
 ```
-
-If you terminate TLS externally (recommended for production), also open `443/tcp` on that external ingress/load balancer.
 
 ## 2) Configure Environment
 
@@ -43,52 +42,64 @@ AUTHJWT_SECRET_KEY=change-this-to-a-long-random-secret
 RETURN_TOKEN_IN_BODY=false
 
 # Cookie settings
-# Use false for plain HTTP, true when served over HTTPS
-AUTHJWT_COOKIE_SECURE=false
+# For HTTPS-only production traffic
+AUTHJWT_COOKIE_SECURE=true
 AUTHJWT_COOKIE_SAMESITE=lax
 AUTHJWT_COOKIE_CSRF_PROTECT=false
 
 # CORS - explicit origins only (no *)
-ALLOWED_ORIGINS=http://localhost,http://127.0.0.1
+ALLOWED_ORIGINS=https://localhost,https://127.0.0.1,http://localhost,http://127.0.0.1
 ```
 
-Production note:
-- If app is served over HTTPS, set `AUTHJWT_COOKIE_SECURE=true`.
-- Keep `ALLOWED_ORIGINS` explicit and minimal.
+Keep `ALLOWED_ORIGINS` explicit and minimal.
 
-## 3) Start the Stack
+## 3) Provision TLS Certificates for nginx
+
+Place cert files at:
+
+- `nginx/ssl/cert.pem`
+- `nginx/ssl/key.pem`
+
+Quick local certificate:
+
+```bash
+./scripts/generate-ssl.sh localhost ./nginx/ssl
+```
+
+## 4) Start the Stack
 
 ```bash
 docker compose up -d --build
 docker compose ps
 ```
 
-## 4) Validate Deployment
+## 5) Validate Deployment
 
 ```bash
 # nginx health
 curl -i http://localhost/health
 
-# app homepage through nginx
-curl -i http://localhost/
+# HTTPS app endpoint (use -k for self-signed local cert)
+curl -k -i https://localhost/
 
 # backend root through nginx proxy path
-curl -i http://localhost/api/
+curl -k -i https://localhost/api/
 ```
 
 Expected:
 - `/health` returns `200 healthy`
-- UI is reachable via nginx
+- HTTP requests redirect to HTTPS
+- UI is reachable via HTTPS nginx endpoint
 - Backend APIs reachable via nginx routes (`/login`, `/vm`, `/api/*`, `/ws/*`)
 
-## 5) Access
+## 6) Access
 
-- Local: `http://localhost`
-- Network: `http://YOUR_SERVER_IP`
+- Local: `https://localhost`
+- Network: `https://YOUR_SERVER_IP`
 
 Do not expose backend/mysql ports publicly. Use nginx as the only entrypoint.
 
-## 6) Operations
+## 7) Operations
 
 ```bash
 # logs
@@ -103,7 +114,7 @@ docker compose restart
 docker compose down
 ```
 
-## 7) Security Defaults Already Applied
+## 8) Security Defaults Already Applied
 
 Current nginx config includes:
 - Security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, CSP)
@@ -113,13 +124,12 @@ Current nginx config includes:
 - Static asset caching
 - `server_tokens off`
 
-## 8) HTTPS Recommendation
+## 9) HTTPS Recommendation
 
-This compose stack serves HTTP by default. For production:
-- Terminate TLS at cloud load balancer/reverse proxy or extend nginx with TLS certs.
-- Then set `AUTHJWT_COOKIE_SECURE=true`.
+This compose stack terminates TLS directly in nginx on port `443`.
+Use CA-issued certificates in `nginx/ssl` for production.
 
-## 9) Quick Troubleshooting
+## 10) Quick Troubleshooting
 
 ```bash
 # render final compose config

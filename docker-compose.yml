@@ -39,9 +39,9 @@ services:
       WIN_TEMPLATE: ${WIN_TEMPLATE:-windows-template}
       LINUX_ISO: ${LINUX_ISO:-/home/linux.iso}
       WIN_ISO: ${WIN_ISO:-/home/windows.iso}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost,http://127.0.0.1}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://localhost,https://127.0.0.1,http://localhost,http://127.0.0.1}
       RETURN_TOKEN_IN_BODY: ${RETURN_TOKEN_IN_BODY:-false}
-      AUTHJWT_COOKIE_SECURE: ${AUTHJWT_COOKIE_SECURE:-false}
+      AUTHJWT_COOKIE_SECURE: ${AUTHJWT_COOKIE_SECURE:-true}
       AUTHJWT_COOKIE_SAMESITE: ${AUTHJWT_COOKIE_SAMESITE:-lax}
       AUTHJWT_COOKIE_CSRF_PROTECT: ${AUTHJWT_COOKIE_CSRF_PROTECT:-false}
     depends_on:
@@ -50,7 +50,7 @@ services:
     networks:
       - kvm-network
     command: >
-      sh -c "python backend/db_setup.py && uvicorn backend.main:app --host 0.0.0.0 --port 8000"
+      sh -c "python -m backend.db_setup && uvicorn backend.main:app --host 0.0.0.0 --port 8000"
 
   frontend:
     build:
@@ -73,6 +73,9 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/ssl:/etc/nginx/ssl:ro
     depends_on:
       - frontend
       - backend
