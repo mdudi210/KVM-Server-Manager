@@ -1,10 +1,11 @@
 import time
+import shlex
 
 from fastapi import APIRouter, Depends, HTTPException
 
 from backend.config.logging_setting import setup_logger
 from backend.src.auth.user_auth import verify_user
-from backend.src.schema.schema import ChangeState, State
+from backend.src.schema.schema import ChangeState
 from backend.src.services.vm_events import (
     acquire_vm_lock,
     normalize_vm_state,
@@ -50,10 +51,8 @@ def _wait_for_target_state(client, vm_name: str, target_state: str) -> str:
 @router.post("/vm/state")
 def change_state(data: ChangeState, claims=Depends(verify_user)):
     actor = claims.get("sub", "unknown")
-
-    if data.state not in State.__members__:
-        logger.error("Invalid VM state requested")
-        raise HTTPException(status_code=400, detail="invalid state type")
+    action = data.state.value
+    safe_vm_name = shlex.quote(data.name)
 
     if not acquire_vm_lock(data.name):
         publish_event(
@@ -86,17 +85,17 @@ def change_state(data: ChangeState, claims=Depends(verify_user)):
                     },
                 )
 
-        if current_state not in ALLOWED_CURRENT_STATES[data.state]:
+        if current_state not in ALLOWED_CURRENT_STATES[action]:
             raise HTTPException(
                 status_code=409,
                 detail={
-                    "message": f"Cannot '{data.state}' VM from '{current_state}' state.",
+                    "message": f"Cannot '{action}' VM from '{current_state}' state.",
                     "vm_name": data.name,
                     "current_state": current_state,
                 },
             )
 
-        command = f"sudo virsh {data.state} {data.name}"
+        command = f"sudo virsh {action} {safe_vm_name}"
         output, error = execute_ssh_command(client, command)
 
         if error:
@@ -105,17 +104,17 @@ def change_state(data: ChangeState, claims=Depends(verify_user)):
                 actor,
                 error,
                 data.name,
-                data.state,
+                action,
             )
-            raise HTTPException(status_code=500, detail=error)
+            raise HTTPException(status_code=500, detail="Unable to change VM state")
 
-        target_state = TARGET_STATES[data.state]
+        target_state = TARGET_STATES[action]
         resulting_state = _wait_for_target_state(client, data.name, target_state)
 
         event_payload = {
             "event": "vm_state_changed",
             "vm_name": data.name,
-            "requested_state": data.state,
+            "requested_state": action,
             "previous_state": current_state,
             "current_state": resulting_state,
             "updated_by": actor,
@@ -128,14 +127,14 @@ def change_state(data: ChangeState, claims=Depends(verify_user)):
             data.name,
             current_state,
             resulting_state,
-            data.state,
+            action,
         )
 
         return {
             "Message": "VM state updated",
             "Body": {
                 "vm_name": data.name,
-                "requested_state": data.state,
+                "requested_state": action,
                 "previous_state": current_state,
                 "current_state": resulting_state,
                 "output": output.strip().split()[-1] if output else "",

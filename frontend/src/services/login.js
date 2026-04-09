@@ -1,11 +1,11 @@
-import axios from 'axios'
-import { buildApiUrl } from '@/config/api'
+import { apiClient } from '@/config/api';
 
-export async function login(username,password) {
-    let response = await axios.post(buildApiUrl('/login'), {
-        username: username,
-        password: password
-    })
-    
-    return response
+export async function login(username, password, authProvider = 'local') {
+  const response = await apiClient.post('/login', {
+    username,
+    password,
+    auth_provider: authProvider,
+  });
+
+  return response;
 }

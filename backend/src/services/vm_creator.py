@@ -4,7 +4,6 @@ from backend.src.schema.schema import NewVmRequest
 from backend.src.auth.admin_auth import verify_admin
 from backend.config.logging_setting import setup_logger
 from backend.src.services.vm_events import publish_event
-import paramiko
 import shlex
 import os
 from dotenv import load_dotenv
@@ -21,9 +20,6 @@ WIN_ISO = os.getenv("WIN_ISO")
 @router.post("/vm/new")
 def create_new_vm(data: NewVmRequest, claims=Depends(verify_admin)):
     client = ssh_client()
-    if isinstance(client, str):
-        logger.error(f"SSH connection failed: {client}")
-        raise HTTPException(status_code=500, detail="SSH connection failed")
 
     safe_vm_name = shlex.quote(data.name)
 
@@ -59,7 +55,7 @@ def create_new_vm(data: NewVmRequest, claims=Depends(verify_admin)):
             logger.error(
                 f"{claims.get('sub')} encountered error while creating {data.vmtoinstall} VM '{data.name}': {error}"
             )
-            raise HTTPException(status_code=500, detail=error)
+            raise HTTPException(status_code=500, detail="Failed to create VM")
 
         logger.info(
             f"{claims.get('sub')} created {data.vmtoinstall} VM successfully: {data.name}"

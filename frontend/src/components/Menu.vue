@@ -10,7 +10,6 @@
         <button class="close-btn" @click="closePanel">✕</button>
       </div>
 
-
       <div class="side-panel-body">
         <h4>{{ isAdmin ? 'Admin Dashboard' : 'User Dashboard'}}</h4>
         <div v-if="isAdmin" class="admin-menu">
@@ -19,7 +18,6 @@
         <slot></slot>
       </div>
 
-      
       <div class="side-panel-footer">
         <button @click="logout" class="logout-btn">Logout</button>
       </div>
@@ -28,13 +26,16 @@
 </template>
 
 <script>
+import { clearAuthState } from '../../auth/session';
+import { apiClient } from '@/config/api';
+
 export default {
   name: 'ProfileMenu',
   props: {
     isVisible: { type: Boolean, required: true },
     username: { type: String, default: '' },
     profilePhoto: { type: String, default: 'https://via.placeholder.com/35' },
-    role: { type: String, default: '' }
+    role: { type: String, default: '' },
   },
   computed: {
     isAdmin() {
@@ -42,26 +43,30 @@ export default {
     },
     formattedUsername() {
       return this.username.charAt(0).toUpperCase() + this.username.slice(1);
-    }
+    },
   },
   methods: {
     closePanel() {
       this.$emit('close');
     },
-    logout() {
-      sessionStorage.removeItem('user-info');
+    async logout() {
+      try {
+        await apiClient.post('/logout');
+      } catch (error) {
+        // best-effort logout
+      }
+      clearAuthState();
       this.$router.push({ name: 'Login' });
     },
     goToAdminVm() {
       this.closePanel();
       this.$router.push({ name: 'VmAdmin' });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 .side-panel-overlay {
   position: fixed;
   top: 0;
@@ -183,12 +188,20 @@ export default {
 }
 
 @keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

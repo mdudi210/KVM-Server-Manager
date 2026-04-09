@@ -1,5 +1,3 @@
-import json
-
 def parse_vm_status(text):
     lines = text.strip().splitlines()
     data_lines = lines[2:]  # Skip header and separator

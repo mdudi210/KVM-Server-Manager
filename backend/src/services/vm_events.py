@@ -2,7 +2,9 @@ import asyncio
 import os
 import threading
 from collections import defaultdict
+from http.cookies import SimpleCookie
 from typing import Any
+from urllib.parse import unquote
 
 import jwt
 from dotenv import load_dotenv
@@ -17,6 +19,7 @@ logger = setup_logger("vm_events")
 
 AUTHJWT_SECRET_KEY = os.getenv("AUTHJWT_SECRET_KEY", "")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_COOKIE_KEY = os.getenv("AUTHJWT_ACCESS_COOKIE_KEY", "access_token_cookie")
 
 
 class ConnectionManager:
@@ -77,6 +80,17 @@ def publish_event(event: dict[str, Any]) -> None:
         asyncio.run(manager.broadcast(event))
 
 
+def _extract_cookie_token(cookie_header: str | None) -> str | None:
+    if not cookie_header:
+        return None
+    cookie = SimpleCookie()
+    cookie.load(cookie_header)
+    morsel = cookie.get(ACCESS_COOKIE_KEY)
+    if not morsel:
+        return None
+    return unquote(morsel.value)
+
+
 def _decode_token(token: str) -> dict[str, Any] | None:
     if not token:
         return None
@@ -88,20 +102,18 @@ def _decode_token(token: str) -> dict[str, Any] | None:
 
 @router.websocket("/ws/vm-updates")
 async def vm_updates(websocket: WebSocket, token: str = Query(default="")):
-    claims = _decode_token(token)
+    bearer_token = token or _extract_cookie_token(websocket.headers.get("cookie"))
+    claims = _decode_token(bearer_token or "")
+
     if claims is None:
         await websocket.close(code=4401)
         return
 
     await manager.connect(websocket)
-    await websocket.send_json({
-        "event": "connected",
-        "username": claims.get("sub", "unknown"),
-    })
+    await websocket.send_json({"event": "connected", "username": claims.get("sub", "unknown")})
 
     try:
         while True:
-            # Keep the socket alive and allow optional ping text from clients.
             await websocket.receive_text()
     except WebSocketDisconnect:
         await manager.disconnect(websocket)

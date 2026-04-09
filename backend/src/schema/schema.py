@@ -1,26 +1,17 @@
-from pydantic import BaseModel
 from enum import StrEnum, auto
+from typing import Literal
 
-class ChangeState(BaseModel):
-    state: str
-    name: str
-    expected_state: str | None = None
+from pydantic import BaseModel, constr
 
-class CloneRequest(BaseModel):
-    vmtoinstall: str
-    name: str
+VmName = constr(regex=r"^[A-Za-z0-9._-]{1,63}$")
+Username = constr(strip_whitespace=True, min_length=1, max_length=128)
+Password = constr(min_length=1, max_length=256)
 
-class NewVmRequest(BaseModel):
-    vmtoinstall: str
-    name: str
-
-class LoginRequest(BaseModel):
-    username: str
-    password: str
 
 class Roles(StrEnum):
     user = auto()
     admin = auto()
+
 
 class State(StrEnum):
     start = auto()
@@ -28,7 +19,30 @@ class State(StrEnum):
     destroy = auto()
     reboot = auto()
 
+
+class ChangeState(BaseModel):
+    state: State
+    name: VmName
+    expected_state: str | None = None
+
+
+class CloneRequest(BaseModel):
+    vmtoinstall: Literal["Linux", "Windows"]
+    name: VmName
+
+
+class NewVmRequest(BaseModel):
+    vmtoinstall: Literal["Linux", "Windows"]
+    name: VmName
+
+
+class LoginRequest(BaseModel):
+    username: Username
+    password: Password
+    auth_provider: Literal["local", "ad"] = "local"
+
+
 class NewUser(BaseModel):
-    username: str
-    password: str
-    role : str
+    username: Username
+    password: Password
+    role: Roles

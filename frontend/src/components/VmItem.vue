@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { clearAuthState } from '../../auth/session';
 import AlertMsg from './Alert.vue';
 import { apiClient } from '@/config/api';
 
@@ -75,34 +76,15 @@ export default {
     },
   },
   methods: {
-    getToken() {
-      try {
-        return JSON.parse(sessionStorage.getItem('user-info'))?.access_token || '';
-      } catch {
-        return '';
-      }
-    },
     async changeState(nextState) {
-      const token = this.getToken();
-      if (!token) {
-        this.$router.push({ name: 'Login' });
-        return;
-      }
-
       this.changing_state = true;
 
       try {
-        const response = await apiClient.post(
-          '/vm/state',
-          {
-            state: nextState,
-            name: this.vm.Name,
-            expected_state: this.vm.State,
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await apiClient.post('/vm/state', {
+          state: nextState,
+          name: this.vm.Name,
+          expected_state: this.vm.State,
+        });
 
         const updated = response.data?.Body;
         this.$emit('vm-updated', {
@@ -117,6 +99,17 @@ export default {
         const status = error.response?.status;
         const detail = error.response?.data?.detail;
 
+        if (status === 401) {
+          clearAuthState();
+          this.$router.push({ name: 'Login' });
+          return;
+        }
+
+        if (status === 403) {
+          this.$refs.alertRef.show('Access denied for this action.');
+          return;
+        }
+
         if (status === 409) {
           const msg =
             typeof detail === 'string'
@@ -125,9 +118,10 @@ export default {
                 `State conflict for ${this.vm.Name}. Current state is ${detail?.current_state || 'unknown'}.`;
           this.$refs.alertRef.show(msg);
           this.$emit('refresh-requested');
-        } else {
-          this.$refs.alertRef.show(String(detail || 'Failed to update VM state'));
+          return;
         }
+
+        this.$refs.alertRef.show(String(detail || 'Failed to update VM state'));
       } finally {
         this.changing_state = false;
       }

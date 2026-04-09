@@ -1,6 +1,6 @@
 import uuid
-from src.utils.hash_password import hash_password
-from src.utils.db_connection import OpenDb
+from backend.src.utils.hash_password import hash_password
+from backend.src.utils.db_connection import OpenDb
 
 try:
     with OpenDb() as cursor:
@@ -36,7 +36,7 @@ try:
         cursor.execute("SELECT id FROM roles WHERE role='user'")
         user_role_id = cursor.fetchone()[0]
 
-        # hash password with SHA-512
+        # hash password with bcrypt
         hashed_password = hash_password("password123")
 
         # insert default users (ignore if already exists based on username)

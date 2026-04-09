@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import { isAuthenticated } from '../auth/auth';
 import Login from './components/Login.vue';
 import NewVm from './components/NewVm.vue';
 import NotFound from './components/NotFound.vue';
 import VmHome from './components/Home.vue';
-import { isAuthenticated } from '../auth/auth';
 
 const routes = [
   {
@@ -38,17 +38,21 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  const authed = isAuthenticated();
-
-  if (to.meta.requiresAuth && !authed) {
-    next({ name: 'Login' });
-    return;
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const authed = await isAuthenticated();
+    if (!authed) {
+      next({ name: 'Login' });
+      return;
+    }
   }
 
-  if (to.name === 'Login' && authed) {
-    next({ name: 'VmHome' });
-    return;
+  if (to.name === 'Login') {
+    const authed = await isAuthenticated();
+    if (authed) {
+      next({ name: 'VmHome' });
+      return;
+    }
   }
 
   next();

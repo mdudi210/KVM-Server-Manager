@@ -5,79 +5,80 @@
       <p class="subtitle">Please login to continue</p>
       <AlertMsg ref="alertRef"></AlertMsg>
 
-      <input 
-        type="text" 
-        placeholder="Enter your Username" 
-        v-model="username" 
+      <select v-model="authProvider" class="auth-type">
+        <option value="local">Local Login</option>
+        <option value="ad">Active Directory Login</option>
+      </select>
+
+      <input
+        type="text"
+        placeholder="Enter your Username"
+        v-model="username"
         required
         ref="usernameInput"
         @keyup.enter="$refs.passwordInput.focus()"
         @keyup.down="$refs.passwordInput.focus()"
       >
 
-      <input 
-        type="password" 
-        placeholder="Enter your Password" 
-        v-model="password" 
+      <input
+        type="password"
+        placeholder="Enter your Password"
+        v-model="password"
         ref="passwordInput"
-        @keyup.enter="login"
+        @keyup.enter="loginUser"
         @keyup.up="$refs.usernameInput.focus()"
         required
       >
-      <p v-if="login_failed" >Incorrect username or password</p>
+      <p v-if="loginFailed">Incorrect username or password</p>
 
-      <button @click="login" ref="login-btn">Login</button>
+      <button @click="loginUser" ref="login-btn">Login</button>
     </div>
   </div>
 </template>
 
 <script>
-import { apiClient } from '@/config/api'
-import AlertMsg from './Alert.vue'
+import AlertMsg from './Alert.vue';
+import { clearAuthState, setAuthFromLogin } from '../../auth/session';
+import { login } from '@/services/login';
 
 export default {
   name: 'LogIn',
-  components : {
-    AlertMsg
+  components: {
+    AlertMsg,
   },
-  data () {
+  data() {
     return {
-      token: '',
       username: '',
       password: '',
-      login_failed: false,
-    }
+      authProvider: 'local',
+      loginFailed: false,
+    };
   },
   methods: {
-    async login() {
-      try {
-        let response = await apiClient.post('/login', {
-          username: this.username,
-          password: this.password
-        })
+    async loginUser() {
+      this.loginFailed = false;
+      clearAuthState();
 
-        // let response = login(this.username, this.password)
-        
-        if(response.status === 200){
-          sessionStorage.setItem('user-info', JSON.stringify(response.data))
-          this.token = response.data.access_token; 
-          this.username = JSON.parse(atob(this.token.split('.')[1])).sub;
-          this.$router.push({name:'VmHome'})
-        } else if(response.status === 401){
-          this.password = ''
-          this.login_failed = true
-          this.$refs.alertRef.show(`Incorrect username or password`)
+      try {
+        const response = await login(this.username, this.password, this.authProvider);
+
+        if (response.status === 200) {
+          setAuthFromLogin(response.data);
+          this.$router.push({ name: 'VmHome' });
+          return;
         }
+
+        this.password = '';
+        this.loginFailed = true;
+        this.$refs.alertRef.show('Incorrect username or password');
       } catch (error) {
-        this.password = ''
-        this.login_failed = true
-        this.$refs.alertRef.show(`Login Failed: ${error.response?.data.detail || error.message}`)
-        console.error("Login failed:", error.response?.data || error.message);
+        this.password = '';
+        this.loginFailed = true;
+        this.$refs.alertRef.show(`Login Failed: ${error.response?.data?.detail || error.message}`);
       }
     },
   },
-
-}
+};
 </script>
 
 <style scoped>
@@ -114,6 +115,7 @@ export default {
   margin-bottom: 1.5rem;
 }
 
+.auth-type,
 input {
   width: 100%;
   padding: 12px;
@@ -125,6 +127,7 @@ input {
   transition: all 0.3s ease;
 }
 
+.auth-type:focus,
 input:focus {
   border-color: #1976d2;
   box-shadow: 0 0 6px rgba(25, 118, 210, 0.4);
@@ -172,7 +175,9 @@ p {
     font-size: 0.8rem;
   }
 
-  input, button {
+  .auth-type,
+  input,
+  button {
     font-size: 14px;
     padding: 10px;
   }

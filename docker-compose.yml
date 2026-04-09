@@ -8,8 +8,7 @@ services:
       MYSQL_DATABASE: ${DB_DATABASE:-kvm_db}
       MYSQL_USER: ${DB_USER:-kvm_user}
       MYSQL_PASSWORD: ${DB_PASSWORD:-kvm_password}
-    ports:
-      - "3306:3306"
+    # Keep MySQL internal to Docker network (safer default).
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -40,9 +39,11 @@ services:
       WIN_TEMPLATE: ${WIN_TEMPLATE:-windows-template}
       LINUX_ISO: ${LINUX_ISO:-/home/linux.iso}
       WIN_ISO: ${WIN_ISO:-/home/windows.iso}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-*}
-    ports:
-      - "8000:8000"
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost,http://127.0.0.1}
+      RETURN_TOKEN_IN_BODY: ${RETURN_TOKEN_IN_BODY:-false}
+      AUTHJWT_COOKIE_SECURE: ${AUTHJWT_COOKIE_SECURE:-false}
+      AUTHJWT_COOKIE_SAMESITE: ${AUTHJWT_COOKIE_SAMESITE:-lax}
+      AUTHJWT_COOKIE_CSRF_PROTECT: ${AUTHJWT_COOKIE_CSRF_PROTECT:-false}
     depends_on:
       mysql:
         condition: service_healthy
@@ -61,7 +62,6 @@ services:
       - backend
     environment:
       - NODE_ENV=production
-      - VUE_APP_API_URL=http://nginx
     networks:
       - kvm-network
 

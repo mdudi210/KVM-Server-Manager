@@ -1,60 +1,55 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
-from backend.src.services import (
-    adlogin,
-    list_vms,
-    login,
-    register,
-    vm_cloner,
-    vm_creator,
-    vm_events,
-    vm_state_manager,
-)
-from backend.src.auth import check_token
 from fastapi.middleware.cors import CORSMiddleware
 
-# Allow frontend origin - configurable via environment variable
-import os
-from dotenv import load_dotenv
+from backend.src.services import adlogin, list_vms, login, register, vm_cloner, vm_creator, vm_events, vm_state_manager
 
 load_dotenv()
 
-# Get allowed origins from environment or use default
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*")
-if ALLOWED_ORIGINS == "*":
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:8080,http://127.0.0.1:8080,http://localhost,http://127.0.0.1",
+)
+origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",") if origin.strip()]
+
+allow_credentials = True
+if "*" in origins:
+    # Browsers reject wildcard origins when credentials/cookies are enabled.
     origins = ["*"]
-else:
-    origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",")]
+    allow_credentials = False
 
 app = FastAPI(
-    title="KVM Server api",
-    version="1.0.0",
-    description="API for managing KVM-Server",
+    title="KVM Server API",
+    version="1.1.0",
+    description="API for managing KVM servers",
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allows all origins when set to ["*"]
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,
+    allow_credentials=allow_credentials,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type", "X-CSRF-Token"],
 )
 
-# Register routers (defined in app/api/*.py)
 app.include_router(vm_cloner.router, tags=["vm"])
 app.include_router(vm_creator.router, tags=["vm"])
 app.include_router(vm_state_manager.router, tags=["vm"])
 app.include_router(vm_events.router, tags=["vm"])
 app.include_router(list_vms.router, tags=["vm"])
-app.include_router(login.router, tags=["vm"])
-app.include_router(adlogin.router, tags=["vm"])
-app.include_router(register.router, tags=["vm"])
-app.include_router(check_token.router, tags=["vm"])
+app.include_router(login.router, tags=["auth"])
+app.include_router(adlogin.router, tags=["auth"])
+app.include_router(register.router, tags=["user"])
 
-# Optionally: Add root health check
+
 @app.get("/")
 def read_root():
-    return {"message": ""}
+    return {"message": "KVM Server API is running"}
+
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run("backend.main:app", host="127.0.0.1", port=8000, reload=True)

@@ -1,21 +1,18 @@
 from fastapi import Depends, HTTPException
 from fastapi_jwt_auth import AuthJWT
-from backend.src.utils.db_connection import OpenDb
-from backend.src.utils.user_exists import user_exists
+
 
 def verify_admin(Authorize: AuthJWT = Depends()):
-    Authorize.jwt_required()
-    claims = Authorize.get_raw_jwt()
-    role_id = claims.get('role')
-    if role_id == "admin":
-        return claims
-    with OpenDb() as cursor:
-        cursor.execute(
-            "SELECT role FROM roles WHERE id=%s",(role_id,),
-            )
-        role_name = cursor.fetchone()
-    if role_name[0] != "admin":
+    try:
+        Authorize.jwt_required()
+        claims = Authorize.get_raw_jwt()
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Invalid or missing token: {str(e)}")
+
+    if claims.get("role") != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
-    if not user_exists(claims.get("id")):
-        raise HTTPException(status_code=400, detail="User does not exist")
+
+    if not claims.get("id"):
+        raise HTTPException(status_code=400, detail="Missing user id in token claims")
+
     return claims

@@ -31,6 +31,11 @@ export const buildWsUrl = (path) => {
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
+  withCredentials: true,
+  timeout: 15000,
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest',
+  },
 });
 
 export default {

@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { clearAuthState, getAuthState } from '../../auth/session';
 import TopBar from './TopBar.vue';
 import AlertMsg from './Alert.vue';
 import { apiClient } from '@/config/api';
@@ -70,30 +71,14 @@ export default {
     },
   },
   mounted() {
-    try {
-      const userInfo = JSON.parse(sessionStorage.getItem('user-info'));
-      this.username = userInfo?.username || 'Admin';
-      this.role = userInfo?.role || 'admin';
-
-      if (this.role !== 'admin') {
-        this.$router.push({ name: 'VmHome' });
-      }
-    } catch {
-      this.$router.push({ name: 'Login' });
-    }
+    const auth = getAuthState();
+    this.username = auth.user.username || 'Admin';
+    this.role = auth.user.role || 'user';
   },
   methods: {
-    getToken() {
-      try {
-        return JSON.parse(sessionStorage.getItem('user-info'))?.access_token || '';
-      } catch {
-        return '';
-      }
-    },
     async submit() {
-      const token = this.getToken();
-      if (!token) {
-        this.$router.push({ name: 'Login' });
+      if (!/^[A-Za-z0-9._-]{1,63}$/.test(this.vmName)) {
+        this.$refs.alertRef.show('VM name must be 1-63 chars and use only letters, numbers, dot, underscore, or hyphen.');
         return;
       }
 
@@ -101,24 +86,32 @@ export default {
       const endpoint = this.actionType === 'new' ? '/vm/new' : '/vm/clone';
 
       try {
-        await apiClient.post(
-          endpoint,
-          {
-            vmtoinstall: this.vmType,
-            name: this.vmName,
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        await apiClient.post(endpoint, {
+          vmtoinstall: this.vmType,
+          name: this.vmName,
+        });
 
         this.$refs.alertRef.show(
           `${this.vmName} ${this.actionType === 'new' ? 'creation' : 'clone'} request accepted.`
         );
         this.vmName = '';
       } catch (error) {
-        const detail = error.response?.data?.detail || 'Failed to submit VM request';
-        this.$refs.alertRef.show(String(detail));
+        const status = error.response?.status;
+        const detail = error.response?.data?.detail;
+
+        if (status === 401) {
+          clearAuthState();
+          this.$router.push({ name: 'Login' });
+          return;
+        }
+
+        if (status === 403) {
+          this.$refs.alertRef.show('Access denied. Admin role is required.');
+          this.$router.push({ name: 'VmHome' });
+          return;
+        }
+
+        this.$refs.alertRef.show(String(detail || 'Failed to submit VM request'));
       } finally {
         this.submitting = false;
       }

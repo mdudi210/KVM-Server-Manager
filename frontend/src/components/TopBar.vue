@@ -9,7 +9,7 @@
         :aria-expanded="isPanelVisible"
         aria-label="User Profile"
         title="User Profile">
-        {{ username[0].toUpperCase() }}
+        {{ avatarLetter }}
       </button>
       <ProfileMenu 
         :role="role" 
@@ -33,6 +33,12 @@ export default {
   },
   data() {
     return { isPanelVisible: false };
+  },
+  computed: {
+    avatarLetter() {
+      const name = this.username || 'U';
+      return name.charAt(0).toUpperCase();
+    }
   },
   methods: {
     togglePanel() {

@@ -20,9 +20,6 @@ logger = setup_logger("vm_clone")
 @router.post("/vm/clone")
 def create_clone(data: CloneRequest, claims=Depends(verify_admin)):
     client = ssh_client()
-    if isinstance(client, str):
-        logger.error(f"SSH connection failed: {client}")
-        raise HTTPException(status_code=500, detail="SSH connection failed")
 
     safe_vm_name = shlex.quote(data.name)
 
@@ -41,7 +38,7 @@ def create_clone(data: CloneRequest, claims=Depends(verify_admin)):
             logger.error(
                 f"{claims.get('sub')} encountered error while cloning {data.vmtoinstall} VM '{data.name}': {error}"
             )
-            raise HTTPException(status_code=500, detail=error)
+            raise HTTPException(status_code=500, detail="Failed to clone VM")
 
         logger.info(
             f"{claims.get('sub')} cloned {data.vmtoinstall} VM successfully: {data.name}"

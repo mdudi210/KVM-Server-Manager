@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { isAuthenticated } from '../../auth/auth';
+import { clearAuthState, getAuthState } from '../../auth/session';
 import VmItem from './VmItem.vue';
 import TopBar from './TopBar.vue';
 import AlertMsg from './Alert.vue';
@@ -41,10 +43,9 @@ export default {
     };
   },
   async mounted() {
-    const userInfo = this.getUserInfo();
-    this.username = userInfo?.username || 'User';
-    this.role = userInfo?.role || 'user';
-
+    const auth = getAuthState();
+    this.username = auth.user.username || 'User';
+    this.role = auth.user.role || 'user';
     await this.fetchVmList();
     this.connectRealtimeUpdates();
     this.startFallbackPolling();
@@ -64,33 +65,18 @@ export default {
     }
   },
   methods: {
-    getUserInfo() {
-      const raw = sessionStorage.getItem('user-info');
-      if (!raw) {
-        return null;
-      }
-      try {
-        return JSON.parse(raw);
-      } catch (error) {
-        return null;
-      }
-    },
-    getToken() {
-      return this.getUserInfo()?.access_token || '';
-    },
     async fetchVmList() {
-      const token = this.getToken();
-      if (!token) {
-        this.$router.push({ name: 'Login' });
-        return;
-      }
-
       try {
-        const response = await apiClient.get('/vm', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        this.vmlist = response.data.Body.output || [];
+        const response = await apiClient.get('/vm');
+        this.vmlist = response.data.Body?.output || [];
       } catch (error) {
+        const status = error.response?.status;
+        if (status === 401) {
+          clearAuthState();
+          this.$router.push({ name: 'Login' });
+          return;
+        }
+
         const backendMsg =
           error.response?.data?.detail ||
           error.response?.data?.message ||
@@ -105,18 +91,16 @@ export default {
       }
     },
     connectRealtimeUpdates() {
-      const token = this.getToken();
-      if (!token) {
-        return;
-      }
-
-      const wsUrl = `${buildWsUrl('/ws/vm-updates')}?token=${encodeURIComponent(token)}`;
+      const wsUrl = buildWsUrl('/ws/vm-updates');
       this.socket = new WebSocket(wsUrl);
 
       this.socket.onmessage = (event) => {
         try {
           const message = JSON.parse(event.data);
           if (message.event === 'connected') {
+            this.username = message.username || 'User';
+            const auth = getAuthState();
+            auth.user.username = this.username;
             return;
           }
 
@@ -146,8 +130,11 @@ export default {
 
       this.socket.onclose = () => {
         this.socket = null;
-        this.reconnectTimer = setTimeout(() => {
-          this.connectRealtimeUpdates();
+        this.reconnectTimer = setTimeout(async () => {
+          const authed = await isAuthenticated();
+          if (authed) {
+            this.connectRealtimeUpdates();
+          }
         }, 2500);
       };
 

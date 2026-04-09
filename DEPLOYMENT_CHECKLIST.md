@@ -1,77 +1,45 @@
-# Deployment Checklist
+# Deployment Checklist (Nginx-First)
 
-Use this checklist to ensure a successful deployment.
+Use this checklist before and after deployment.
 
 ## Pre-Deployment
 
 - [ ] Ubuntu server ready (20.04+)
-- [ ] Docker installed and user added to docker group
-- [ ] Docker Compose installed
-- [ ] Server IP address noted
-- [ ] Firewall configured (ports 80, 443)
-- [ ] SSL certificates generated or obtained
+- [ ] Docker + Docker Compose installed
+- [ ] Firewall opened for `80/tcp` (and `443/tcp` only if TLS terminates there)
+- [ ] `.env` prepared with strong secrets (`AUTHJWT_SECRET_KEY`, DB passwords)
+- [ ] `RETURN_TOKEN_IN_BODY=false` set
+- [ ] `ALLOWED_ORIGINS` explicitly set (not `*`)
 
 ## Docker Deployment
 
-- [ ] Project files copied to server
-- [ ] SSL certificates in `nginx/ssl/` directory
-- [ ] `docker-compose.yml` reviewed and configured
-- [ ] Database passwords changed (if needed)
-- [ ] Run `docker-compose up -d --build`
-- [ ] All containers running: `docker-compose ps`
-- [ ] Application accessible via HTTPS
-- [ ] Default passwords changed
+- [ ] Run `docker compose up -d --build`
+- [ ] All containers healthy: `docker compose ps`
+- [ ] Nginx health check works: `curl http://localhost/health`
+- [ ] Frontend loads through nginx: `http://SERVER_IP`
 
-## Kubernetes Deployment
+## Network Exposure
 
-- [ ] Kubernetes cluster ready
-- [ ] `kubectl` configured and working
-- [ ] Docker images built and pushed to registry
-- [ ] SSL certificates created as Kubernetes secrets
-- [ ] Storage class configured for MySQL
-- [ ] All manifests applied: `kubectl apply -k k8s/`
-- [ ] All pods running: `kubectl get pods -n kvm-server`
-- [ ] Services accessible
-- [ ] Ingress configured (if using)
-
-## Network Access
-
-- [ ] Server accessible from network: `ping SERVER_IP`
-- [ ] HTTP redirects to HTTPS
-- [ ] HTTPS accessible from other machines
-- [ ] SSL certificate accepted (or warning acknowledged)
-- [ ] Frontend loads correctly
-- [ ] Backend API responds
+- [ ] Only nginx is publicly exposed
+- [ ] Backend port `8000` is not exposed publicly
+- [ ] MySQL port `3306` is not exposed publicly
 
 ## Security
 
-- [ ] Default passwords changed
-- [ ] Firewall rules configured
-- [ ] SSL certificates valid
-- [ ] Database credentials secure
-- [ ] Regular backups configured
+- [ ] Default app users/passwords changed
+- [ ] Cookie settings reviewed (`AUTHJWT_COOKIE_SECURE`, `AUTHJWT_COOKIE_SAMESITE`)
+- [ ] HTTPS plan in place for production
+- [ ] Backup strategy defined
 
-## Testing
+## Functional Validation
 
-- [ ] Login works with admin credentials
-- [ ] API endpoints respond correctly
-- [ ] Frontend-backend communication works
-- [ ] Database persists data
-- [ ] Application survives container restart
-
-## Production Readiness
-
-- [ ] Monitoring configured
-- [ ] Logging configured
-- [ ] Backup strategy in place
-- [ ] Update procedure documented
-- [ ] Disaster recovery plan ready
-- [ ] Team trained on deployment
+- [ ] Login works (cookie-based session)
+- [ ] VM list/state endpoints work via nginx
+- [ ] WebSocket `/ws/vm-updates` works while logged in
+- [ ] Logout invalidates session and redirects to login
 
 ## Post-Deployment
 
-- [ ] Documentation updated
-- [ ] Access credentials secured
-- [ ] Monitoring alerts configured
-- [ ] Backup schedule verified
-- [ ] Performance baseline established
+- [ ] Logs monitored (`docker compose logs -f`)
+- [ ] Team has documented restart/recovery procedure
+- [ ] Periodic update cadence scheduled
