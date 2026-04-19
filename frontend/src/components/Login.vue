@@ -5,11 +5,6 @@
       <p class="subtitle">Please login to continue</p>
       <AlertMsg ref="alertRef"></AlertMsg>
 
-      <select v-model="authProvider" class="auth-type">
-        <option value="local">Local Login</option>
-        <option value="ad">Active Directory Login</option>
-      </select>
-
       <input
         type="text"
         placeholder="Enter your Username"
@@ -50,7 +45,6 @@ export default {
     return {
       username: '',
       password: '',
-      authProvider: 'local',
       loginFailed: false,
     };
   },
@@ -60,7 +54,7 @@ export default {
       clearAuthState();
 
       try {
-        const response = await login(this.username, this.password, this.authProvider);
+        const response = await login(this.username, this.password);
 
         if (response.status === 200) {
           setAuthFromLogin(response.data);
@@ -115,7 +109,6 @@ export default {
   margin-bottom: 1.5rem;
 }
 
-.auth-type,
 input {
   width: 100%;
   padding: 12px;
@@ -127,7 +120,6 @@ input {
   transition: all 0.3s ease;
 }
 
-.auth-type:focus,
 input:focus {
   border-color: #1976d2;
   box-shadow: 0 0 6px rgba(25, 118, 210, 0.4);
@@ -175,7 +167,6 @@ p {
     font-size: 0.8rem;
   }
 
-  .auth-type,
   input,
   button {
     font-size: 14px;

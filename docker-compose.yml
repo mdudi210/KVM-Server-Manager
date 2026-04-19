@@ -33,6 +33,7 @@ services:
       AUTHJWT_SECRET_KEY: ${AUTHJWT_SECRET_KEY:-change-this-secret}
       ALGORITHM: ${ALGORITHM:-HS256}
       SSH_HOSTNAME: ${SSH_HOSTNAME:-host.docker.internal}
+      SSH_PORT: ${SSH_PORT:-22}
       SSH_USERNAME: ${SSH_USERNAME:-root}
       SSH_PASSWORD: ${SSH_PASSWORD:-changeme}
       LINUX_TEMPLATE: ${LINUX_TEMPLATE:-linux-template}
@@ -47,6 +48,8 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - kvm-network
     command: >

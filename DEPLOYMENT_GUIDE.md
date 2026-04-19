@@ -37,6 +37,12 @@ DB_PASSWORD=change-me
 DB_DATABASE=kvm_db
 MYSQL_ROOT_PASSWORD=change-me-root
 
+# KVM/SSH target
+SSH_HOSTNAME=host.docker.internal
+SSH_PORT=22
+SSH_USERNAME=root
+SSH_PASSWORD=change-me
+
 # JWT / auth
 AUTHJWT_SECRET_KEY=change-this-to-a-long-random-secret
 RETURN_TOKEN_IN_BODY=false
@@ -49,6 +55,11 @@ AUTHJWT_COOKIE_CSRF_PROTECT=false
 
 # CORS - explicit origins only (no *)
 ALLOWED_ORIGINS=https://localhost,https://127.0.0.1,http://localhost,http://127.0.0.1
+
+# Optional AD tuning for fallback behavior
+AD_UPN_SUFFIX=wg.local
+AD_CONNECT_TIMEOUT_SECONDS=5
+AD_RECEIVE_TIMEOUT_SECONDS=8
 ```
 
 Keep `ALLOWED_ORIGINS` explicit and minimal.

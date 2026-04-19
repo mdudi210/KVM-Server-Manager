@@ -9,5 +9,5 @@ router = APIRouter()
 
 @router.post("/adlogin", deprecated=True)
 def ad_login(data: LoginRequest, response: Response, Authorize: AuthJWT = Depends()):
-    payload = data.copy(update={"auth_provider": "ad"})
-    return unified_login(payload, response, Authorize)
+    # Compatibility route; login flow is now fully unified in /login.
+    return unified_login(data, response, Authorize)

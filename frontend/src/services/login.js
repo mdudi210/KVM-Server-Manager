@@ -1,10 +1,9 @@
 import { apiClient } from '@/config/api';
 
-export async function login(username, password, authProvider = 'local') {
+export async function login(username, password) {
   const response = await apiClient.post('/login', {
     username,
     password,
-    auth_provider: authProvider,
   });
 
   return response;

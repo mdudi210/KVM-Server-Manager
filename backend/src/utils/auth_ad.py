@@ -3,7 +3,7 @@ import os
 import ldap3
 from dotenv import load_dotenv
 from fastapi import HTTPException
-from ldap3.core.exceptions import LDAPException
+from ldap3.core.exceptions import LDAPBindError, LDAPException, LDAPSocketOpenError, LDAPSocketReceiveError
 from ldap3.utils.conv import escape_filter_chars
 
 from backend.config.logging_setting import setup_logger
@@ -16,17 +16,26 @@ ad_server = os.getenv("AD_SERVER")
 ad_base_dn = os.getenv("AD_BASE_DN")
 ad_bind_user = os.getenv("AD_BIND_USER")
 ad_bind_password = os.getenv("AD_BIND_PASSWORD")
+ad_connect_timeout = int(os.getenv("AD_CONNECT_TIMEOUT_SECONDS", "5"))
+ad_receive_timeout = int(os.getenv("AD_RECEIVE_TIMEOUT_SECONDS", "8"))
 
 
 def authenticate_with_ad(username: str, password: str) -> list:
     if not ad_server or not ad_base_dn:
-        raise HTTPException(status_code=500, detail="AD configuration is incomplete")
+        raise HTTPException(status_code=503, detail="AD configuration is incomplete")
 
     try:
-        server = ldap3.Server(ad_server, get_info=ldap3.ALL)
+        server = ldap3.Server(ad_server, get_info=ldap3.ALL, connect_timeout=ad_connect_timeout)
 
         # Authenticate using supplied AD credentials.
-        with ldap3.Connection(server, user=username, password=password, auto_bind=True, check_names=True):
+        with ldap3.Connection(
+            server,
+            user=username,
+            password=password,
+            auto_bind=True,
+            check_names=True,
+            receive_timeout=ad_receive_timeout,
+        ):
             search_user = escape_filter_chars(username.split("@")[0])
             search_filter = f"(sAMAccountName={search_user})"
 
@@ -34,7 +43,14 @@ def authenticate_with_ad(username: str, password: str) -> list:
             bind_user = ad_bind_user or username
             bind_password = ad_bind_password or password
 
-            with ldap3.Connection(server, user=bind_user, password=bind_password, auto_bind=True, check_names=True) as query_conn:
+            with ldap3.Connection(
+                server,
+                user=bind_user,
+                password=bind_password,
+                auto_bind=True,
+                check_names=True,
+                receive_timeout=ad_receive_timeout,
+            ) as query_conn:
                 query_conn.search(
                     search_base=ad_base_dn,
                     search_filter=search_filter,
@@ -53,7 +69,11 @@ def authenticate_with_ad(username: str, password: str) -> list:
                 uid = str(user_entry.objectGUID.value)
                 return [True, role, uid]
 
+    except LDAPBindError:
+        raise HTTPException(status_code=401, detail="Invalid AD credentials")
+    except (LDAPSocketOpenError, LDAPSocketReceiveError):
+        raise HTTPException(status_code=503, detail="AD server unavailable")
     except HTTPException:
         raise
     except LDAPException:
-        raise HTTPException(status_code=401, detail="Invalid AD credentials")
+        raise HTTPException(status_code=503, detail="AD server unavailable")

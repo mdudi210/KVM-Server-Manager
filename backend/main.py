@@ -16,8 +16,6 @@ origins = [origin.strip() for origin in ALLOWED_ORIGINS.split(",") if origin.str
 
 allow_credentials = True
 if "*" in origins:
-    # Browsers reject wildcard origins when credentials/cookies are enabled.
-    origins = ["*"]
     allow_credentials = False
 
 app = FastAPI(
@@ -30,8 +28,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=allow_credentials,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type", "X-CSRF-Token"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(vm_cloner.router, tags=["vm"])

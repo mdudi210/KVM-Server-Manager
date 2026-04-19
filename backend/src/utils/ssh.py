@@ -11,6 +11,7 @@ load_dotenv()
 hostname = os.getenv("SSH_HOSTNAME")
 username = os.getenv("SSH_USERNAME")
 password = os.getenv("SSH_PASSWORD")
+port = int(os.getenv("SSH_PORT", "22"))
 SSH_CONNECT_TIMEOUT = int(os.getenv("SSH_CONNECT_TIMEOUT", "10"))
 SSH_AUTO_ADD_HOST_KEYS = os.getenv("SSH_AUTO_ADD_HOST_KEYS", "true").lower() in {"1", "true", "yes"}
 
@@ -27,6 +28,7 @@ def ssh_client() -> paramiko.SSHClient:
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(
             hostname=hostname,
+            port=port,
             username=username,
             password=password,
             timeout=SSH_CONNECT_TIMEOUT,
@@ -35,14 +37,14 @@ def ssh_client() -> paramiko.SSHClient:
         )
         return client
     except paramiko.AuthenticationException:
-        logger.warning("SSH authentication failed")
+        logger.warning("SSH authentication failed for %s@%s:%s", username, hostname, port)
         raise HTTPException(status_code=500, detail="SSH authentication failed")
     except paramiko.SSHException as e:
-        logger.warning("SSH connection error: %s", e)
-        raise HTTPException(status_code=500, detail="SSH connection failed")
+        logger.warning("SSH connection error to %s:%s: %s", hostname, port, e)
+        raise HTTPException(status_code=500, detail=f"SSH connection failed to {hostname}:{port}")
     except Exception as e:
-        logger.exception("Unexpected SSH error")
-        raise HTTPException(status_code=500, detail="SSH connection failed")
+        logger.exception("Unexpected SSH error while connecting to %s:%s", hostname, port)
+        raise HTTPException(status_code=500, detail=f"SSH connection failed to {hostname}:{port}")
 
 
 def execute_ssh_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
